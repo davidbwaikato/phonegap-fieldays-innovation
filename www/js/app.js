@@ -163,14 +163,54 @@ directory.Router = Backbone.Router.extend({
 
 });
 
-$(document).ready(function() {
-    directory.db = window.openDatabase("EmployeeDB", "1.0", "Employee Demo DB", 200000);
-    var employeeDAO = new directory.dao.EmployeeDAO(directory.db);
-    employeeDAO.initialize(function() {
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();	
+					
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+	
+	 directory.utils.templateLoader.load(['search-page', 'report-page', 'employee-page', 'employee-list-item', 'sync-page'],
+            function() {
+                directory.app = new directory.Router();
+                Backbone.history.start();
+            });
+			/*
+      directory.db = window.openDatabase("EmployeeDB", "1.0", "Employee Demo DB", 200000);
+      var employeeDAO = new directory.dao.EmployeeDAO(directory.db);
+      employeeDAO.initialize(function() {
         directory.utils.templateLoader.load(['search-page', 'report-page', 'employee-page', 'employee-list-item', 'sync-page'],
             function() {
                 directory.app = new directory.Router();
                 Backbone.history.start();
             });
-    });
-});
+      });*/
+	  
+    },
+	
+	 // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+
+    },
+};

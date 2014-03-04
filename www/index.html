@@ -2,16 +2,28 @@
 <html>
 <head>
 <title>Employee Directory</title>
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0"/>
+
+       <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+		
 <link rel="stylesheet" href="css/styles.css"/>
+<link rel="stylesheet" href="css/index.css"/>
 </head>
 
 <body>
 
-<div id="content"></div>
+   <div class="app">
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+			
+			<div id="content"></div>
 
 <!-- Scripts -->
-<script type="text/javascript" src="libs/cordova-1.7.0.js"></script>
+<script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="libs/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="libs/underscore-min.js"></script>
 <script type="text/javascript" src="libs/backbone-min.js"></script>
@@ -22,5 +34,11 @@
 <script type="text/javascript" src="js/models.js"></script>
 <script type="text/javascript" src="js/views.js"></script>
 
+    <script type="text/javascript">
+            app.initialize();
+        </script>
+		
+    </div>
+	
 </body>
 </html>
