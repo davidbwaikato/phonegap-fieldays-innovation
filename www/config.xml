@@ -6,10 +6,10 @@
         id        = "nz.ac.waikato.cs.tipple.map-and-speak"
         version   = "1.0.0">
 
-    <name>Tipple: Map and Speak</name>
+    <name>Fieldays Innovation</name>
 
     <description>
-        Location-aware Digital Library Software
+        Waikato University augmenting Fieldays 2014 Innovation, Mystery Creek, Waikato, New Zealand
     </description>
 
     <author email="davidb@cs.waikato.ac.nz" href="http://www.cs.waikato.ac.nz">
