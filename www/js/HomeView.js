@@ -1,12 +1,17 @@
 var HomeView = function(store) {
 
-    this.enteredName = "XX";
+    this.enteredName = "";
+
+    this.reinitialize = function() {
+	var self = this;
+        this.el.on('keyup', '#enter-name', function() { self.activateStart(self) });
+    };
+
 
     this.initialize = function() {
-	var self = this;
         // 'div' wrapper to attach html and events to
         this.el = $('<div/>');
-        this.el.on('keyup', '#enter-name', function() { self.activateStart(self) });
+	this.reinitialize();
     };
 
     this.render = function() {

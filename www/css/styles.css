@@ -331,8 +331,22 @@ button.round:enabled:active{
 
 
 
+hr.fade-in {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
+}
 
 
+hr.inset {
+    height: 6px;
+    border: 0;
+    box-shadow: inset 0 6px 6px -6px black;
+}
 
 
 .narrative {

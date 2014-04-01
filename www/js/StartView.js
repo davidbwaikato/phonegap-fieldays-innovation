@@ -8,12 +8,11 @@ var StartView = function(homeView) {
     };
 
     this.render = function() {
-	if (this.homeView) {
-            this.el.html(StartView.template(this.homeView));
+	if (!this.homeView) {
+	    this.homeView = { enteredName:  "" }
 	}
-	else {
-            this.el.html(StartView.template());
-	}
+        this.el.html(StartView.template(this.homeView));
+
         return this;
     };
 

@@ -24,6 +24,7 @@ var app = {
         if (!hash) {
             if (this.homePage) {
                 this.slidePage(this.homePage);
+		this.homePage.reinitialize();
             } else {
                 this.homePage = new HomeView(this.store).render();
                 this.slidePage(this.homePage);
