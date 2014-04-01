@@ -27,7 +27,9 @@
         following tag to your config.xml; you will still have the INTERNET
         permission on your app, which PhoneGap requires.
     -->
+<!--
     <preference name="permissions"                value="none"/>
+-->
 
     <!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version"           value="3.3.0" />      <!-- all: current version of PhoneGap -->
@@ -55,7 +57,7 @@
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.file" />
     <gap:plugin name="org.apache.cordova.geolocation" />
-	<gap:plugin name="com.phonegap.plugins.barcodescanner" />
+    <gap:plugin name="com.phonegap.plugins.barcodescanner" />
 	
 <!--
     <gap:plugin name="org.apache.cordova.speech.speechsynthesis" />
