@@ -201,6 +201,44 @@ body {
     border-radius: .5rem;
 }
 
+
+
+.info-page {
+    width: 600px; 
+    height: 500px;
+    
+    display: -webkit-box; display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    
+    -webkit-box-orient: vertical; -moz-box-orient: vertical;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    
+    -webkit-box-align: center; -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+        
+    padding: 1rem 3rem;
+    
+    background-color: rgba(200, 200, 200, .9);
+    color: white;
+    
+    font-family: helvetica, sans-serif;
+    font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
+    text-shadow: 0 0 1.2rem rgba(0,0,0, .4);
+    
+    -moz-box-box-shadow: 0.3rem 0.3rem 0.3rem 0.2rem #909090;
+    -webkit-box-shadow:  0.3rem 0.3rem 0.3rem 0.2rem #909090;
+    box-shadow:          0.3rem 0.3rem 0.3rem 0.2rem #909090;
+    
+    border-radius: .5rem;
+}
+
+
 .flex-stretch {
     -webkit-box-flex: 1; -moz-box-flex: 1;
     -ms-flex: 1;
@@ -246,9 +284,9 @@ body {
 }
 
 button.round {
-    width:134px; /*same as the height*/
+    width:220px;  /*same as the height*/
     height:140px; /*same as the width*/
-    font-size:5rem;
+    font-size:4rem;
 
     /*set the border-radius at half the size of the width and height*/
     -webkit-border-radius: 70px;
@@ -263,9 +301,13 @@ button.round {
     -moz-box-shadow: 0 0 10px rgba(0,0,0, .75);
     box-shadow: 2px 2px 15px rgba(0,0,0, .75);
 
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    text-decoration: none;
 
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
 
 
 button.round:disabled{
@@ -276,8 +318,6 @@ button.round:disabled{
     -moz-box-shadow: 0px 0px 5px rgba(0,0,0, .75);
     box-shadow: 0px 0px 5px rgba(0,0,0, .75);
 }
-
-
 
 button.round:enabled:active{
     background:#c20b0b;
@@ -427,13 +467,13 @@ li>a * {
 }
 
 h1 {
-    font-size: 20px;
+    font-size: 4rem;
     padding: 20 0 0 0;
     margin: 0px;
 }
 
 h2 {
-    font-size: 16px;
+    font-size: 3rem;
     font-weight: normal;
     padding: 0px;
     margin: 0px;

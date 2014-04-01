@@ -32,9 +32,8 @@ var app = {
         }
 	// have a non-trivial hash
 
-	console.log("hash = " + hash);
 	if (hash == "#start") {
-            self.slidePage(new StartView(this.store).render());
+            self.slidePage(new StartView(this.homePage).render());
 	    return;
 	}
 

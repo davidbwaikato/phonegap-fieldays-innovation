@@ -1,4 +1,6 @@
-var StartView = function(store) {
+var StartView = function(homeView) {
+
+    this.homeView = homeView;
 
     this.initialize = function() {
         // 'div' wrapper to attach html and events to
@@ -6,7 +8,12 @@ var StartView = function(store) {
     };
 
     this.render = function() {
-        this.el.html(StartView.template());
+	if (this.homeView) {
+            this.el.html(StartView.template(this.homeView));
+	}
+	else {
+            this.el.html(StartView.template());
+	}
         return this;
     };
 

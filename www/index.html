@@ -53,7 +53,11 @@
 	  <div>Enter Your Name</div>
 	  <div style="width: 100%"><input id="enter-name" type="text" /></div>
 	  <div class="vstretchy-centered">
-	    <a href="#start"><button class="round" id="start" disabled="true">Start</button></a>
+	    <a href="#start">
+	      <button class="round" id="start" disabled="true">
+		Start &#x25b6;
+	      </button>
+	    </a>
 	  </div>
 	</div>
 	
@@ -65,17 +69,20 @@
       
       <div class="page-heading" style="white-space: nowrap">
 	<a href='#' class="button header-button header-button-left">&#x25c0;Back</a>
-	<div>Fieldays Innovation 2014: Start</div>
+	<div>Fieldays Innovation 2014 &#x203A; Start</div>
       </div>
       </div>
       <div class="page-body">
-	<div class="page-inset">
-	  <div>Hello XXX</div>
-	  <div>
-	    Innovation is about doing things better. 
-	    It can lead to new products and services, smarter and more efficient ways of doing things ... <br/>
-	    - The Callaghan Institute
-	  </div>
+	<div class="info-page">
+	  <h2>Hello {{this.enteredName}}</h2>
+	  <hr />
+	  <p>
+	    Innovation is about doing things better. It can lead to
+	    new products and services, smarter and more efficient ways
+	    of doing things and a point of difference that sets a
+	    business apart. 
+	  </p>
+	  <p><i>- The Callaghan Institute</i></p>
 
 	</div>
 	
