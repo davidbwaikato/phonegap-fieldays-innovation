@@ -34,7 +34,9 @@ var app = {
 	// have a non-trivial hash
 
 	if (hash == "#start") {
-            self.slidePage(new StartView(this.homePage).render());
+	    var startPage = new StartView(this.homePage).render();
+            self.slidePage(startPage);	    
+	    startPage.crossfade();
 	    return;
 	}
 

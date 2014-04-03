@@ -24,7 +24,7 @@ var fsLimit = 40;
 
 var mouseCount = 0;
 var loopCount  = 0;
-var loopLimit  = 16;
+var loopLimit  = 12;
 
 var timerId = null;
 
@@ -148,7 +148,10 @@ function mouseMove(e)
 <rect height="100%" width="100%" fill="white"/>
 
 <g id="GroupOfBubbles">
- <circle id="myBubble" cx="-150" cy="-150" r="50" fill="url(#rg)" />
+<!-- Static test circle -->
+<!--
+  <circle id="myBubble" cx="50" cy="50" r="50" fill="url(#rg)" />
+-->
 </g>
 
 </svg>

@@ -1,3 +1,5 @@
+
+
 var StartView = function(homeView) {
 
     this.homeView = homeView;
@@ -16,8 +18,14 @@ var StartView = function(homeView) {
         return this;
     };
 
+    this.crossfade = function() {
+	$("#svg-bubbles-div").delay(20000).animate({ opacity: 0 }, 700);
+	$("#after-bubbles").delay(20000).animate({ opacity: 1 }, 700);
+    };
+
     this.initialize();
 
 }
 
 StartView.template = Handlebars.compile($("#start-tpl").html());
+
