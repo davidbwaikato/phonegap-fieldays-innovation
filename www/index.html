@@ -55,7 +55,11 @@
 	      </p>
 	      <p><i>- The Callaghan Institute</i></p>
 
-	      <audio id="eab-audio-player" src="audio/eab-innovation.wav"></audio>
+	      <audio id="eab-audio-player">
+		<source src="audio/eab-innovation.wav" type="audio/vnd.wav"/>
+		<source src="audio/eab-innovation.mp3" type="audio/mpeg"/>
+	      </audio>
+
 	      <div>
 		<button onclick="document.getElementById('eab-audio-player').play()">Play</button>
 		<button onclick="document.getElementById('eab-audio-player').pause()">Pause</button>
