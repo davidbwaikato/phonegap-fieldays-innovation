@@ -1,8 +1,8 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    console.error("Device is ready!");
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+    console.log("FDI: Device is ready!");
+    //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 
 function gotFS(fileSystem) {
