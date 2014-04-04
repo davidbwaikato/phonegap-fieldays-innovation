@@ -34,24 +34,43 @@ var app = {
 	// have a non-trivial hash
 
 	if (hash == "#start") {
-	    var startPage = new StartView(this.homePage).render();
-            self.slidePage(startPage);	    
-	    startPage.crossfade();
+
+            if (this.startPage) {
+		self.slidePage(this.startPage);
+	    }
+	    else {
+		this.startPage = new StartView(this.homePage).render();
+		self.slidePage(this.startPage);	    
+		this.startPage.crossfade();
+	    }
 	    return;
 	}
 
+	if (hash == "#discover") {
+            if (this.discoverPage) {
+		self.slidePage(this.discoverPage);
+	    }
+	    else {
+		this.discoverPage = new DiscoverView().render();
+		self.slidePage(this.discoverPage);	    
+	    }
+	    return;
+	}
+/*
         var match = hash.match(this.detailsURL);
         if (match) {
             this.store.findById(Number(match[1]), function(employee) {
                 self.slidePage(new EmployeeView(employee).render());
             });
         }
+*/
+
     },
 
     slidePage: function(page) {
 
         var currentPageDest,
-            self = this;
+        self = this;
 
         // If there is no current page (app just started) -> No transition: Position new page in the view port
         if (!this.currentPage) {

@@ -18,7 +18,7 @@
 	  <div style="width: 100%"><input id="enter-name" type="text" /></div>
 	  <div class="vstretchy-centered">
 	    <a href="#start">
-	      <button class="round" id="start" disabled="true">
+	      <button class="round" id="start" disabled="disabled">
 		Start &#x25b6;
 	      </button>
 	    </a>
@@ -63,7 +63,11 @@
 	      <div>
 		<button onclick="document.getElementById('eab-audio-player').play()">Play</button>
 		<button onclick="document.getElementById('eab-audio-player').pause()">Pause</button>
-		<a href="#" class="scanner-btn">Discover</a>
+		<a href="#discover" class="scanner-btn">
+		  <button class="round" id="discover" style="white-space: nowrap;">
+		    Discover &#x25b6;
+		  </button>
+		</a>
 	      </div>
 
 
@@ -77,14 +81,32 @@
     </script>
 
 
+    <script id="discover-tpl" type="text/x-handlebars-template">
+      
+      <div class="page-heading" style="white-space: nowrap">
+	<a href='#' class="button header-button header-button-left">&#x25c0;Back</a>
+	<div>Fieldays Innovation 2014 &#x203A; Start &#x203A; Discover</div>
+      </div>
+
+      <div class="page-body">
+	<div class="info-page">
+	</div>
+
+      </div>
+    </script>
+	  
+
 
 <script src="phonegap.js"></script>
 
 <script src="lib/jquery-1.8.2.min.js"></script>
 <script src="lib/handlebars.js"></script>
 <script src="js/storage/memory-store.js"></script>
+
 <script src="js/HomeView.js"></script>
 <script src="js/StartView.js"></script>
+<script src="js/DiscoverView.js"></script>
+
 <script src="js/file.js"></script>
 <script src="js/main.js"></script>
 
