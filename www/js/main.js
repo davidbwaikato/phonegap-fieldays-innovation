@@ -122,8 +122,8 @@ var app = {
 
 };
 
-function stopBubbleAnnimation() {
-    app.startPage.crossfade();
+function stopBubbleAnnimation(delay) {
+    app.startPage.crossfade(delay);
 }
 
 app.initialize();

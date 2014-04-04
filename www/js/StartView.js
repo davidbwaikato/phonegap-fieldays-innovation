@@ -40,9 +40,9 @@ var StartView = function(homeView) {
     };
 
 
-    this.crossfade = function() {
-	$("#svg-bubbles-div").animate({ opacity: 0 }, 700);
-	$("#after-bubbles").css("display","block").animate({ opacity: 1 }, 700);
+    this.crossfade = function(delay) {
+	$("#svg-bubbles-div").delay(delay).animate({ opacity: 0 }, 700);
+	$("#after-bubbles").delay(delay).css("display","block").animate({ opacity: 1 }, 700);
 
 	this.playAudio();
     };

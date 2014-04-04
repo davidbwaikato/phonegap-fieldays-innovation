@@ -5,7 +5,6 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.1"
    onload="startUp()"
-   onmousemove="mouseMove(evt)"
    onresize="resize()">
 
 <script>
@@ -17,12 +16,11 @@ var xlinkns = "http://www.w3.org/1999/xlink";
 
 object = new Array()
  
-var nw = nh = xm = ym = 0 ;
+var nw = nh = 0;
 var Nbubble = 4 ;
 var rLimit = 100;
 var fsLimit = 40;
 
-var mouseCount = 0;
 var loopCount  = 0;
 var loopLimit  = 12;
 
@@ -36,12 +34,11 @@ function startUp()
    	object[i] = new makeSphere(i);
   }
 
-  object[0] = new makeSphere(0,"Testing");
-  object[1] = new makeSphere(1,"Prototypes");
-  object[2] = new makeSphere(2,"Research");
-  object[3] = new makeSphere(3,"Ideas");
+  object[0] = new makeSphere(0,200,"Testing");
+  object[1] = new makeSphere(1,140,"Prototypes");
+  object[2] = new makeSphere(2, 80,"Research");
+  object[3] = new makeSphere(3,  0,"Ideas");
 
-  //timerId = setInterval("for (i in object)object[i].moveSphere(i)",60)
   timerId = setInterval(moveSpheres,60)
 }
 
@@ -49,11 +46,11 @@ function startUp()
 function moveSpheres()
 {
     for (i in object) {
-        object[i].moveSphere(i);
+        object[i].moveSphere();
     }
 }
 
-function makeSphere(N,label)
+function makeSphere(N,hue,label)
 {
         this.label = label;
 
@@ -65,7 +62,7 @@ function makeSphere(N,label)
         this.text   = document.createElementNS(xmlns,"text");
         var textNode = document.createTextNode(label);
         this.text.appendChild(textNode);
-        this.text.setAttributeNS(null,"fill","red");
+        this.text.setAttributeNS(null,"fill","hsl("+hue+",100%,40%)");
 
         var bubble_group_elem = document.getElementById("GroupOfBubbles");
 	bubble_group_elem.appendChild(this.trans_group);
@@ -81,58 +78,61 @@ function makeSphere(N,label)
   	this.moveSphere = function(){
     	with(this){
 			if (r >= rLimit*2){
-				mouseCount--;
 				loopCount++;
-				if (mouseCount<0){
-					x = rLimit + Math.random() * (nw - 2*rLimit);
-					y = rLimit + Math.random() * (nh - 2*rLimit);
-				}
-				else {
-					x = xm;
-					y = ym;
-				}
+
+                                x = rLimit + Math.random() * (nw - 2*rLimit);
+				y = rLimit + Math.random() * (nh - 2*rLimit);
 				r = 0;
 			}
 
 			r += 2;
    
-      var rScale = Math.min(r,rLimit) / rLimit;
-      var tOpacity = (r<=rLimit) ? r/rLimit : 2.0-r/rLimit;
+          var rScale = Math.min(r,rLimit) / rLimit;
+          var tOpacity = (r<=rLimit) ? r/rLimit : 2.0-r/rLimit;
 
-      if (label == "Ideas") {
-         rScale = rScale + rScale * (loopCount/loopLimit);
-      }
+          if (label == "Ideas") {
+             rScale = rScale + rScale * (loopCount/loopLimit);
+          }
 
-      scale_group.setAttributeNS(null,"transform","scale(" + rScale + ")");
-      trans_group.setAttributeNS(null,"transform","translate(" + x +","+ y + ")");
+          scale_group.setAttributeNS(null,"transform","scale(" + rScale + ")");
+          trans_group.setAttributeNS(null,"transform","translate(" + x +","+ y + ")");
 
-      bubble.setAttributeNS(null,"cx",0);
-      bubble.setAttributeNS(null,"cy",0);
-      bubble.setAttributeNS(null,"r",rLimit);
-      bubble.setAttributeNS(null,"fill","url(#rg)");
-      bubble.setAttributeNS(null,"opacity",(rLimit - r) / rLimit);
+          bubble.setAttributeNS(null,"cx",0);
+          bubble.setAttributeNS(null,"cy",0);
+          bubble.setAttributeNS(null,"r",rLimit);
+          bubble.setAttributeNS(null,"fill","url(#hue" + hue + ")");
+          bubble.setAttributeNS(null,"opacity",(rLimit - r) / rLimit);
 
-      var text_bbox = text.getBBox();
-      text.setAttributeNS(null,"x",-text_bbox.width/2);
-      text.setAttributeNS(null,"y",0 );
-      text.setAttributeNS(null,"opacity",tOpacity);
-      text.setAttributeNS(null,"font-size",fsLimit);
-
-
-      if (loopCount==loopLimit) {
-          stopAnnimation();
-      }
+          var text_bbox = text.getBBox();
+          text.setAttributeNS(null,"x",-text_bbox.width/2);
+          text.setAttributeNS(null,"y",0 );
+          text.setAttributeNS(null,"opacity",tOpacity);
+          text.setAttributeNS(null,"font-size",fsLimit);
 
 
-    }
-  }
+          if (loopCount>=loopLimit) {
+              stopAnnimation();
+          }
+    } // End of 'with'
+  } // End of moveSphere()
+
 }
+
+function skipAnnimation()
+{
+   // really it's a speed up of the annimation focussing in 'Idea'
+
+   clearInterval(timerId);
+   loopCount = loopLimit;
+
+   timerId = setInterval("object[3].moveSphere()",40)
+}
+
 
 function stopAnnimation()
 {
-    console.log("Stopping bubble annimation");
     clearInterval(timerId);
-    top.stopBubbleAnnimation();
+    top.stopBubbleAnnimation(2000);
 }
 
 function resize()
@@ -141,23 +141,35 @@ function resize()
 	nh  = window.innerHeight;
 }
 
-function mouseMove(e)
-{
- 	xm = e.clientX;
-  	ym = e.clientY;
-	mouseCount = 1;
-}
 
 ]]>
 
 </script>
 
 <defs>
- <radialGradient id="rg" cx="20%" cy="20%" r="100%" fx="30%" fy="30%" >
-   <stop stop-color="#ffffff" offset="0" stop-opacity="0.5"/>
-   <stop stop-color="#CC8080" offset="20%" stop-opacity="0.5"/>
-   <stop stop-color="#CC0000" offset="80%" stop-opacity="0.5"/>
-   <stop stop-color="#CC0000" offset="100%" stop-opacity="0.5"/>
+ <radialGradient id="hue200" cx="20%" cy="20%" r="100%" fx="30%" fy="30%" >
+   <stop stop-color="#ffffff"            offset="0"    stop-opacity="0.5"/>
+   <stop stop-color="hsl(200,100%, 80%)" offset="20%"  stop-opacity="0.5"/>
+   <stop stop-color="hsl(200,100%, 40%)" offset="80%"  stop-opacity="0.5"/>
+   <stop stop-color="hsl(200,100%, 20%)" offset="100%" stop-opacity="0.5"/>
+ </radialGradient>
+ <radialGradient id="hue120" cx="20%" cy="20%" r="100%" fx="30%" fy="30%" >
+   <stop stop-color="#ffffff"            offset="0"    stop-opacity="0.5"/>
+   <stop stop-color="hsl(100,100%, 80%)" offset="20%"  stop-opacity="0.5"/>
+   <stop stop-color="hsl(100,100%, 40%)" offset="80%"  stop-opacity="0.5"/>
+   <stop stop-color="hsl(100,100%, 20%)" offset="100%" stop-opacity="0.5"/>
+ </radialGradient>
+ <radialGradient id="hue60" cx="20%" cy="20%" r="100%" fx="30%" fy="30%" >
+   <stop stop-color="#ffffff"           offset="0"    stop-opacity="0.5"/>
+   <stop stop-color="hsl(80,100%, 80%)" offset="20%"  stop-opacity="0.5"/>
+   <stop stop-color="hsl(80,100%, 40%)" offset="80%"  stop-opacity="0.5"/>
+   <stop stop-color="hsl(80,100%, 20%)" offset="100%" stop-opacity="0.5"/>
+ </radialGradient>
+ <radialGradient id="hue0" cx="20%" cy="20%" r="100%" fx="30%" fy="30%" >
+   <stop stop-color="#ffffff" offset="0"    stop-opacity="0.8"/>
+   <stop stop-color="#CC8080" offset="20%"  stop-opacity="0.8"/>
+   <stop stop-color="#CC0000" offset="80%"  stop-opacity="0.8"/>
+   <stop stop-color="#CC0000" offset="100%" stop-opacity="0.8"/>
  </radialGradient>
 </defs>
 
@@ -170,7 +182,7 @@ function mouseMove(e)
 </g>
 
   <svg>
-    <text x="520" y="480" fill="red" style="font-size: 30px;" onclick="stopAnnimation()">Skip</text>
+    <text x="520" y="480" fill="black" style="font-size: 30px;" onclick="skipAnnimation()">Skip &#x203A;</text>
   </svg>
 </svg>
 
