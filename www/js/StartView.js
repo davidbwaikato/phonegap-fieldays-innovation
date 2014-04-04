@@ -19,8 +19,8 @@ var StartView = function(homeView) {
     };
 
     this.crossfade = function() {
-	$("#svg-bubbles-div").delay(20000).animate({ opacity: 0 }, 700);
-	$("#after-bubbles").delay(20000).animate({ opacity: 1 }, 700);
+	$("#svg-bubbles-div").animate({ opacity: 0 }, 700);
+	$("#after-bubbles").css("display","block").animate({ opacity: 1 }, 700);
     };
 
 

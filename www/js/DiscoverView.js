@@ -25,7 +25,7 @@ var DiscoverView = function() {
         // but playing with options, seems like it should be this:
         //var scanner = window.cordova.require("cordova/plugin/BarcodeScanner");
 
-	if (!cordova) {
+	if (!window.cordova) {
             app.showAlert("Barcode Scanner not supported", "Error");
             return;
         }

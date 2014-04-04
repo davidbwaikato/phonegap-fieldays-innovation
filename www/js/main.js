@@ -41,7 +41,7 @@ var app = {
 	    else {
 		this.startPage = new StartView(this.homePage).render();
 		self.slidePage(this.startPage);	    
-		this.startPage.crossfade();
+		//this.startPage.crossfade();
 	    }
 	    return;
 	}
@@ -84,10 +84,15 @@ var app = {
         $('.stage-right, .stage-left').not('.homePage').remove();
 
         if (page === app.homePage) {
-            // Always apply a Back transition (slide from left) when we go back to the search page
+            // Always apply a Back transition (slide from left) when we go back to the home page
             $(page.el).attr('class', 'page stage-left');
             currentPageDest = "stage-right";
-        } else {
+        } 
+	else if ((page == app.startPage) && (this.currentPage == app.discoverPage)) {
+            $(page.el).attr('class', 'page stage-left');
+            currentPageDest = "stage-right";
+	}
+	else {
             // Forward transition (slide from right)
             $(page.el).attr('class', 'page stage-right');
             currentPageDest = "stage-left";
@@ -116,5 +121,9 @@ var app = {
     }
 
 };
+
+function stopBubbleAnnimation() {
+    app.startPage.crossfade();
+}
 
 app.initialize();

@@ -41,7 +41,16 @@ function startUp()
   object[2] = new makeSphere(2,"Research");
   object[3] = new makeSphere(3,"Ideas");
 
-  timerId = setInterval("for (i in object)object[i].moveSphere(i)",60)
+  //timerId = setInterval("for (i in object)object[i].moveSphere(i)",60)
+  timerId = setInterval(moveSpheres,60)
+}
+
+
+function moveSpheres()
+{
+    for (i in object) {
+        object[i].moveSphere(i);
+    }
 }
 
 function makeSphere(N,label)
@@ -111,12 +120,19 @@ function makeSphere(N,label)
 
 
       if (loopCount==loopLimit) {
-          clearInterval(timerId);
+          stopAnnimation();
       }
 
 
     }
   }
+}
+
+function stopAnnimation()
+{
+    console.log("Stopping bubble annimation");
+    clearInterval(timerId);
+    top.stopBubbleAnnimation();
 }
 
 function resize()
@@ -147,11 +163,15 @@ function mouseMove(e)
 
 <rect height="100%" width="100%" fill="white"/>
 
+
+
 <g id="GroupOfBubbles">
-<!-- Static test circle -->
-<!--
-  <circle id="myBubble" cx="50" cy="50" r="50" fill="url(#rg)" />
--->
+<!-- group to put in dynamically changing bubbles -->
 </g>
 
+  <svg>
+    <text x="520" y="480" fill="red" style="font-size: 30px;" onclick="stopAnnimation()">Skip</text>
+  </svg>
 </svg>
+
+
