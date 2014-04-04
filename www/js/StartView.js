@@ -19,16 +19,16 @@ var StartView = function(homeView) {
     };
 
 
-    this.getPhoneGapPath = function {
+    this.getPhoneGapPath = function() {
 
 	var path = window.location.pathname;
 	path = path.substr( path, path.length - 10 );
 	return 'file://' + path;
     };
 
-    this.playAudio = function {
+    this.playAudio = function() {
 
-	var url = getPhoneGapPath() + 'audio/eab-innovation.wav';
+	var url = this.getPhoneGapPath() + 'audio/eab-innovation.wav';
 
 	var snd = new Media(url, function () { console.log("playAudio():Audio Success"); },
 			         function (err) { console.log("playAudio():Audio Error: " + err); }
@@ -37,7 +37,7 @@ var StartView = function(homeView) {
 	// Play audio
 	snd.play();
 
-    }
+    };
 
 
     this.crossfade = function() {
