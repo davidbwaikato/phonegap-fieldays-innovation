@@ -15,10 +15,10 @@
       <div class="page-body">
 	<div class="page-inset">
 	  <div>Enter Your Name</div>
-	  <div style="width: 100%"><input id="enter-name" type="text" autofocus="autofocus" /></div>
+	  <div style="width: 100%"><input id="enter-name" type="text" /></div>
 	  <div class="vstretchy-centered">
 	    <a href="#start">
-	      <button class="round" id="start" disabled="disabled">
+	      <button class="start round" id="start" disabled="disabled">
 		Start &#x25b6;
 	      </button>
 	    </a>
@@ -53,19 +53,28 @@
 		of doing things and a point of difference that sets a
 		business apart. 
 	      </p>
-	      <p><i>- The Callaghan Institute</i></p>
 
-	      <audio id="eab-audio-player" preload="auto">
-		<source src="audio/eab-innovation.mp3" type="audio/mpeg"/>
-		<source src="audio/eab-innovation.ogg" type="audio/ogg"/>
-		<source src="audio/eab-innovation.wav" type="audio/vnd.wav"/>
-	      </audio>
+	      <p>
+		<div style="float: left;"><i>- The Callaghan Institute</i></div>
 
-	      <div>
+	      <div style="float: right;">
+
+		<audio id="eab-audio-player" preload="auto">
+		  <source src="audio/eab-innovation.mp3" type="audio/mpeg"/>
+		  <source src="audio/eab-innovation.ogg" type="audio/ogg"/>
+		  <source src="audio/eab-innovation.wav" type="audio/vnd.wav"/>
+		</audio>
+		
 		<button onclick="document.getElementById('eab-audio-player').play()">Play</button>
 		<button onclick="document.getElementById('eab-audio-player').pause()">Pause</button>
+	      </div>
+
+	      </p>
+
+
+	      <div style="padding-top: 2rem; float: right;">
 		<a href="#discover" class="scanner-btn">
-		  <button class="round" id="discover" style="white-space: nowrap;">
+		  <button class="discover round" id="discover" style="white-space: nowrap;">
 		    Discover &#x25b6;
 		  </button>
 		</a>
