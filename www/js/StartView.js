@@ -28,7 +28,7 @@ var StartView = function(homeView) {
 
     this.playAudio = function() {
 
-	var url = this.getPhoneGapPath() + 'audio/eab-innovation.wav';
+	var url = this.getPhoneGapPath() + 'audio/eab-innovation.mp3';
 
 	var snd = new Media(url, function () { console.log("playAudio():Audio Success"); },
 			         function (err) { console.log("playAudio():Audio Error: " + err); }
