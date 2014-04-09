@@ -15,7 +15,7 @@ var DiscoverView = function() {
 	var discover_view = DiscoverView.template(this.homeView);
         this.el.html(discover_view);
 
-	this.scan();
+	//this.scan();
 
         return this;
     };
