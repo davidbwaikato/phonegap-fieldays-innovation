@@ -41,12 +41,14 @@ var DiscoverView = function() {
 		    var inner_template = Handlebars.compile($("#"+result.text+"-tpl").html());
 		    var inner_html     = inner_template.template(self.homeView);
 
-		    $('#info-page').html(inner_html);
-
-                    app.showAlert("Result: " + result.text + "\n"
+                    app.showAlert("Result html: " + inner_html + "\n"
 				  + "Format: " + result.format + "\n"
 				  + "Cancelled: " + result.cancelled,
-				  "We got a barcode");
+				  "Bar code");
+
+		    $('#info-page').html(inner_html);
+
+
                 },
                 function (error) {
                     app.showAlert(err,"Scanning failed: ");
