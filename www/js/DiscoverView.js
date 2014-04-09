@@ -38,8 +38,9 @@ var DiscoverView = function() {
 	cordova.plugins.barcodeScanner.scan(
                 function (result) {
 		    
-		    var inner_template = Handlebars.compile($("#"+result.text+"-tpl").html());
-		    var inner_html     = inner_template.template(self.homeView);
+		    //var inner_template = Handlebars.compile($("#"+result.text+"-tpl").html());
+		    //var inner_html     = inner_template.template(self.homeView);
+		    var inner_html = "Innovation ID: " + result.text;
 
                     app.showAlert("Result html: " + inner_html + "\n"
 				  + "Format: " + result.format + "\n"
