@@ -35,17 +35,23 @@ var DiscoverView = function() {
             return;
         }
 
+	var story_lookup = { 'Innovation-Story-01': "Innovation Story 1, testing, testing, testing",
+			     'Innovation-Story-02': "Innovation Story 2, foo-bar, foo-bar, foo-bar"
+			   };
+
 	cordova.plugins.barcodeScanner.scan(
                 function (result) {
 		    
 		    //var inner_template = Handlebars.compile($("#"+result.text+"-tpl").html());
 		    //var inner_html     = inner_template.template(self.homeView);
-		    var inner_html = "Innovation ID: " + result.text;
+		    var inner_html = story_lookup[result.text];
 
+/*
                     app.showAlert("Result html: " + inner_html + "\n"
 				  + "Format: " + result.format + "\n"
 				  + "Cancelled: " + result.cancelled,
 				  "Bar code");
+*/
 
 		    $('#info-page').html(inner_html);
 
