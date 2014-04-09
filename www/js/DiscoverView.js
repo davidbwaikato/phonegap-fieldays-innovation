@@ -39,7 +39,7 @@ var DiscoverView = function() {
                 function (result) {
 		    
 		    var inner_template = Handlebars.compile($("#"+result.text+"-tpl").html());
-		    var inner_html     = inner_template(self.homeView);
+		    var inner_html     = inner_template.template(self.homeView);
 
 		    $('#info-page').html(inner_html);
 
