@@ -11,14 +11,19 @@ var DiscoverView = function() {
 	if (!this.homeView) {
 	    this.homeView = { enteredName:  "" }
 	}
-        this.el.html(DiscoverView.template(this.homeView));
+
+	var discover_view = DiscoverView.template(this.homeView));
+        this.el.html(discover);
 
 	this.scan();
+
         return this;
     };
 
 
     this.scan = function() {
+        var self = this;
+
         console.log('scan(): init');
         // documentation said the syntax was this:
         // var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
@@ -32,6 +37,12 @@ var DiscoverView = function() {
 
 	cordova.plugins.barcodeScanner.scan(
                 function (result) {
+		    
+		    var inner_template = Handlebars.compile($("#"+result.text_"-tpl").html());
+		    var inner_html     = inner_template(self.homeView));
+
+		    $('#info-page').html(inner_html);
+
                     app.showAlert("Result: " + result.text + "\n"
 				  + "Format: " + result.format + "\n"
 				  + "Cancelled: " + result.cancelled,
