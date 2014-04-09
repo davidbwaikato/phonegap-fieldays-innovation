@@ -12,7 +12,7 @@ var DiscoverView = function() {
 	    this.homeView = { enteredName:  "" }
 	}
 
-	var discover_view = DiscoverView.template(this.homeView));
+	var discover_view = DiscoverView.template(this.homeView);
         this.el.html(discover);
 
 	this.scan();
@@ -38,8 +38,8 @@ var DiscoverView = function() {
 	cordova.plugins.barcodeScanner.scan(
                 function (result) {
 		    
-		    var inner_template = Handlebars.compile($("#"+result.text_"-tpl").html());
-		    var inner_html     = inner_template(self.homeView));
+		    var inner_template = Handlebars.compile($("#"+result.text+"-tpl").html());
+		    var inner_html     = inner_template(self.homeView);
 
 		    $('#info-page').html(inner_html);
 
