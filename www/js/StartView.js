@@ -44,10 +44,12 @@ var StartView = function(homeView) {
 
 
     this.crossfade = function(delay) {
+	var self = this;
+
 	$("#svg-bubbles-div").delay(delay).animate({ opacity: 0 }, 700);
 	$("#after-bubbles").delay(delay).css("display","block").animate({ opacity: 1 }, 700);
 
-	this.playAudio();
+	setTimeout(function() { self.playAudio(); }, 2000);
     };
 
 
