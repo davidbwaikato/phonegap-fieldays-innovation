@@ -127,8 +127,13 @@ var app = {
 
 };
 
+var bubblesStopped = false;
+
 function stopBubbleAnnimation(delay) {
-    app.startPage.crossfade(delay);
+    if (!bubblesStopped) {
+	app.startPage.crossfade(delay);
+    }
+    bubblesStopped = true;   
 }
 
 app.initialize();
