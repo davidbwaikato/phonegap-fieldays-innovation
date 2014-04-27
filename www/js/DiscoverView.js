@@ -15,16 +15,16 @@ var DiscoverView = function() {
 	var discover_view = DiscoverView.template(this.homeView);
         this.el.html(discover_view);
 
-	//this.scan();
+	//this.qrScan();
 
         return this;
     };
 
 
-    this.scan = function() {
+    this.qrScan = function() {
         var self = this;
 
-        console.log('scan(): init');
+        console.log('qrScan(): init');
         // documentation said the syntax was this:
         // var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
         // but playing with options, seems like it should be this:
@@ -62,6 +62,29 @@ var DiscoverView = function() {
                 }
         );
     };
+
+
+    this.arScan = function() {
+
+        var self = this;
+
+        console.log('arScan(): init');
+
+	if (!window.cordova) {
+            app.showAlert("Discover AR Scanner not supported", "Error");
+            return;
+        }
+
+
+      cordova.plugins.discoverScanAR.arscan(function(success) {
+            alert("AR scan success: " + success.text);
+          }, function(fail) {
+            alert("AR scan failed: " + fail);
+          }
+        );
+
+    };
+
 
     this.initialize();
 

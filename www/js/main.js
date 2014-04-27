@@ -110,7 +110,7 @@ var app = {
 
 
 	    if (page == self.discoverPage) {
-		self.discoverPage.scan();
+		self.discoverPage.qrScan();
 	    }
         });
 
