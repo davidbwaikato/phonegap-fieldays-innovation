@@ -40,7 +40,9 @@ var DiscoverView = function(scan_mode) {
 
 	var inner_template = Handlebars.compile(innovation_html);
 	var inner_html     = inner_template(self.homeView);
-	//var inner_html = this.story_lookup[result.text];
+
+	// Record the fact that the user has brought up this innovation story
+	KiaoraView.explored_stories[result.text] = 1;
 
 	$('#info-page').html(inner_html);
 

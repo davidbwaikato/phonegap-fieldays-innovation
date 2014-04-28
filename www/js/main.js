@@ -50,6 +50,7 @@ var app = {
 
             if (this.kiaoraPage) {
 		self.slidePage(this.kiaoraPage);
+		this.kiaoraPage.render(); // force it to regenerate the story count
 	    }
 	    else {
 		this.kiaoraPage = new KiaoraView(this.homePage).render();

@@ -106,39 +106,49 @@
 	<div class="info-page">
 
 	  <div style="width: 100%; height: 100%;">
-
+	    
 	    <div id="kiaora" >
 	      <h2>Kia ora!</h2>
 	      <hr class="inset" />
 	      <p>
 		There are 5 Innovation Stories.
 	      </p>
-	        Starting exploring and discover all 5!
-              </p>
 
+	      <div>
+	        {{#if numExploredStories}}
+	           You have discovered {{numExploredStories}}
+		{{else}}
+	           Starting exploring and discover all 5!
+		{{/if}}
+              </div>
+	      
               <p>
-	      <div style="padding-top: 2rem; float: left;">
-		Start Discovering:
-		<span style="width: 5rem;"></span>
-		<a href="#discoverar" class="scanner-btn">
-		  <button class="discover round" id="scanar" style="white-space: nowrap; width: 15rem;">
-		    AR &#x25b6;
+		<div style="padding-top: 2rem; float: left;">
+	        {{#if numExploredStories}}
+		  Continue Discovering:
+		{{else}}
+	           Start Discovering:
+		{{/if}}
+		  <span style="width: 5rem;"></span>
+		  <a href="#discoverar" class="scanner-btn">
+		    <button class="discover round" id="scanar" style="white-space: nowrap; width: 13rem;">
+		      AR &#x25b6;
 		  </button></a>
-		&nbsp;
-		<a href="#discoverqr" class="scanner-btn">
-		  <button class="discover round" id="scanqr" style="white-space: nowrap; width: 15rem;">
-		    QR &#x25b6;
+		  &nbsp;
+		  <a href="#discoverqr" class="scanner-btn">
+		    <button class="discover round" id="scanqr" style="white-space: nowrap; width: 13rem;">
+		      QR &#x25b6;
 		  </button></a>
-	      </div>
-
+		</div>
+		
               </p>
 
 	    </div>
 	    
 	  </div> <!-- end of absolute overlap area -->
-
+	  
 	</div>
-
+	
       </div>
     </script>
 
