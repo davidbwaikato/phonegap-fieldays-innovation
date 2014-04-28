@@ -46,24 +46,43 @@ var app = {
 	    return;
 	}
 
-	if (hash == "#discover") {
+	if (hash == "#kiaora") {
+
+            if (this.kiaoraPage) {
+		self.slidePage(this.kiaoraPage);
+	    }
+	    else {
+		this.kiaoraPage = new KiaoraView(this.homePage).render();
+		self.slidePage(this.kiaoraPage);	    
+	    }
+	    return;
+	}
+
+
+	if (hash == "#discoverar") {
             if (this.discoverPage) {
+		this.discoverPage.setScanMode("ar");
 		self.slidePage(this.discoverPage);
 	    }
 	    else {
-		this.discoverPage = new DiscoverView().render();
+		this.discoverPage = new DiscoverView("ar").render();
 		self.slidePage(this.discoverPage);	    
 	    }
 	    return;
 	}
-/*
-        var match = hash.match(this.detailsURL);
-        if (match) {
-            this.store.findById(Number(match[1]), function(employee) {
-                self.slidePage(new EmployeeView(employee).render());
-            });
-        }
-*/
+
+	if (hash == "#discoverqr") {
+            if (this.discoverPage) {
+		this.discoverPage.setScanMode("qr");
+		self.slidePage(this.discoverPage);
+	    }
+	    else {
+		this.discoverPage = new DiscoverView("qr").render();
+		self.slidePage(this.discoverPage);	    
+	    }
+	    return;
+	}
+
 
     },
 
@@ -88,7 +107,11 @@ var app = {
             $(page.el).attr('class', 'page stage-left');
             currentPageDest = "stage-right";
         } 
-	else if ((page == app.startPage) && (this.currentPage == app.discoverPage)) {
+	else if ((page == app.startPage) && (this.currentPage == app.kiaoraPage)) {
+            $(page.el).attr('class', 'page stage-left');
+            currentPageDest = "stage-right";
+	}
+	else if ((page == app.kiaoraPage) && (this.currentPage == app.discoverPage)) {
             $(page.el).attr('class', 'page stage-left');
             currentPageDest = "stage-right";
 	}
@@ -110,7 +133,7 @@ var app = {
 
 
 	    if (page == self.discoverPage) {
-		self.discoverPage.qrScan();
+		self.discoverPage.scan();
 	    }
         });
 

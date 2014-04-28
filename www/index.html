@@ -64,18 +64,21 @@
 		  <source src="audio/eab-innovation.ogg" type="audio/ogg"/>
 		  <source src="audio/eab-innovation.wav" type="audio/vnd.wav"/>
 		</audio>
-		
+
+		<!--
 		<button onclick="document.getElementById('eab-audio-player').play()">Play</button>
 		<button onclick="document.getElementById('eab-audio-player').pause()">Pause</button>
+		-->
+
 	      </div>
 
 	      </p>
 
 
 	      <div style="padding-top: 2rem; float: right;">
-		<a href="#discover" class="scanner-btn">
-		  <button class="discover round" id="discover" style="white-space: nowrap;">
-		    Discover &#x25b6;
+		<a href="#kiaora" class="scanner-btn">
+		  <button class="discover round" id="next" style="white-space: nowrap;">
+		    Next &#x25b6;
 		  </button>
 		</a>
 	      </div>
@@ -91,11 +94,62 @@
     </script>
 
 
-    <script id="discover-tpl" type="text/x-handlebars-template">
+
+    <script id="kiaora-tpl" type="text/x-handlebars-template">
       
       <div class="page-heading" style="white-space: nowrap">
 	<a href='#start' class="button header-button header-button-left">&#x25c0;Back</a>
-	<div>Fieldays Innovation 2014 &#x203A; Start &#x203A; Discover</div>
+	<div>Fieldays Innovation 2014 &#x203A; Start &#x203A; Kia ora</div>
+      </div>
+
+      <div class="page-body">
+	<div class="info-page">
+
+	  <div style="width: 100%; height: 100%;">
+
+	    <div id="kiaora" >
+	      <h2>Kia ora!</h2>
+	      <hr class="inset" />
+	      <p>
+		There are 5 Innovation Stories.
+	      </p>
+	        Starting exploring and discover all 5!
+              </p>
+
+              <p>
+	      <div style="padding-top: 2rem; float: left;">
+		Start Discovering:
+		<span style="width: 5rem;"></span>
+		<a href="#discoverar" class="scanner-btn">
+		  <button class="discover round" id="scanar" style="white-space: nowrap; width: 15rem;">
+		    AR &#x25b6;
+		  </button></a>
+		&nbsp;
+		<a href="#discoverqr" class="scanner-btn">
+		  <button class="discover round" id="scanqr" style="white-space: nowrap; width: 15rem;">
+		    QR &#x25b6;
+		  </button></a>
+	      </div>
+
+              </p>
+
+	    </div>
+	    
+	  </div> <!-- end of absolute overlap area -->
+
+	</div>
+
+      </div>
+    </script>
+
+
+
+
+    <script id="discover-tpl" type="text/x-handlebars-template">
+      
+      <div class="page-heading" style="white-space: nowrap">
+	<a href='#kiaora' class="button header-button header-button-left">&#x25c0;Back</a>
+	<div>Fieldays Innovation 2014 &#x203A; Start &#x203A; Kia ora &#x203A; Discover</div>
       </div>
 
       <div class="page-body">
@@ -163,6 +217,7 @@
 
 <script src="js/HomeView.js"></script>
 <script src="js/StartView.js"></script>
+<script src="js/KiaoraView.js"></script>
 <script src="js/DiscoverView.js"></script>
 
 <script src="js/file.js"></script>

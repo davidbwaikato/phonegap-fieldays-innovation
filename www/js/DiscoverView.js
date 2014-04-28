@@ -1,10 +1,16 @@
 
 
-var DiscoverView = function() {
+var DiscoverView = function(scan_mode) {
+
+    this.scan_mode = scan_mode;
 
     this.initialize = function() {
         // 'div' wrapper to attach html and events to
         this.el = $('<div/>');
+    };
+
+    this.setScanMode = function(scan_mode) {
+	this.scan_mode = scan_mode;
     };
 
     this.render = function() {
@@ -85,6 +91,14 @@ var DiscoverView = function() {
 
     };
 
+    this.scan = function() {
+	if (this.scan_mode == "ar") {
+	    this.arScan();
+	}
+	else {
+	    this.qrScan();
+	}
+    }
 
     this.initialize();
 
