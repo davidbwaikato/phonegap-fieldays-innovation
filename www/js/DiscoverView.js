@@ -27,6 +27,28 @@ var DiscoverView = function(scan_mode) {
     };
 
 
+    this.story_lookup = { 
+	'Innovation-Story-01': "Innovation Story 1, testing, testing, testing",
+	'Innovation-Story-02': "Innovation Story 2, foo-bar, foo-bar, foo-bar"
+    };
+
+    this.loadInnovationStory = function(result) {
+        var self = this;
+
+	var innovation_id = "#"+result.text+"-tpl";
+	var innovation_html = $(innovation_id).html();
+
+	var inner_template = Handlebars.compile(innovation_html);
+	var inner_html     = inner_template(self.homeView);
+	//var inner_html = this.story_lookup[result.text];
+
+	$('#info-page').html(inner_html);
+
+
+    };
+
+
+
     this.qrScan = function() {
         var self = this;
 
@@ -37,32 +59,14 @@ var DiscoverView = function(scan_mode) {
         //var scanner = window.cordova.require("cordova/plugin/BarcodeScanner");
 
 	if (!window.cordova) {
-            app.showAlert("Barcode Scanner not supported", "Error");
+            console.log("DiscoverView.qrScan(): Barcode Scanner not supported, defaulting to Story 1");
+	    this.loadInnovationStory({text: "Innovation-Story-01"});
             return;
         }
 
-	var story_lookup = { 'Innovation-Story-01': "Innovation Story 1, testing, testing, testing",
-			     'Innovation-Story-02': "Innovation Story 2, foo-bar, foo-bar, foo-bar"
-			   };
 
-	cordova.plugins.barcodeScanner.scan(
-                function (result) {
-		    
-		    //var inner_template = Handlebars.compile($("#"+result.text+"-tpl").html());
-		    //var inner_html     = inner_template.template(self.homeView);
-		    var inner_html = story_lookup[result.text];
-
-/*
-                    app.showAlert("Result html: " + inner_html + "\n"
-				  + "Format: " + result.format + "\n"
-				  + "Cancelled: " + result.cancelled,
-				  "Bar code");
-*/
-
-		    $('#info-page').html(inner_html);
-
-
-                },
+        cordova.plugins.discoverScanAR.scan( // qr scan
+	        self.loadInnovationStory,
                 function (error) {
                     app.showAlert(err,"Scanning failed: ");
                 }
@@ -82,7 +86,8 @@ var DiscoverView = function(scan_mode) {
         }
 
 
-      cordova.plugins.discoverScanAR.arscan(function(success) {
+      cordova.plugins.discoverScanAR.arscan(
+	  function(success) {
             alert("AR scan success: " + success.text);
           }, function(fail) {
             alert("AR scan failed: " + fail);
@@ -101,12 +106,6 @@ var DiscoverView = function(scan_mode) {
     }
 
     this.initialize();
-
-
-
-
-
-
 
 }
 
