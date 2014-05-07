@@ -1,0 +1,24 @@
+
+.hide {
+   position: absolute !important;
+   top: -9999px !important;
+   left: -9999px !important;
+}
+
+.this-will-not-be-read {
+   display: none !important;
+}
+
+div.openclose { 
+    padding: 8px; 
+    font-size: 110%; 
+    width: auto; 
+}
+
+.openclose a { 
+    text-decoration: none; 
+}
+
+.openclose a:hover { 
+    color: #000000; 
+}
