@@ -117,14 +117,14 @@
 
 	      <div>
 	        {{#if numExploredStories}}
-	           You have discovered {{numExploredStories}}
+	           You have discovered {{numExploredStories}} of these stories
 		{{else}}
 	           Starting exploring and discover all 5!
 		{{/if}}
               </div>
 	      
               <p>
-		<div style="padding-top: 2rem; float: left;">
+		<div style="padding-top: 2rem; float: right; width: 100%">		  
 	        {{#if numExploredStories}}
 		  Continue Discovering:
 		{{else}}
@@ -140,10 +140,18 @@
 		    <button class="discover round" id="scanqr" style="white-space: nowrap; width: 13rem;">
 		      QR &#x25b6;
 		  </button></a>
+		</div>	
+		<div>&nbsp;</div>
+		<div style="padding-top: 2rem; float: right;">
+	            {{#if nowConsider}}
+		    <a href="#consider" class="scanner-btn">
+		      <button class="discover round" id="scanqr" style="white-space: nowrap; width: 40rem; background-color: orange;">
+			Now Consider &#x25b6;
+		    </button></a>
+		    {{/if}}
 		</div>
-		
+	
               </p>
-
 	    </div>
 	    
 	  </div> <!-- end of absolute overlap area -->
@@ -327,6 +335,57 @@ sollemnes in futurum.
 
 
 
+
+
+
+    <script id="consider-tpl" type="text/x-handlebars-template">
+      
+      <div class="page-heading" style="white-space: nowrap">
+	<a href='#kiaora' class="button header-button header-button-left">&#x25c0;Back</a>
+	<div>Fieldays Innovation 2014 &#x203A; Start &#x203A; Discover &#x203A; Consider</div>
+      </div>
+
+      <div class="page-body">
+	<div class="info-page">
+
+	  <div style="width: 100%; height: 100%; position: relative;">
+	    <div id="svg-bubbles-div" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 1;">
+	      <embed id="svg-bubbles" src="bubbles.svg" style="width: 100%; height: 100%;" />
+	    </div>
+
+	    <div id="after-bubbles" style="display: none; position: absolute; left: 0; top: 0; opacity: 0;">
+	      <h2>Questions</h2>
+	      <hr class="inset" />
+	      <p>
+		How many of the innovators were told by someone they were
+		wasing their time
+	      </p>
+
+	      <p>
+		...
+	      </p>
+
+
+	      <div style="padding-top: 2rem; float: right;">
+		<a href="#consider2" class="scanner-btn">
+		  <button class="discover round" id="next" style="white-space: nowrap; background-color: orange;">
+		    Next &#x25b6;
+		  </button>
+		</a>
+	      </div>
+
+
+	    </div>
+	    
+	  </div> <!-- end of absolute overlap area -->
+
+	</div>
+
+      </div>
+    </script>
+
+
+
 <script src="phonegap.js"></script>
 
 <script src="lib/jquery-1.8.2.min.js"></script>
@@ -339,6 +398,7 @@ sollemnes in futurum.
 <script src="js/StartView.js"></script>
 <script src="js/KiaoraView.js"></script>
 <script src="js/DiscoverView.js"></script>
+<script src="js/ConsiderView.js"></script>
 
 <script src="js/file.js"></script>
 <script src="js/main.js"></script>

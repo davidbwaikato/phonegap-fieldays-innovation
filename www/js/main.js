@@ -84,6 +84,18 @@ var app = {
 	    return;
 	}
 
+	if (hash == "#consider") {
+            if (this.considerPage) {
+		self.slidePage(this.considerPage);
+	    }
+	    else {
+		this.considerPage = new ConsiderView().render();
+		self.slidePage(this.considerPage);	    
+	    }
+	    return;
+	}
+
+
 
     },
 
@@ -116,6 +128,10 @@ var app = {
             $(page.el).attr('class', 'page stage-left');
             currentPageDest = "stage-right";
 	}
+	else if ((page == app.discoverPage) && (this.currentPage == app.considerPage)) {
+            $(page.el).attr('class', 'page stage-left');
+            currentPageDest = "stage-right";
+	}
 	else {
             // Forward transition (slide from right)
             $(page.el).attr('class', 'page stage-right');
@@ -124,19 +140,20 @@ var app = {
 
         $('body').append(page.el);
 
-        // Wait until the new page has been added to the DOM...
         setTimeout(function() {
-            // Slide out the current page: If new page slides from the right -> slide current page to the left, and vice versa
+
+        // Wait until the new page has been added to the DOM...
+            // Slide out the current page: 
+	    //   If new page slides from the right -> slide current page to the left, and vice versa
             $(self.currentPage.el).attr('class', 'page transition ' + currentPageDest);
             // Slide in the new page
             $(page.el).attr('class', 'page stage-center transition');
             self.currentPage = page;
 
-
 	    if (page == self.discoverPage) {
 		self.discoverPage.scan();
 	    }
-        });
+        },500);
 
     },
 
@@ -155,7 +172,12 @@ var bubblesStopped = false;
 
 function stopBubbleAnnimation(delay) {
     if (!bubblesStopped) {
-	app.startPage.crossfade(delay);
+	if (app.considerPage) {
+	    app.considerPage.crossfade(delay);
+	}
+	else {
+	    app.startPage.crossfade(delay);
+	}
     }
     bubblesStopped = true;   
 }

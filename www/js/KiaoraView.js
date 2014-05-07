@@ -20,7 +20,12 @@ var KiaoraView = function(homeView) {
 
 	    this.homeView.numExploredStories = nes;
 	    this.homeView.remainingStories = KiaoraView.totalNumStories - nes;
+
+	    if (nes >= 2) {
+		this.homeView.nowConsider= 1;
+	    }
 	}
+
         this.el.html(KiaoraView.template(this.homeView));
 
         return this;

@@ -83,7 +83,8 @@ var DiscoverView = function(scan_mode) {
         console.log('arScan(): init');
 
 	if (!window.cordova) {
-            app.showAlert("Discover AR Scanner not supported", "Error");
+            console.log("DiscoverView.arScan(): Discover AR Scanner not supported, defaulting to Story 2");
+	    this.loadInnovationStory({text: "Innovation-Story-02"});
             return;
         }
 
