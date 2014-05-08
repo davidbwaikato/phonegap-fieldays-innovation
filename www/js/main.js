@@ -90,7 +90,19 @@ var app = {
 	    }
 	    else {
 		this.considerPage = new ConsiderView().render();
+		bubblesStopped = false; 
 		self.slidePage(this.considerPage);	    
+	    }
+	    return;
+	}
+
+	if (hash == "#winner-2013") {
+            if (this.winner2013Page) {
+		self.slidePage(this.winner2013Page);
+	    }
+	    else {
+		this.winner2013Page = new Winner2013View().render();
+		self.slidePage(this.winner2013Page);	    
 	    }
 	    return;
 	}
@@ -132,11 +144,17 @@ var app = {
             $(page.el).attr('class', 'page stage-left');
             currentPageDest = "stage-right";
 	}
+	else if ((page == app.considerPage) && (this.currentPage == app.winner2013Page)) {
+            $(page.el).attr('class', 'page stage-left');
+            currentPageDest = "stage-right";
+	}
 	else {
             // Forward transition (slide from right)
             $(page.el).attr('class', 'page stage-right');
             currentPageDest = "stage-left";
         }
+
+	$(window).scrollTop(0); // Ensure scroll-bar is back to top
 
         $('body').append(page.el);
 
@@ -172,14 +190,18 @@ var bubblesStopped = false;
 
 function stopBubbleAnnimation(delay) {
     if (!bubblesStopped) {
-	if (app.considerPage) {
-	    app.considerPage.crossfade(delay);
-	}
-	else {
-	    app.startPage.crossfade(delay);
-	}
+	app.startPage.crossfade(delay);
     }
     bubblesStopped = true;   
 }
+
+function stopBubbleAnnimationEnd(delay) {
+    if (!bubblesStopped) {
+	app.considerPage.crossfade(delay);
+    }
+    bubblesStopped = true;   
+}
+
+
 
 app.initialize();
