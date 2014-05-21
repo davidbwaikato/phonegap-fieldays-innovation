@@ -42,11 +42,16 @@ The text file contains:
 # 1 USB VENDOR ID PER LINE.
 0x03F0
 
+3. a In "Device Manager" right click on Other Devices -> HP8 Slate and select "Update Drivers".
 
-3. Disconnect and reconnect your Android device. It should come up with an "Unauthorized" warning for the detected device.
+  Then use "Browser for drivers" and point it at the 'android\extras\google\usb_driver' folder
+  
+  Say "yes" to installing an unauthorized driver
 
-
+[b. Disconnect and reconnect your Android device. On the device it should come up with an "Unauthorized" warning for the detected device.]
+  
 4. The tools folder of the Android SDK needs to be on the path. Then you can run:
+
 a. adb kill-server && adb start-server
 (It will reconfigure)
 
