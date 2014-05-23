@@ -61,7 +61,7 @@ var DiscoverView = function(scan_mode) {
         //var scanner = window.cordova.require("cordova/plugin/BarcodeScanner");
 
 	if (!window.cordova) {
-            console.log("DiscoverView.qrScan(): Barcode Scanner not supported, defaulting to Story 1");
+            console.log("DiscoverView.qrScan(): QR-Code Scanner not supported, defaulting to Story 1");
 	    this.loadInnovationStory({text: "Innovation-Story-01"});
             return;
         }

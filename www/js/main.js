@@ -35,13 +35,13 @@ var app = {
 
 	if (hash == "#start") {
 
-            if (this.startPage) {
-		self.slidePage(this.startPage);
+        if (this.startPage) {
+			self.slidePage(this.startPage);
 	    }
 	    else {
-		this.startPage = new StartView(this.homePage).render();
-		self.slidePage(this.startPage);	    
-		//this.startPage.crossfade();
+			this.startPage = new StartView(this.homePage).render();
+			self.slidePage(this.startPage);	    
+			//this.startPage.crossfade();
 	    }
 	    return;
 	}
