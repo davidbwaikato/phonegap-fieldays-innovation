@@ -53,15 +53,16 @@
     <gap:plugin name="org.apache.cordova.file" />
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.media" />
-<!--
+
     <gap:plugin name="com.phonegap.plugins.barcodescanner" />
--->
+
 <!--
     <gap:plugin name="com.dawsonloudon.videoplayer" version="1.0.0" />
 -->
+<!--
     <gap:plugin name="VideoPlayer" />
     <gap:plugin name="DiscoverScanAR" />
-
+-->
 	
 <!--
     <gap:plugin name="org.apache.cordova.speech.speechsynthesis" />
