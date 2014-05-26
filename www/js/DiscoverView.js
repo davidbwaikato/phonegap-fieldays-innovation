@@ -27,14 +27,26 @@ var DiscoverView = function(scan_mode) {
     };
 
 
+	/*
     this.story_lookup = { 
 	'Innovation-Story-01': "Innovation Story 1, testing, testing, testing",
 	'Innovation-Story-02': "Innovation Story 2, foo-bar, foo-bar, foo-bar"
-    };
+    };*/
 
     this.loadInnovationStory = function(result) {
         var self = this;
 
+	if(!result.text) { // empty
+		app.showAlert("No innovation story loaded", self.scan_mode + ": No value found"); //alert("No innovation story loaded");				
+		app.reroute("#kiaora"); // back to previous page
+		return;
+	}
+	if(!(/^Innovation-Story-\d\d$/).test(result.text)) { // http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
+		app.showAlert("Not an innovation story", self.scan_mode + ": Unrecognised value"); //alert(result.text + " is not an innovation story");
+		app.reroute("#kiaora"); // back to previous page
+		return;
+	}
+		
 	var innovation_id = "#"+result.text+"-tpl";
 	var innovation_html = $(innovation_id).html();
 
@@ -46,9 +58,7 @@ var DiscoverView = function(scan_mode) {
 
 	$('#info-page').html(inner_html);
 
-
     };
-
 
 
     this.qrScan = function() {
@@ -68,7 +78,7 @@ var DiscoverView = function(scan_mode) {
 
 
         cordova.plugins.discoverScanAR.scan( // qr scan
-	        self.loadInnovationStory,
+	        $.proxy(this.loadInnovationStory,this),//self.loadInnovationStory,
                 function (error) {
                     app.showAlert(err,"Scanning failed: ");
                 }
@@ -90,11 +100,16 @@ var DiscoverView = function(scan_mode) {
 
 
       cordova.plugins.discoverScanAR.arscan(
-	  function(success) {
-            alert("AR scan success: " + success.text);
+			$.proxy(this.loadInnovationStory,this),//self.loadInnovationStory,
+                function (error) {
+                    app.showAlert(err,"Scanning failed: ");
+                }
+	  /*function(success) {
+            alert("AR scan success: " + success.text);			
           }, function(fail) {
             alert("AR scan failed: " + fail);
           }
+		*/  
         );
 
     };

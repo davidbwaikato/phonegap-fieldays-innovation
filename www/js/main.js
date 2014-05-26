@@ -17,6 +17,13 @@ var app = {
             $(event.target).removeClass('tappable-active');
         });
     },
+	
+	reroute: function(newhash) {
+		var self = this;
+		window.location.hash = newhash;
+		self.route();
+		return;
+	},
 
     route: function() {
         var self = this;
