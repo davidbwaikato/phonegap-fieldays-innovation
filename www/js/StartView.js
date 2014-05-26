@@ -3,7 +3,8 @@
 var StartView = function(homeView) {
 
     this.homeView = homeView;
-
+	this.doCrossFade = true;
+	
     this.initialize = function() {
         // 'div' wrapper to attach html and events to
         this.el = $('<div/>');
@@ -42,6 +43,13 @@ var StartView = function(homeView) {
 
     };
 
+	this.setCrossFade = function(doCrossFade) {
+		this.doCrossFade = doCrossFade;
+	}
+	
+	this.getCrossFade = function() {
+		return this.doCrossFade;
+	}
 
     this.crossfade = function(delay) {
 	var self = this;

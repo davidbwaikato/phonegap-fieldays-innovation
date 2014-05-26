@@ -182,7 +182,7 @@ function resize()
 </g>
 
   <svg>
-    <text x="520" y="480" fill="black" style="font-size: 30px;" onclick="skipAnnimation()">Skip &#x203A;</text>
+    <text x="520" y="430" fill="black" style="font-size: 30px;" onclick="skipAnnimation()">Skip &#x203A;</text>
   </svg>
 </svg>
 

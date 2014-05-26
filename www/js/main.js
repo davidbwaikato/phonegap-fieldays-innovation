@@ -35,13 +35,13 @@ var app = {
 
 	if (hash == "#start") {
 
-        if (this.startPage) {
-			self.slidePage(this.startPage);
+            if (this.startPage) {
+		self.slidePage(this.startPage);
 	    }
 	    else {
-			this.startPage = new StartView(this.homePage).render();
-			self.slidePage(this.startPage);	    
-			//this.startPage.crossfade();
+		this.startPage = new StartView(this.homePage).render();
+		self.slidePage(this.startPage);	    
+		//this.startPage.crossfade();
 	    }
 	    return;
 	}
@@ -49,7 +49,8 @@ var app = {
 	if (hash == "#kiaora") {
 
             if (this.kiaoraPage) {
-		self.slidePage(this.kiaoraPage);
+		self.slidePage(this.kiaoraPage);		
+		this.kiaoraPage.reinitialize(); // refresh values from the control file again
 		this.kiaoraPage.render(); // force it to regenerate the story count
 	    }
 	    else {
@@ -60,26 +61,19 @@ var app = {
 	}
 
 
-	if (hash == "#discoverar") {
-            if (this.discoverPage) {
-		this.discoverPage.setScanMode("ar");
-		self.slidePage(this.discoverPage);
+	if (hash == "#discover") {
+		var scanMode = "qr";
+		if(this.kiaoraPage && this.kiaoraPage.scanMode) {			
+			scanMode = this.kiaoraPage.scanMode;
+		}
+	
+		if (this.discoverPage) {
+			this.discoverPage.setScanMode(scanMode);
+			self.slidePage(this.discoverPage);
 	    }
 	    else {
-		this.discoverPage = new DiscoverView("ar").render();
-		self.slidePage(this.discoverPage);	    
-	    }
-	    return;
-	}
-
-	if (hash == "#discoverqr") {
-            if (this.discoverPage) {
-		this.discoverPage.setScanMode("qr");
-		self.slidePage(this.discoverPage);
-	    }
-	    else {
-		this.discoverPage = new DiscoverView("qr").render();
-		self.slidePage(this.discoverPage);	    
+			this.discoverPage = new DiscoverView(scanMode).render();
+			self.slidePage(this.discoverPage);	    
 	    }
 	    return;
 	}
@@ -131,6 +125,13 @@ var app = {
             // Always apply a Back transition (slide from left) when we go back to the home page
             $(page.el).attr('class', 'page stage-left');
             currentPageDest = "stage-right";
+			
+			if(bubblesStopped == false) { // still in the process of doing the animation
+				if(this.startPage) {
+					// prevent crossfade to audio
+					this.startPage.setCrossFade(false);
+				}
+			}
         } 
 	else if ((page == app.startPage) && (this.currentPage == app.kiaoraPage)) {
             $(page.el).attr('class', 'page stage-left');
@@ -152,6 +153,13 @@ var app = {
             // Forward transition (slide from right)
             $(page.el).attr('class', 'page stage-right');
             currentPageDest = "stage-left";
+			
+			if (this.currentPage === app.homePage) { // going forwards, allow crossfade to audio
+				if(this.startPage) {
+					// prevent crossfade to audio
+					this.startPage.setCrossFade(true);
+				}
+			}	
         }
 
 	$(window).scrollTop(0); // Ensure scroll-bar is back to top
@@ -190,9 +198,12 @@ var bubblesStopped = false;
 
 function stopBubbleAnnimation(delay) {
     if (!bubblesStopped) {
-	app.startPage.crossfade(delay);
-    }
-    bubblesStopped = true;   
+		var doCrossFade = app.startPage.getCrossFade();
+		if(doCrossFade) {
+			app.startPage.crossfade(delay);	
+			bubblesStopped = true;
+		}
+	}    
 }
 
 function stopBubbleAnnimationEnd(delay) {

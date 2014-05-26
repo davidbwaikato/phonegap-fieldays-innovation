@@ -59,8 +59,8 @@
 	      <p>
 		Innovation is about doing things better. It can lead to
 		new products and services, smarter and more efficient ways
-		of doing things and a point of difference that sets a
-		business apart. 
+		of doing things. <!--and a point of difference that sets a
+		business apart.-->
 	      </p>
 
 	      <p>
@@ -133,21 +133,15 @@
 	      
               <p>
 		<div style="padding-top: 2rem; float: right; width: 100%">		  
-	        {{#if numExploredStories}}
-		  Continue Discovering:
-		{{else}}
-	           Start Discovering:
-		{{/if}}
 		  <span style="width: 5rem;"></span>
-		  <a href="#discoverar" class="scanner-btn">
-		    <button class="discover round" id="scanar" style="white-space: nowrap; width: 13rem;">
-		      AR &#x25b6;
-		  </button></a>
-		  &nbsp;
-		  <a href="#discoverqr" class="scanner-btn">
-		    <button class="discover round" id="scanqr" style="white-space: nowrap; width: 13rem;">
-		      QR &#x25b6;
-		  </button></a>
+		  <a href="#discover" class="scanner-btn">
+		    <button class="discover round" id="scanmode" style="white-space: nowrap; width: 50rem;">
+				{{#if numExploredStories}}
+					Continue Discovering
+				{{else}}
+					Start Discovering
+				{{/if}} &#x25b6;
+		  </button></a>		  
 		</div>	
 		<div>&nbsp;</div>
 		<div style="padding-top: 2rem; float: right;">

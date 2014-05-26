@@ -100,7 +100,7 @@ var DiscoverView = function(scan_mode) {
     };
 
     this.scan = function() {
-	if (this.scan_mode == "ar") {
+	if (this.scan_mode.toLowerCase() == "ar") {
 	    this.arScan();
 	}
 	else {
