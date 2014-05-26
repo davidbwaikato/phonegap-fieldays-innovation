@@ -10,17 +10,21 @@ var KiaoraView = function(homeView) {
         // 'div' wrapper to attach html and events to
         this.el = $('<div/>');
 		
-		// FILE READ
-		// Note: The file system has been prefixed as of Google Chrome 12:
-		window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+		// FILE READ		
+		if (window.cordova) { // only try reading the control file for the scanMode value if this is a phonegap application
+			// Note: The file system has been prefixed as of Google Chrome 12:
+			window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;		
 		
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 1024, // LocalFileSystem.PERSISTENT = /sdcard on Android
+			window.requestFileSystem(LocalFileSystem.PERSISTENT, 1024, // LocalFileSystem.PERSISTENT = /sdcard on Android
 								 $.proxy(this.onFileSystemSuccess, this), 
 								 $.proxy(this.failGeneral, this));
+		} // else using browser. It will default scanMode to "qr" in main.js
     };
 	
 	this.reinitialize = function() {
-		this.getFile(this.fileSystem, this.viewControlFilename);
+		if (window.cordova) {
+			this.getFile(this.fileSystem, this.viewControlFilename);
+		}	
 	}
 	
 	// ******************* START OF FILE READ FUNCTIONS ****************** //

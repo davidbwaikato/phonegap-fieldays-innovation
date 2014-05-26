@@ -1,4 +1,4 @@
-var HomeView = function(store) {
+var HomeView = function() {
 
     this.enteredName = "";
 

@@ -33,7 +33,7 @@ var app = {
                 this.slidePage(this.homePage);
 		this.homePage.reinitialize();
             } else {
-                this.homePage = new HomeView(this.store).render();
+                this.homePage = new HomeView().render();
                 this.slidePage(this.homePage);
             }
             return;
@@ -194,9 +194,7 @@ var app = {
         var self = this;
         this.detailsURL = /^#employees\/(\d{1,})/;
         this.registerEvents();
-        this.store = new MemoryStore(function() {
-            self.route();
-        });
+		self.route();
     }
 
 };

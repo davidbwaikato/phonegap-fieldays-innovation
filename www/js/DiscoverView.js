@@ -25,7 +25,7 @@ var DiscoverView = function(scan_mode) {
 
         return this;
     };
-
+	
 
 	/*
     this.story_lookup = { 
@@ -78,7 +78,7 @@ var DiscoverView = function(scan_mode) {
 
 
         cordova.plugins.discoverScanAR.scan( // qr scan
-	        $.proxy(this.loadInnovationStory,this),//self.loadInnovationStory,
+	        $.proxy(this.loadInnovationStory,this),
                 function (error) {
                     app.showAlert(err,"Scanning failed: ");
                 }
@@ -100,16 +100,10 @@ var DiscoverView = function(scan_mode) {
 
 
       cordova.plugins.discoverScanAR.arscan(
-			$.proxy(this.loadInnovationStory,this),//self.loadInnovationStory,
+			$.proxy(this.loadInnovationStory,this),
                 function (error) {
                     app.showAlert(err,"Scanning failed: ");
                 }
-	  /*function(success) {
-            alert("AR scan success: " + success.text);			
-          }, function(fail) {
-            alert("AR scan failed: " + fail);
-          }
-		*/  
         );
 
     };
