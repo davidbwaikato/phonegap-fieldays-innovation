@@ -52,15 +52,15 @@ var StartView = function(homeView) {
 	}
 
     this.crossfade = function(delay) {
-	var self = this;
+		var self = this;
 
-	$("#svg-bubbles-div").delay(delay).animate({ opacity: 0 }, 700);
-	$("#after-bubbles").delay(delay).css("display","block").animate({ opacity: 1 }, 700);
+		$("#svg-bubbles-div").delay(delay).animate({ opacity: 0 }, 700);
+		$("#after-bubbles").delay(delay).css("display","block").animate({ opacity: 1 }, 700);
 
-	setTimeout(function() { self.playAudio(); }, 2000);
+		setTimeout(function() { self.playAudio(); }, 2000);
     };
-
-
+	
+	
     this.initialize();
 }
 

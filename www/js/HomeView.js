@@ -33,6 +33,12 @@ var HomeView = function() {
 	self.enteredName = entered_name;
     };
 
+	this.playVideo = function() {
+		if (window.plugins.html5Video) {
+			window.plugins.html5Video.play("startupVideo1");
+		}
+	}
+	
     this.initialize();
 
 }

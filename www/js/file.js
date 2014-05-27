@@ -1,7 +1,7 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    console.log("FDI: Device is ready!");
+    console.log("File API: Device is ready!");
     //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 

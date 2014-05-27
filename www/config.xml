@@ -59,10 +59,11 @@
 <!--
     <gap:plugin name="com.dawsonloudon.videoplayer" version="1.0.0" />
 -->
-<!--
-    <gap:plugin name="VideoPlayer" />
-    <gap:plugin name="DiscoverScanAR" />
--->
+
+<!-- <gap:plugin name="Html5Video" />     --> <!-- To get around Android WebView limitation that prevents <video> tags working on local files -->
+<!-- <gap:plugin name="DiscoverScanAR" /> -->
+<!-- <gap:plugin name="VideoPlayer" />    --> <!-- Takes over the how screen using native video player  to device-->
+
 	
 <!--
     <gap:plugin name="org.apache.cordova.speech.speechsynthesis" />

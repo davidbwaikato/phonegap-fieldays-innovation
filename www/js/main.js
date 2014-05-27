@@ -190,11 +190,34 @@ var app = {
 
     },
 
+	onDeviceReady: function() {
+		// Init Html5Video plugin
+		
+		if (window.plugins && window.plugins.html5Video) {
+			console.log("Initializing Html5Video Resources");
+			window.plugins.html5Video.initialize({
+				"startupVideo1" : "startupvideo1.mp4", 
+				"startupVideo2" : "startupvideo2.mp4"
+			});
+		}
+		
+		
+	},
+	
     initialize: function() {
         var self = this;
-        this.detailsURL = /^#employees\/(\d{1,})/;
         this.registerEvents();
+		
+		if (window.cordova) {
+			document.addEventListener('deviceready', $.proxy(this.onDeviceReady,this), false);
+		}
+		else {
+			console.log("Using 'load' event for testing with a desktop browser");
+			window.addEventListener('load', $.proxy(this.onDeviceReady,this), false);
+		}
+		
 		self.route();
+		
     }
 
 };
