@@ -41,8 +41,27 @@ for i in {100..150} ; do
   /bin/cp ${1}_02.png tmp/${1}_$pi.png
 done
 
-#ffmpeg -f image2 -start_number 000 -i $frameRoot -vcodec libx264 -b:v 5000k -s 1920×1080 $videoOut
-ffmpeg -f image2 -start_number 000 -i tmp\\$frameRoot -vcodec libx264 -y $videoOut
+
+echo ""
+echo "Cmd: ffmpeg -f image2 -start_number 000 -i \\"tmp\\$frameRoot\\" -vcodec mpeg4 -y \"$videoOut\""
+echo ""
+
+ffmpeg -f image2 -start_number 000 -i "tmp\\$frameRoot" -vcodec mpeg4 -y "$videoOut"
+
+
+##ffmpeg -f image2 -start_number 000 -i $frameRoot -vcodec libx264 -b:v 5000k -s 1920×1080 $videoOut
+#echo ""
+#echo "Cmd: ffmpeg -f image2 -start_number 000 -i 'tmp\\"$frameRoot"' -vcodec libx264 -movflags faststart -y $videoOut"
+#echo ""
+
+##ffmpeg -f image2 -start_number 000 -i "tmp\\$frameRoot" -vcodec libx264 -movflags faststart -y "$videoOut"
+
+#ffmpeg -f image2 -start_number 000 -i "tmp\\$frameRoot" -vcodec libx264 -s 480x320 -movflags faststart -y "$videoOut"
+
+#-acodec aac
+
+#-vcodec libx264 
+#  -strict -2 -ac 1 -ar 16000 -r 13 -ab 32000 -aspect 3:2
 
 
 #for i in {0..99} ; do
