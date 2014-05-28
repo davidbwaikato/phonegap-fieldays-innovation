@@ -31,10 +31,16 @@ var app = {
         if (!hash) {
             if (this.homePage) {
                 this.slidePage(this.homePage);
-		this.homePage.reinitialize();
+				this.homePage.reinitialize();
             } else {
-                this.homePage = new HomeView().render();
-                this.slidePage(this.homePage);
+                this.homePage = new HomeView();
+					//self.homePage.render();
+					//self.slidePage(this.homePage);
+					
+				this.homePage.playVideo(function() {
+					self.homePage.render();
+					self.slidePage(self.homePage);
+				});
             }
             return;
         }
@@ -70,6 +76,7 @@ var app = {
 
 	if (hash == "#discover") {
 		var scanMode = "qr";
+		
 		if(this.kiaoraPage && this.kiaoraPage.scanMode) {			
 			scanMode = this.kiaoraPage.scanMode;
 		}
@@ -191,8 +198,9 @@ var app = {
     },
 
 	onDeviceReady: function() {
+			
 		// Init Html5Video plugin
-		
+			
 		if (window.plugins && window.plugins.html5Video) {
 			console.log("Initializing Html5Video Resources");
 			window.plugins.html5Video.initialize({
@@ -201,7 +209,7 @@ var app = {
 			});
 		}
 		
-		
+		this.route();
 	},
 	
     initialize: function() {
@@ -215,9 +223,7 @@ var app = {
 			console.log("Using 'load' event for testing with a desktop browser");
 			window.addEventListener('load', $.proxy(this.onDeviceReady,this), false);
 		}
-		
-		self.route();
-		
+
     }
 
 };
