@@ -39,7 +39,7 @@ var HomeView = function() {
 			VideoPlayer.play('file:///android_asset/www/video/startupVideo1Android.mp4',callback);
 		}
 		else {
-			console.log("No VideoPlayer plugin.  Going straight to callback()");
+			console.log("HomePage: No VideoPlayer plugin.  Going straight to callback()");
 			callback();
 		}
 		

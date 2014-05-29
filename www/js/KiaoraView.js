@@ -15,24 +15,24 @@ var KiaoraView = function(homeView) {
 		var fileSystemType = (window.cordova) ? LocalFileSystem.PERSISTENT : window.PERSISTENT;
 		
 		// FILE READ		
-		//if (window.cordova) { // only try reading the control file for the scanMode value if this is a phonegap application
+		if (window.cordova) { // only try reading the control file for the scanMode value if this is a phonegap application
 			// Note: The file system has been prefixed as of Google Chrome 12:
 			window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 		
 			window.requestFileSystem(fileSystemType, 1024, 
 								 $.proxy(this.onFileSystemSuccess, this), 
 								 $.proxy(this.failGeneral, this));
-		//} // else using browser. It will default scanMode to "qr" in main.js
+		} // else using browser. It will default scanMode to "qr" in main.js
     };
 	
 	this.reinitialize = function() {
 		var self = this;
-		//if (this.fileSystem) {	
+		if (this.fileSystem) {	
 			
 			this.fileIO.readFile(this.viewControlFilename,
 					$.proxy(this.readScanMode, this), 
 					$.proxy(this.failGeneral, this) );
-		//}	
+		}	
 	};
 	
 	// ******************* START OF FILE READ FUNCTIONS ****************** //

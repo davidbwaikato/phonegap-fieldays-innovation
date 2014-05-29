@@ -10,18 +10,18 @@ var DiscoverView = function(scan_mode) {
     };
 
     this.setScanMode = function(scan_mode) {
-	this.scan_mode = scan_mode;
+		this.scan_mode = scan_mode;
     };
 
     this.render = function() {
-	if (!this.homeView) {
-	    this.homeView = { enteredName:  "" }
-	}
+		if (!this.homeView) {
+			this.homeView = { enteredName:  "" }
+		}
 
-	var discover_view = DiscoverView.template(this.homeView);
-        this.el.html(discover_view);
+		var discover_view = DiscoverView.template(this.homeView);
+		this.el.html(discover_view);
 
-	//this.qrScan();
+		//this.qrScan();
 
         return this;
     };
@@ -36,27 +36,27 @@ var DiscoverView = function(scan_mode) {
     this.loadInnovationStory = function(result) {
         var self = this;
 
-	if(!result.text) { // empty
-		app.showAlert("No innovation story loaded", self.scan_mode + ": No value found"); //alert("No innovation story loaded");				
-		app.reroute("#kiaora"); // back to previous page
-		return;
-	}
-	if(!(/^Innovation-Story-\d\d$/).test(result.text)) { // http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
-		app.showAlert("Not an innovation story", self.scan_mode + ": Unrecognised value"); //alert(result.text + " is not an innovation story");
-		app.reroute("#kiaora"); // back to previous page
-		return;
-	}
-		
-	var innovation_id = "#"+result.text+"-tpl";
-	var innovation_html = $(innovation_id).html();
+		if(!result.text) { // empty
+			app.showAlert("No innovation story loaded", self.scan_mode + ": No value found"); //alert("No innovation story loaded");				
+			app.reroute("#kiaora"); // back to previous page
+			return;
+		}
+		if(!(/^Innovation-Story-\d\d$/).test(result.text)) { // http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
+			app.showAlert("Not an innovation story", self.scan_mode + ": Unrecognised value"); //alert(result.text + " is not an innovation story");
+			app.reroute("#kiaora"); // back to previous page
+			return;
+		}
+			
+		var innovation_id = "#"+result.text+"-tpl";
+		var innovation_html = $(innovation_id).html();
 
-	var inner_template = Handlebars.compile(innovation_html);
-	var inner_html     = inner_template(self.homeView);
+		var inner_template = Handlebars.compile(innovation_html);
+		var inner_html     = inner_template(self.homeView);
 
-	// Record the fact that the user has brought up this innovation story
-	KiaoraView.explored_stories[result.text] = 1;
+		// Record the fact that the user has brought up this innovation story
+		KiaoraView.explored_stories[result.text] = 1;
 
-	$('#info-page').html(inner_html);
+		$('#info-page').html(inner_html);	
 
     };
 

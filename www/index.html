@@ -64,11 +64,22 @@
 	<div class="info-page">
 
 	  <div style="width: 100%; height: 100%; position: relative;">
-	    <div id="svg-bubbles-div" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 1;">
-	      <embed id="svg-bubbles" src="bubbles.svg" style="width: 100%; height: 100%;" />
-	    </div>
-
+	    <!--
+	      <div id="svg-bubbles-div" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 1;">
+	        <embed id="svg-bubbles" src="bubbles.svg" style="width: 100%; height: 100%;" />
+	      </div>
+	   -->
+	   <!--
+		  <div>
+			<script>
+				stopBubbleAnnimation(2000);
+			</script>
+		  </div>
+	    -->
+	   <!--
 	    <div id="after-bubbles" style="display: none; position: absolute; left: 0; top: 0; opacity: 0;">
+	-->
+		<div id="after-bubbles" style="display: block; position: absolute; left: 0; top: 0; opacity: 1;">
 	      <h2>Hello {{this.enteredName}}</h2>
 	      <hr class="inset" />
 	      <p>
@@ -188,7 +199,7 @@
 	<div>Fieldays Innovation 2014 &#x203A; Start &#x203A; Kia ora &#x203A; Discover</div>
       </div>
 
-      <div class="page-bodyXXX" style="padding: 4rem; font-size: 150%;" id="info-page">
+      <div class="page-bodyXXX" id="info-page"> <!-- style="padding: 4rem; font-size: 150%;" -->
       </div>
     </script>
 	  
@@ -196,7 +207,7 @@
 	<!-- Innovation Stories -->  
 	  
     <script id="Innovation-Story-01-tpl" type="text/x-handlebars-template">
-	   <iframe id="i-innovation-story-01" src="innovation-story-01.html" style="width: 100%; height: 350px;" />
+	   <iframe id="i-innovation-story-01" src="innovation-story-01.html" /> <!--  style="width: 100%; height: 350px;" -->
 	</script>
 	
    
@@ -236,11 +247,16 @@
 	<div class="info-page">
 
 	  <div style="width: 100%; height: 100%; position: relative;">
+	  <!--
 	    <div id="svg-bubbles-div" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 1;">
 	      <embed id="svg-bubbles" src="bubbles-end.svg" style="width: 100%; height: 100%;" />
 	    </div>
-
+	-->
+	<!--
 	    <div id="after-bubbles" style="display: none; position: absolute; left: 0; top: 0; opacity: 0;">
+	-->
+		
+		<div id="after-bubbles" style="display: block; position: absolute; left: 0; top: 0; opacity: 1;">
 	      <h2>Questions</h2>
 	      <hr class="inset" />
 	      <p>

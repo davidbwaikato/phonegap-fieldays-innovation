@@ -48,27 +48,37 @@ var app = {
 
 	if (hash == "#start") {
 
-            if (this.startPage) {
-		self.slidePage(this.startPage);
+        if (this.startPage) {
+			self.slidePage(this.startPage);
+			this.startPage.render(); // Regenerate name on page in case it has changed
 	    }
 	    else {
-		this.startPage = new StartView(this.homePage).render();
-		self.slidePage(this.startPage);	    
-		//this.startPage.crossfade();
+			//this.startPage = new StartView(this.homePage).render();
+			//self.slidePage(this.startPage);	    
+			// //this.startPage.crossfade();
+			
+			this.startPage = new StartView(this.homePage);
+			
+			this.startPage.playVideo(function() {
+					self.startPage.render();
+					self.slidePage(self.startPage);
+					setTimeout(function() { self.startPage.playAudio(); }, 6000);
+				});
+				
 	    }
 	    return;
 	}
 
 	if (hash == "#kiaora") {
 
-            if (this.kiaoraPage) {
-		self.slidePage(this.kiaoraPage);		
-		this.kiaoraPage.reinitialize(); // refresh values from the control file again
-		this.kiaoraPage.render(); // force it to regenerate the story count
+        if (this.kiaoraPage) {
+			self.slidePage(this.kiaoraPage);		
+			this.kiaoraPage.reinitialize(); // refresh values from the control file again
+			this.kiaoraPage.render(); // force it to regenerate the story count
 	    }
 	    else {
-		this.kiaoraPage = new KiaoraView(this.homePage).render();
-		self.slidePage(this.kiaoraPage);	    
+			this.kiaoraPage = new KiaoraView(this.homePage).render();
+			self.slidePage(this.kiaoraPage);	    
 	    }
 	    return;
 	}
@@ -93,24 +103,32 @@ var app = {
 	}
 
 	if (hash == "#consider") {
-            if (this.considerPage) {
-		self.slidePage(this.considerPage);
+        if (this.considerPage) {
+			self.slidePage(this.considerPage);
 	    }
 	    else {
-		this.considerPage = new ConsiderView().render();
-		bubblesStopped = false; 
-		self.slidePage(this.considerPage);	    
+			//this.considerPage = new ConsiderView().render();
+			//bubblesStopped = false; 
+			//self.slidePage(this.considerPage);	
+			this.considerPage = new ConsiderView();
+			
+			this.startPage.playVideo(function() {
+					self.considerPage.render();
+					self.slidePage(self.considerPage);
+			});
+				
+			
 	    }
 	    return;
 	}
 
 	if (hash == "#winner-2013") {
-            if (this.winner2013Page) {
-		self.slidePage(this.winner2013Page);
+        if (this.winner2013Page) {
+			self.slidePage(this.winner2013Page);
 	    }
 	    else {
-		this.winner2013Page = new Winner2013View().render();
-		self.slidePage(this.winner2013Page);	    
+			this.winner2013Page = new Winner2013View().render();
+			self.slidePage(this.winner2013Page);	    
 	    }
 	    return;
 	}
@@ -140,60 +158,60 @@ var app = {
             $(page.el).attr('class', 'page stage-left');
             currentPageDest = "stage-right";
 			
-			if(bubblesStopped == false) { // still in the process of doing the animation
-				if(this.startPage) {
+			if (bubblesStopped == false) { // still in the process of doing the animation
+				if (this.startPage) {
 					// prevent crossfade to audio
 					this.startPage.setCrossFade(false);
 				}
 			}
         } 
-	else if ((page == app.startPage) && (this.currentPage == app.kiaoraPage)) {
-            $(page.el).attr('class', 'page stage-left');
-            currentPageDest = "stage-right";
-	}
-	else if ((page == app.kiaoraPage) && (this.currentPage == app.discoverPage)) {
-            $(page.el).attr('class', 'page stage-left');
-            currentPageDest = "stage-right";
-	}
-	else if ((page == app.discoverPage) && (this.currentPage == app.considerPage)) {
-            $(page.el).attr('class', 'page stage-left');
-            currentPageDest = "stage-right";
-	}
-	else if ((page == app.considerPage) && (this.currentPage == app.winner2013Page)) {
-            $(page.el).attr('class', 'page stage-left');
-            currentPageDest = "stage-right";
-	}
-	else {
-            // Forward transition (slide from right)
-            $(page.el).attr('class', 'page stage-right');
-            currentPageDest = "stage-left";
-			
-			if (this.currentPage === app.homePage) { // going forwards, allow crossfade to audio
-				if(this.startPage) {
-					// prevent crossfade to audio
-					this.startPage.setCrossFade(true);
-				}
-			}	
-        }
+		else if ((page == app.startPage) && (this.currentPage == app.kiaoraPage)) {
+				$(page.el).attr('class', 'page stage-left');
+				currentPageDest = "stage-right";
+		}
+		else if ((page == app.kiaoraPage) && (this.currentPage == app.discoverPage)) {
+				$(page.el).attr('class', 'page stage-left');
+				currentPageDest = "stage-right";
+		}
+		else if ((page == app.discoverPage) && (this.currentPage == app.considerPage)) {
+				$(page.el).attr('class', 'page stage-left');
+				currentPageDest = "stage-right";
+		}
+		else if ((page == app.considerPage) && (this.currentPage == app.winner2013Page)) {
+				$(page.el).attr('class', 'page stage-left');
+				currentPageDest = "stage-right";
+		}
+		else {
+				// Forward transition (slide from right)
+				$(page.el).attr('class', 'page stage-right');
+				currentPageDest = "stage-left";
+				
+				if (this.currentPage === app.homePage) { // going forwards, allow crossfade to audio
+					if(this.startPage) {
+						// prevent crossfade to audio
+						this.startPage.setCrossFade(true);
+					}
+				}	
+			}
 
-	$(window).scrollTop(0); // Ensure scroll-bar is back to top
+		$(window).scrollTop(0); // Ensure scroll-bar is back to top
 
-        $('body').append(page.el);
+		$('body').append(page.el);
 
-        setTimeout(function() {
+		setTimeout(function() {
 
-        // Wait until the new page has been added to the DOM...
-            // Slide out the current page: 
-	    //   If new page slides from the right -> slide current page to the left, and vice versa
-            $(self.currentPage.el).attr('class', 'page transition ' + currentPageDest);
-            // Slide in the new page
-            $(page.el).attr('class', 'page stage-center transition');
-            self.currentPage = page;
+			// Wait until the new page has been added to the DOM...
+			// Slide out the current page: 
+			//   If new page slides from the right -> slide current page to the left, and vice versa
+				$(self.currentPage.el).attr('class', 'page transition ' + currentPageDest);
+				// Slide in the new page
+				$(page.el).attr('class', 'page stage-center transition');
+				self.currentPage = page;
 
-	    if (page == self.discoverPage) {
-		self.discoverPage.scan();
-	    }
-        },500);
+			if (page == self.discoverPage) {
+				self.discoverPage.scan();
+			}
+		},500);
 
     },
 

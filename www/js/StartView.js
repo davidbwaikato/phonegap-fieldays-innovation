@@ -29,18 +29,17 @@ var StartView = function(homeView) {
 
     this.playAudio = function() {
 
-	if (window.cordova) {
+		if (window.cordova) {
 
-	    var url = this.getPhoneGapPath() + 'audio/eab-innovation.mp3';
+			var url = this.getPhoneGapPath() + 'audio/eab-innovation.mp3';
 
-	    var snd = new Media(url, function () { console.log("playAudio():Audio Success"); },
-			             function (err) { console.log("playAudio():Audio Error: " + err); }
-			       );
-	    
-	    // Play audio
-	    snd.play();
-	}
-
+			var snd = new Media(url, function () { console.log("playAudio():Audio Success"); },
+								     function (err) { console.error("playAudio():Audio Error: " + err); }
+					   );
+			
+			// Play audio
+			snd.play();
+		}
     };
 
 	this.setCrossFade = function(doCrossFade) {
@@ -51,6 +50,16 @@ var StartView = function(homeView) {
 		return this.doCrossFade;
 	}
 
+	this.playVideo = function(callback) {
+		if (typeof VideoPlayer != 'undefined') {
+			VideoPlayer.play('file:///android_asset/www/video/startupVideo2Android.mp4',callback);
+		}
+		else {
+			console.log("StartPage: No VideoPlayer plugin.  Going straight to callback()");
+			callback();
+		}
+	}
+		
     this.crossfade = function(delay) {
 		var self = this;
 
