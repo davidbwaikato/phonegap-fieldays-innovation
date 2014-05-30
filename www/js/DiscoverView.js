@@ -92,14 +92,14 @@ var DiscoverView = function(scan_mode) {
 
         console.log('arScan(): init');
 
-	if (!window.cordova) {
+		if (!window.cordova) {
             console.log("DiscoverView.arScan(): Discover AR Scanner not supported, defaulting to Story 2");
-	    this.loadInnovationStory({text: "Innovation-Story-02"});
+			this.loadInnovationStory({text: "Innovation-Story-02"});
             return;
         }
 
-
-      cordova.plugins.discoverScanAR.arscan(
+		cordova.plugins.discoverScanAR.arscan(
+			"fieldays.json",
 			$.proxy(this.loadInnovationStory,this),
                 function (error) {
                     app.showAlert(err,"Scanning failed: ");
@@ -109,12 +109,12 @@ var DiscoverView = function(scan_mode) {
     };
 
     this.scan = function() {
-	if (this.scan_mode.toLowerCase() == "ar") {
-	    this.arScan();
-	}
-	else {
-	    this.qrScan();
-	}
+		if (this.scan_mode.toLowerCase() == "ar") {
+			this.arScan();
+		}
+		else {
+			this.qrScan();
+		}
     }
 
     this.initialize();
