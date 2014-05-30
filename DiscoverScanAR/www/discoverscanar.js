@@ -63,7 +63,7 @@
 
 
 
-        DiscoverScanAR.prototype.arscan = function (successCallback, errorCallback) {
+        DiscoverScanAR.prototype.arscan = function (json_file,successCallback, errorCallback) {
             if (errorCallback == null) {
                 errorCallback = function () {
                 };
@@ -79,7 +79,7 @@
                 return;
             }
 
-            exec(successCallback, errorCallback, 'DiscoverScanAR', 'arscan', []);
+            exec(successCallback, errorCallback, 'DiscoverScanAR', 'arscan', [ {"jsonFile": json_file}]);
         };
 
 

@@ -37,6 +37,7 @@ public class DiscoverScanAR extends CordovaPlugin {
     private static final String TEXT = "text";
     private static final String DATA = "data";
     private static final String TYPE = "type";
+	private static final String JSONFILE = "jsonFile";
     private static final String SCAN_INTENT = "com.phonegap.plugins.discoverscanar.SCAN";
     private static final String ENCODE_DATA = "ENCODE_DATA";
     private static final String ENCODE_TYPE = "ENCODE_TYPE";
@@ -100,7 +101,20 @@ public class DiscoverScanAR extends CordovaPlugin {
         } else if (action.equals(SCAN)) {
             scan();
         } else if (action.equals(ARSCAN)) {
-            arscan();
+			JSONObject obj = args.optJSONObject(0);
+			String json_file = null;
+            if (obj != null) {
+                json_file = obj.optString(JSONFILE);
+
+                // If the type is null then force the type to text
+			}
+			if (json_file != null) {
+			 
+					arscan(json_file);
+                }
+			else {
+				callbackContext.error("User did not specify a json file to load");
+			}
         } else {
             return false;
         }
@@ -118,11 +132,17 @@ public class DiscoverScanAR extends CordovaPlugin {
     }
 
 
-    public void arscan() {
+    public void arscan(String json_file) {
 
 	Intent intentARScan = new Intent(); 
 	intentARScan.setAction(Intent.ACTION_VIEW); 
-	intentARScan.setDataAndType(Uri.parse("http://www.cs.waikato.ac.nz/~davidb/tipple/uni-mixare-locdata.json"), "application/mixare-json"); 
+	
+	if (json_file == null) {
+		json_file = "hamilton.json";
+	}
+		
+	// Used to be hardwired to: "http://www.cs.waikato.ac.nz/~davidb/tipple/uni-mixare-locdata.json"
+	intentARScan.setDataAndType(Uri.parse("file:///sdcard/tipple-store/geodata/" + json_file), "application/mixare-json"); 
         this.cordova.startActivityForResult((CordovaPlugin) this, intentARScan, REQUEST_CODE);
     }
 
