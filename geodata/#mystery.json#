@@ -1,0 +1,10 @@
+{"status":"OK",
+ "num_results": 3,
+ "results":
+      {"id":"1","lat":"-37.871546","lng":"175.352801","elevation":"1.2",
+       "title":"Mystery Creek Pavilion","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"2","lat":"-37.873519","lng":"175.356642","elevation":"1.2",
+       "title":"The Bledisloe","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"3","lat":"-37.873003","lng":"175.348842","elevation":"1.2",
+       "title":"Mystery Creek Events Centre","distance":"","webpage":"","has_detail_page":"0"}
+]}
