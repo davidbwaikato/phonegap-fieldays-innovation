@@ -62,7 +62,7 @@ var app = {
 			this.startPage.playVideo(function() {
 					self.startPage.render();
 					self.slidePage(self.startPage);
-					setTimeout(function() { self.startPage.playAudio(); }, 6000);
+					setTimeout(function() { self.startPage.playAudio(); }, 6500);
 				});
 				
 	    }
