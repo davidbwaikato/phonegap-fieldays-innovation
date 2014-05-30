@@ -16,7 +16,7 @@
     <script id="home-tpl" type="text/x-handlebars-template">
       
       <div class="page-heading" style="white-space: nowrap">
-	Fieldays Innovation 2014
+	<div>Fieldays Innovation 2014</div>
       </div>
       <div class="page-body">
 	 
@@ -37,18 +37,19 @@
 </div>
 -->
 
-	<div class="page-inset">
+	<div class="page-inset purple">
 	  <div>Enter Your Name</div>
-	  <div style="width: 100%"><input id="enter-name" type="text" /></div>
-	  <div style="width: 100%; padding-top: 0.4rem;">
-		Email: <input id="enter-email" type="text" style="width: 50rem;"/><br />
+	  <div style="width: 100%;" ><input id="enter-name" type="text" class="purple"/></div>
+	  <!--<div>Email</div>
+	  <div style="width: 100%; padding-top: 0.4rem;">		
+		Email:<input id="enter-email" type="text" class="purple"/><br />
 		<input type="checkbox"><span style="font-size: 80%">Enter the draw to win a HP 7 Tablet</span>
-	  </div>
+	  </div>-->
 		
 	  <div class="vstretchy-centered">
 	    <a href="#start">
-	      <button class="start round" id="start" disabled="disabled">
-		Start &#x25b6;
+			<button class="start square purple" id="start" disabled="disabled"><!--<button class="start round" id="start" disabled="disabled">-->
+		ENTER
 	      </button>
 	    </a>
 	  </div>
@@ -117,8 +118,8 @@
 
 	      <div style="padding-top: 2rem; float: right;">
 		<a href="#kiaora" class="scanner-btn">
-		  <button class="discover round" id="next" style="white-space: nowrap;">
-		    Next &#x25b6;
+		  <button class="discover square purple" id="next" style="white-space: nowrap;">
+		    Next
 		  </button>
 		</a>
 	      </div>
@@ -166,20 +167,20 @@
 		<div style="padding-top: 0.0rem; float: right; width: 100%">		  
 		  <span style="width: 5rem;"></span>
 		  <a href="#discover" class="scanner-btn">
-		    <button class="discover round" id="scanmode" style="white-space: nowrap; width: 50rem;">
+		    <button class="discover square purple" id="scanmode" style="white-space: nowrap; width: 50rem;">
 				{{#if numExploredStories}}
 					Continue Discovering
 				{{else}}
 					Start Discovering
-				{{/if}} &#x25b6;
+				{{/if}}
 		  </button></a>		  
 		</div>	
 		<div>&nbsp;</div>
 		<div style="padding-top: 0rem; float: right;">
 	            {{#if nowConsider}}
 		    <a href="#consider" class="scanner-btn">
-		      <button class="discover round" id="scanqr" style="white-space: nowrap; width: 40rem; background-color: orange;">
-			Now Consider &#x25b6;
+		      <button class="discover square purple" id="scanqr" style="white-space: nowrap; width: 40rem; background-color: orange;">
+			Now Consider
 		    </button></a>
 		    {{/if}}
 		</div>
@@ -271,8 +272,8 @@
 
 	      <div style="padding-top: 2rem; float: right;">
 		<a href="#winner-2013" class="scanner-btn">
-		  <button class="discover round" id="next" style="white-space: nowrap; background-color: orange;">
-		    Next &#x25b6;
+		  <button class="discover square purple" id="next" style="white-space: nowrap; background-color: orange;">
+		    Next
 		  </button>
 		</a>
 	      </div>
@@ -311,7 +312,7 @@
 
 	      <div style="padding-top: 2rem; float: right;">
 		<a href="#finish" class="scanner-btn">
-		  <button class="discover round" id="next" style="white-space: nowrap; background-color: orange;">
+		  <button class="discover square purple" id="next" style="white-space: nowrap; background-color: orange;">
 		    Finish
 		  </button>
 		</a>

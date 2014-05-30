@@ -1,8 +1,20 @@
 
 /* Start with general page based style info for web-app with forward/backward style pages navigation */
 
+/* Color schemes */
+.purpletext {color: #AF90B2;} /*rgba(175, 144, 178, 1.0);*/
+.purplemedium {color: #8F3E98;} /*rgb(143, 62, 152);*/
+.purpledark {color: #632468;} /*rgb(99, 36, 104);*/
+
+
 html {
     height: 100%;
+	    
+	background:url("../images/background.png") no-repeat top center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 body {
@@ -75,12 +87,14 @@ html {
 }   
 
 body {		
-    margin: 0;
+    margin: 0;	
     height: 100%;
     width: 100%; /* width needed for Firefox */
-    
-    background-color: #FFFFFF;    
+
+	/*background-color: #FFFFFF;    */
 }
+
+
 
 .page {		
     margin: 0;
@@ -102,8 +116,14 @@ body {
     justify-content: start;
 }
 
+/*.page-heading {display: none;}*/
+.page-heading {
+	color: #AF90B2;
+	background:none;
+}
 
-.page-heading {		
+.page-heading {
+	
     margin: 0;
     
     display: -webkit-box; display: -moz-box;
@@ -121,10 +141,14 @@ body {
     -webkit-justify-content: center;
     justify-content: center;
     
-    background-color: #CC0000;
+	/*opacity:0.4;
+	filter:alpha(opacity=40);*/ /* For IE8 and earlier */
+	
+    /*background-color: #CC0000;*/
     font-family: helvetica, sans-serif;
     font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
-    color: white;
+    /*color: white;
+	color:black;*/
     padding: 1.5rem;
  
     text-shadow: 0.2rem 0.2rem 0.8rem rgba(0,0,0, .4);   
@@ -154,15 +178,15 @@ body {
     -webkit-flex: 1;
     flex: 1;
     
-    
-    background-color: #FFFFFF;
+    /*background:none;*/
+    /*background-color: #FFFFFF;*/
     
 }
 
 
-
 .page-inset {
-    width: 500px; 
+	width: 75%;
+    /*width: 500px;*/
     height: 350px;
     
     display: -webkit-box; display: -moz-box;
@@ -187,19 +211,24 @@ body {
     
     padding: 1rem 3rem;
     
-    background-color: rgba(200, 200, 200, .9);
-    color: white;
+	background: none;
+	/*color: #AF90B2; purpletext: rgba(175, 144, 178, 1.0);*/
+    /*background-color: rgba(200, 200, 200, .9);
+    color: white;*/
     
     font-family: helvetica, sans-serif;
     font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
     text-shadow: 0 0 1.2rem rgba(0,0,0, .4);
     
+	/*
     -moz-box-box-shadow: 0.3rem 0.3rem 0.3rem 0.2rem #909090;
     -webkit-box-shadow:  0.3rem 0.3rem 0.3rem 0.2rem #909090;
     box-shadow:          0.3rem 0.3rem 0.3rem 0.2rem #909090;
     
-    border-radius: .5rem;
+    border-radius: .5rem;*/
 }
+
+.page-inset.purple { color: #AF90B2; }
 
 
 #info-page {
@@ -219,6 +248,7 @@ height: 100%;
 border: none; /* stops the unnecessary tiny bit of horizontal scrolling in iframe */
 overflow:scroll;
 margin: 0;
+
 }
 
 /* demo-page is defined in the jquery sliding part of this phonegap app*/
@@ -269,7 +299,7 @@ font-size: 175%;
     flex: 1;
 }
 
-#enter-name {
+#enter-name, #enter-email {
     width: 100%;
     font-size: 3rem;
 }
@@ -306,32 +336,38 @@ font-size: 175%;
     flex: 1;    
 }
 
+button.start, button.discover {
+	height: 6rem; /*height: 100px; */
+}
+
 button.start {
-    width:  220px;  
-    height: 100px; 
+    width: 200px; /*width:  220px;  */    
 }
 
 button.discover {
-    width:  260px;  
-    height: 100px; 
+    width:  260px;    
 }
 
 
 button.round {
-    font-size:4rem;
-
+	font-size:4rem;
     /*set the border-radius at half the size of the width and height*/
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
-    border-radius: 50px;
-
+    border-radius: 50px;	
+	
     background-color:#CC0000;
     border:1px solid #CC0000; /*same colour as the background*/
     color:#fff;
-
+	
     -webkit-box-shadow: 0 0 10px rgba(0,0,0, .75);
     -moz-box-shadow: 0 0 10px rgba(0,0,0, .75);
     box-shadow: 2px 2px 15px rgba(0,0,0, .75);
+
+}
+
+button.round, button.square, button.square:enabled:active {
+	font-size:4rem;
 
     text-align: center;
     text-decoration: none;
@@ -339,8 +375,26 @@ button.round {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+button.purple {
+	color:white;/*#AF90B2;*/
+	background-color:#8F3E98;
+	border: none;
+}
 
-
+button.square:disabled {
+    border:3px solid #8F3E98;
+}
+button.square:enabled:active {
+	border:3px solid white;   
+}
+button.purple.square:disabled {
+	color:#8F3E98;
+	background-color:#632468;   
+}
+button.purple.square:enabled:active {
+	color:white;
+	background-color:#8F3E98;   
+}
 
 
 button.round:disabled{
@@ -421,12 +475,19 @@ input[type="search"] {
 	font-size: 16px;
 	box-shadow: inset 0 2px 2px rgba(0,0,0,.5), 0 1px #fff;
 	background: #eee;
-    -webkit-appearance:none;
+    -webkit-appearance:none;	
 }
 
 input[type="search"]:focus {
 	outline: none;
 	box-shadow: inset 0 4px 8px rgba(0,0,0,.5), 0 1px #fff;
+}
+
+input.purple {
+	background-color: #8F3E98; 
+	color:white; 
+	border: 0px solid;
+	height:6rem;
 }
 
 ul {
@@ -503,7 +564,8 @@ li>a * {
 	border-radius:2px;
 	border:1px solid #dcdcdc;
 	display:inline-block;
-	color:#CC0000; 
+	/*color:#CC0000;*/ 
+	color: #632468;
 	font-size:3rem;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #ffffff;
