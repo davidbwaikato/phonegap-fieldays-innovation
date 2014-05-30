@@ -69,46 +69,6 @@ var KiaoraView = function(homeView) {
 						$.proxy(this.failGeneral, this) );
     };
 	
-	this.getFile = function(fileSystem, filename) {	
-		
-		// Read (or refresh) values from the control file
-		// The line initiates the following sequence:
-		// 1. Look to see if a JSON file storing the view controlling settings exists
-		// 2. if it does, read it in, parse it with $.parseJson() and have it override 'this.viewControl' 
-		fileSystem.root.getFile(filename, null, 
-								$.proxy(this.gotControlFileEntry, this), 
-								$.proxy(this.noControlFileEntry, this) );
-						
-	};
-	
-	this.noControlFileEntry = function(error) { // no control file
-		console.log("KiaoraView.noControlFileEntry() ERROR: No previously saved control data.");
-		
-	};
-	
-	this.gotControlFileEntry = function(fileEntry) {
-		var self = this;
-		fileEntry.file($.proxy(this.readControlFile,this), $.proxy(this.failGeneral,this));
-	};
-	
-	this.readControlFile = function(file){
-		var self = this;
-		var reader = new FileReader();
-        reader.onloadend = function(evt) {
-			
-			// don't test for "== null", use either the test "obj === null" or the test "!obj"
-			// http://saladwithsteve.com/2008/02/javascript-undefined-vs-null.html
-			if(!evt.target.result) {
-				console.log("KiaoraView.readControlFile() ERROR: Control file empty!");				
-			} else {
-				//self.viewControl = jQuery.parseJSON(evt.target.result);
-				var viewControl = jQuery.parseJSON(evt.target.result);
-				self.scanMode = viewControl.scanMode;
-			}
-		};
-		
-        reader.readAsText(file);			
-    };
 	// ******************* END OF FILE READ FUNCTIONS ****************** //
 
     this.render = function() {

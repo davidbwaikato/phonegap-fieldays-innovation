@@ -163,7 +163,7 @@ body {
 
 .page-inset {
     width: 500px; 
-    height: 300px;
+    height: 350px;
     
     display: -webkit-box; display: -moz-box;
     display: -ms-flexbox;
@@ -215,14 +215,16 @@ body {
 iframe {
 position: relative;
 width: 100%;
-height: 100%; 
-
+height: 100%;
 border: none; /* stops the unnecessary tiny bit of horizontal scrolling in iframe */
 overflow:scroll;
 margin: 0;
 }
 
-
+/* demo-page is defined in the jquery sliding part of this phonegap app*/
+div.demo-page {
+font-size: 175%;
+}
 
 .info-page {
     width: 600px; 
