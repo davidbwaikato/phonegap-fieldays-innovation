@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<tour>
+
+<!-- Fieldays Innovation Stands (2014) -->
+
+<!--
+
+id = only used by AR View
+latitude/longitude = used by both 2D view and AR View
+elevation = used by only AR View
+radius = used by both
+title/tts_title = used by both
+text/tts = used by only 2D view
+colour_fill/colour_outline = used only by 2D view
+webpage = only used by AR View
+
+-->
+
+<!-- In concise form, (long,lat)
+
+  Stage-left front
+  175.35516 -37.872781
+
+  Stage-right front
+  175.355091 -37.872915
+
+  Stage-left back 
+  175.354855 -37.872661
+
+  Stage-right back
+  175.354788 -37.872804
+
+  Stage-left, middle
+  175.355042 -37.872741
+
+  rect is approximately 16m wide, but 30m long
+-->
+
+
+<location>
+  <!-- Stage-left front -->
+  <id>1</id>
+  <longitude>175.35516</longitude>
+  <latitude>-37.872781</latitude>
+  <elevation>0</elevation>
+  <radius>0.005</radius>
+  <title>Innovation Story 1 (SL-front)</title>
+  <tts_title>Innovation Story One (ES-EL-front)</tts_title>
+  <text>
+    Welcome to Innovation Story one.  Radius of 5m. 
+    This one links to the university's home page.
+  </text>
+  <webpage>http://www.waikato.ac.nz</webpage>
+</location>
+
+<location>
+  <!-- Stage-right front -->
+  <id>2</id>
+  <longitude>175.355091</longitude>
+  <latitude>-37.872915</latitude>
+  <elevation>0</elevation>
+  <radius>0.01</radius>
+  <title>Innovation Story 2 (SR-front)</title>
+  <colour_fill>#BB0000</colour_fill>
+  <colour_outline>#000000</colour_outline>
+  <text>
+    Innovation Story 2.  Radius of 10m.  Note the red fill colour, and black outline
+  </text>
+  <tts>
+    Innovation Story Two.  Note the red fill colour, and black outline
+  </tts>
+</location>
+
+<location>
+  <!-- Stage-left back -->
+  <id>3</id>
+  <longitude>175.354855</longitude>
+  <latitude>-37.872661</latitude>
+  <elevation>0</elevation>
+  <radius>0.01</radius>
+  <title>Innovation Story 2 (SL-back)</title>
+  <text>
+    Innovation Story 2. Radius of 10m.
+  </text>
+</location>
+
+<location>
+  <!-- Stage-right back -->
+  <id>4</id>
+  <longitude>175.354788</longitude>
+  <latitude>-37.872804</latitude>
+  <elevation>0</elevation>
+  <radius>0.01</radius>
+  <title>Innovation Story 4 (SR-back)</title>
+  <text>Innovation Story 4.</text>
+</location>
+
+<location>
+  <!-- Stage-left, middle -->
+  <id>5</id>
+  <longitude>175.355042</longitude>
+  <latitude>-37.872741</latitude>
+  <elevation>0</elevation>
+  <radius>0.005</radius>
+  <title>Innovation Story 5 (SL-middle)</title>
+  <text>
+    Innovation Story 5.  Radius of 5m. This one includes empty audio tags.
+  </text>
+  <audio>
+  </audio>
+</location>
+
+
+<location>
+  <id>6</id>
+  <longitude>175.352801</longitude>
+  <latitude>-37.871546</latitude>
+  <elevation>0</elevation>
+  <radius>0.01</radius>
+  <title>Mystery Creek Pavilion</title>
+  <text>
+    Mystery Creek Pavilion, Premier Feature.
+  </text>
+</location>
+ 	
+
+<location>
+  <id>7</id>
+  <longitude>175.356642</longitude>
+  <latitude>-37.873519</latitude>
+  <elevation>0</elevation>
+  <radius>0.01</radius>
+  <title>The Bledisloe</title>
+  <text>
+    The Bledisloe: Cafe and refreshments can be found here.
+  </text>
+</location>
+ 	
+
+<location>
+  <id>8</id>
+  <longitude>175.348842</longitude>
+  <latitude>-37.873003</latitude>
+  <elevation>0</elevation>
+  <radius>0.01</radius>
+  <title>Mystery Creek Events Centre</title>
+  <text>
+    Mystery Creek Events Centre.
+  </text>
+</location>
+ 	
+
+<location>
+  <id>9</id>
+  <longitude>175.308804</longitude>
+  <latitude>-37.761098</latitude>
+  <elevation>0</elevation>
+  <radius>0.01</radius>
+  <title>Letter box</title>
+  <text>
+    17 Ernest Road, letter box.
+  </text>
+</location>
+
+<location>
+  <id>10</id>
+  <longitude>175.308678</longitude>
+  <latitude>-37.761070</latitude>
+  <elevation>0</elevation>
+  <radius>0.01</radius>
+  <title>Front door</title>
+  <text>
+    17 Ernest Road, front door.
+  </text>
+</location>
+
+
+
+</tour>

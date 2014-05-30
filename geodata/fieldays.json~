@@ -1,0 +1,12 @@
+{"status":"OK",
+ "num_results": 4,
+ "results":
+     [{"id":"1","lat":"-37.871399","lng":175.354436"","elevation":"1.2",
+       "title":"Flying","distance":"","webpage":"http://www.waikato.ac.nz","has_detail_page":"1"},
+      {"id":"2","lat":"-37.871319":175.354245"","elevation":"1.2",
+       "title":"Ginseng","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"3","lat":"-37.871258","lng":"175.354087","elevation":"1.2",
+       "title":"ThermoKennel","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"4","lat":"-37.871258","lng":"175.354087","elevation":"1.2",
+       "title":"X - TBA","distance":"","webpage":"","has_detail_page":"0"}
+]}

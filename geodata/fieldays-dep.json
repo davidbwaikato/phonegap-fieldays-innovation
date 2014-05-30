@@ -1,0 +1,20 @@
+{"status":"OK",
+ "num_results": 8,
+ "results":
+     [{"id":"1","lat":"-37.872781","lng":"175.35516","elevation":"1.2",
+       "title":"Innovation Story 1 (SL-front)","distance":"","webpage":"http://www.waikato.ac.nz","has_detail_page":"1"},
+      {"id":"2","lat":"-37.872915","lng":"175.355091","elevation":"1.2",
+       "title":"Innovation Story 2 (SR-front)","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"3","lat":"-37.872661","lng":"175.354855","elevation":"1.2",
+       "title":"Innovation Story 2 (SL-back)","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"4","lat":"-37.872804","lng":"175.354788","elevation":"1.2",
+       "title":"Innovation Story 4 (SR-back)","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"5","lat":"-37.872741","lng":"175.355042","elevation":"1.2",
+       "title":"Innovation Story 5 (SL-middle)","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"6","lat":"-37.871546","lng":"175.352801","elevation":"1.2",
+       "title":"Mystery Creek Pavilion","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"7","lat":"-37.873519","lng":"175.356642","elevation":"1.2",
+       "title":"The Bledisloe","distance":"","webpage":"","has_detail_page":"0"},
+      {"id":"8","lat":"-37.873003","lng":"175.348842","elevation":"1.2",
+       "title":"Mystery Creek Events Centre","distance":"","webpage":"","has_detail_page":"0"}
+]}
