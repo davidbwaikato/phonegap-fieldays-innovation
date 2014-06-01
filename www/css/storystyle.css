@@ -1,0 +1,122 @@
+/* stylesheet for innovation stories */
+
+/*
+body#idea {
+	background:url("../images/background31.png") no-repeat center center fixed #632468;
+		-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
+	height: 100%;
+}*/
+
+body.story { 
+}
+
+div#idea {
+    width:120px;
+    height:108px;
+    margin: 0 auto;	
+}
+
+/*
+.image_block    {    
+    position: absolute;
+	bottom:1%;
+	left:38%;
+}
+.image_block img    {
+	width: 100%;    
+	text-align: center;
+	position:relative;	
+}*/
+
+img.status    {   
+	position: absolute;
+	bottom:1%;
+	left:38%;	
+}
+ 
+body {
+	color: white; 
+	margin:0;
+	padding:0;
+	border: none;
+
+	/* Safe fonts web.mit.edu/jmorzins/www/fonts.html */	
+	/* Can't find out what the designer used and custom fonts are a pain to set up anyway. Supposed to be sans-serif but stout, Garamond is serif but stout */
+	font-family: "Garamond", "Tahoma", "Helvetica", sans-serif; 
+}
+
+/* demo-page is defined in the jquery sliding part of this phonegap app*/
+
+/* http://tutorialzine.com/2010/03/centering-div-vertically-and-horizontally/ */
+div.story-page {	
+	background: #632468;
+	/*border: 2px white solid;*/
+	
+	overflow: scroll;
+	position:absolute; /* position with respect to entire window */
+	
+	width: 64%;
+	height: 67%;	
+	margin:9% 14.5%; /* 6.5% 15%; margin:7% 14.5%;*/
+	/*margin-top:6%;
+	margin-bottom:12%;	
+	margin-left: 14.5%;
+	margin-right: 14.5%;*/	
+	
+	padding:2%;	
+	
+	/*width:1090px;
+    height:670px;   
+    left:16.5%;
+    top:12.5%;
+	padding:20px;
+	*/	
+	
+}
+
+div.story-page {
+	line-height: 1.5; /* no unit means number of lines, e.g. 2 is double-spaced */		
+}	
+
+div.story-page h1, h2 { /*, h3, h4, h5, h6*/
+	font-weight: normal;
+}
+
+div.story-page h2, h3, h4, h5, h6, p {
+	/*padding-left:50px;*/ /*indented*/
+}
+
+div.story-page p {
+	font-size: 250%;
+	/*text-align: justify;*/
+}
+
+img.left {
+	float:left; 
+	margin-right:20px;
+}
+img.right {
+	float:right; 
+	margin-left:20px;
+}
+
+img.story-icon {
+}
+
+img.bodyimg {
+	
+}
+
+img.constrainHeight {
+height:200px; /*100px*/
+}
+
+img.constrainWidth {
+width:400px; /*100px*/
+}
+
+
+
