@@ -197,6 +197,8 @@ body {
 
 
 .page-inset {
+	margin-top:200px;
+
 	width: 75%;
     /*width: 500px;*/
     height: 350px;

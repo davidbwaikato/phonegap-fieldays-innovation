@@ -108,7 +108,7 @@ var KiaoraView = function(homeView) {
 			VideoPlayer.play('file:///android_asset/www/video/startupVideo2Android.mp4',callback);
 		}
 		else {
-			console.log("StartPage: No VideoPlayer plugin.  Going straight to callback()");
+			console.log("KiaoraPage: No VideoPlayer plugin.  Going straight to callback()");
 			callback();
 		}
 	}

@@ -84,7 +84,6 @@ var app = {
 			this.kiaoraPage.playVideo(function() {
 					self.kiaoraPage.render();
 					self.slidePage(self.kiaoraPage);
-					//setTimeout(function() { self.kiaoraPage.playAudio(); }, 6500);
 				});			
 	    }
 	    return;
