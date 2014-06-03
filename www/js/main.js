@@ -77,8 +77,15 @@ var app = {
 			this.kiaoraPage.render(); // force it to regenerate the story count
 	    }
 	    else {
-			this.kiaoraPage = new KiaoraView(this.homePage).render();
-			self.slidePage(this.kiaoraPage);	    
+			//this.kiaoraPage = new KiaoraView(this.homePage).render();
+			
+			this.kiaoraPage = new KiaoraView(this.homePage);		
+				 
+			this.kiaoraPage.playVideo(function() {
+					self.kiaoraPage.render();
+					self.slidePage(self.kiaoraPage);
+					//setTimeout(function() { self.kiaoraPage.playAudio(); }, 6500);
+				});			
 	    }
 	    return;
 	}
@@ -112,7 +119,7 @@ var app = {
 			//self.slidePage(this.considerPage);	
 			this.considerPage = new ConsiderView();
 			
-			this.startPage.playVideo(function() {
+			this.kiaoraPage.playVideo(function() {
 					self.considerPage.render();
 					self.slidePage(self.considerPage);
 			});
@@ -159,9 +166,9 @@ var app = {
             currentPageDest = "stage-right";
 			
 			if (bubblesStopped == false) { // still in the process of doing the animation
-				if (this.startPage) {
+				if (this.kiaoraPage) {
 					// prevent crossfade to audio
-					this.startPage.setCrossFade(false);
+					this.kiaoraPage.setCrossFade(false);
 				}
 			}
         } 
@@ -187,9 +194,9 @@ var app = {
 				currentPageDest = "stage-left";
 				
 				if (this.currentPage === app.homePage) { // going forwards, allow crossfade to audio
-					if(this.startPage) {
+					if(this.kiaoraPage) {
 						// prevent crossfade to audio
-						this.startPage.setCrossFade(true);
+						this.kiaoraPage.setCrossFade(true);
 					}
 				}	
 			}
@@ -250,9 +257,9 @@ var bubblesStopped = false;
 
 function stopBubbleAnnimation(delay) {
     if (!bubblesStopped) {
-		var doCrossFade = app.startPage.getCrossFade();
+		var doCrossFade = app.kiaoraPage.getCrossFade();
 		if(doCrossFade) {
-			app.startPage.crossfade(delay);	
+			app.kiaoraPage.crossfade(delay);	
 			bubblesStopped = true;
 		}
 	}    

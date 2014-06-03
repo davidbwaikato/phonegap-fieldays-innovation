@@ -92,7 +92,37 @@ var KiaoraView = function(homeView) {
 
         return this;
     };
+	
+	// ************** START VIDEO FUNCTIONS *********************
+	
+	this.setCrossFade = function(doCrossFade) {
+		this.doCrossFade = doCrossFade;
+	}
+	
+	this.getCrossFade = function() {
+		return this.doCrossFade;
+	}
 
+	this.playVideo = function(callback) {
+		if (typeof VideoPlayer != 'undefined') {
+			VideoPlayer.play('file:///android_asset/www/video/startupVideo2Android.mp4',callback);
+		}
+		else {
+			console.log("StartPage: No VideoPlayer plugin.  Going straight to callback()");
+			callback();
+		}
+	}
+		
+    this.crossfade = function(delay) {
+		var self = this;
+
+		$("#svg-bubbles-div").delay(delay).animate({ opacity: 0 }, 700);
+		$("#after-bubbles").delay(delay).css("display","block").animate({ opacity: 1 }, 700);
+
+		setTimeout(function() { self.playAudio(); }, 2000);
+    };
+
+	// ************** END VIDEO FUNCTIONS *********************
 
     this.initialize();
 }

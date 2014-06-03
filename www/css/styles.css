@@ -125,6 +125,9 @@ body {
     justify-content: start;
 }
 
+
+
+
 /*.page-heading {display: none;}*/
 .page-heading {
 	color: #AF90B2;
@@ -268,7 +271,7 @@ seamless: seamless;
 */
 
 html#story {	
-	background:url("../images/background3.png") no-repeat center center fixed #632468;
+	background:url("../images/background3.png") no-repeat center center fixed; /* #632468 */
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
