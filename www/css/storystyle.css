@@ -11,8 +11,9 @@ div#idea {
 
 img.status    {   
 	position: absolute;
-	bottom:1%;
-	left:38%;	
+	bottom:2%;
+	left:35%;
+	width:25%;	
 }
  
 body {
@@ -23,9 +24,16 @@ body {
 
 	/* Safe fonts web.mit.edu/jmorzins/www/fonts.html */	
 	/* Can't find out what the designer used and custom fonts are a pain to set up anyway. Supposed to be sans-serif but stout, Garamond is serif but stout */
-	font-family: "Garamond", "Tahoma", "Helvetica", sans-serif; 
+	/*font-family: "Century Gothic", "Garamond", "Tahoma", "Helvetica", sans-serif; */
+	font-family: "Century Gothic", serif;
 }
 
+div.story-title {
+	position:relative;
+}
+.center {
+	text-align:center;
+}
 
 .back-button {
 	position:absolute;
@@ -46,22 +54,62 @@ body {
 	height: 94px;*/
 }
 
+.back-button-right {
+	right:5%;
+	bottom:5%;
+	
+	position:absolute;
+	
+	display: inline;
+	float:left;
+	
+	background-image:url("../images/backbutton.png");	
+	width: 120px;
+	height: 160px;
+}
+
+.left-button {
+	background-image:url("../images/arrow_left.png");
+	position:absolute;	
+	top:50%;	
+	width: 37px;
+	height: 38px;
+}
+
+.right-button {
+	background-image:url("../images/arrow_right.png");
+	position:absolute;	
+	top:50%;	
+	width: 36px;
+	height: 36px;
+}
+
+
 /* demo-page is defined in the jquery sliding part of this phonegap app*/
 
 /* http://tutorialzine.com/2010/03/centering-div-vertically-and-horizontally/ */
 div.story-page {	
 	background: none; /*#632468;*/
 	
-	overflow: scroll;
+	/*overflow: scroll;*/
 	position:absolute; /* position with respect to entire window */
 	
 
 	/* To get total width of textbox, add 2x padding. To get total height, add 2x padding. */
-	left: 160px;
+	
+	/*left: 160px;
 	top: 80px;
 	width: 610px; 
 	height: 350px;
-	padding: 20px;
+	padding: 10px;
+	*/
+	
+	/*border:2px solid white;*/
+	
+	margin:5.5% 10.5%;
+	width: 71%; 
+	height: 74.5%;
+	padding: 2%;
 	
 	/*
 	width: 62%; 64%;
@@ -136,8 +184,22 @@ height:200px; /*100px*/
 }
 
 img.constrainWidth {
-width:400px; /*100px*/
+width:320px; /*100px*/
 }
 
+img.full-length {
+position:relative;
+height:100%
+}
 
+img.full-width {
+position:relative;
+width:100%
+}
 
+img.h75 {
+position:relative;
+height:75%
+}
+
+img.width50

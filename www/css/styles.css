@@ -15,16 +15,16 @@ html {
 	margin: 0;
 }
 
-html#main {
+/*html#main {
 	background:url("../images/background1.png") no-repeat top center fixed #632468;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;	
-}
+}*/
 
 body {
-    font-family: source-sans-pro, serif;	
+    font-family: "Century Gothic", serif;	
 	border: none;
 	padding: 0;
 	margin: 0;
@@ -157,7 +157,7 @@ body {
 	filter:alpha(opacity=40);*/ /* For IE8 and earlier */
 	
     /*background-color: #CC0000;*/
-    font-family: helvetica, sans-serif;
+    font-family: "Century Gothic", serif;
     font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
     /*color: white;
 	color:black;*/
@@ -195,6 +195,62 @@ body {
     
 }
 
+.kiaora {
+background-image:url('../images/background_kiaora.png');
+background-repeat:no-repeat;
+background-color:#632468;
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
+    
+    display: -webkit-box; display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    
+    -webkit-box-orient: vertical; -moz-box-orient: vertical;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    
+    -webkit-box-align: center; -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+        
+    padding: 1rem 3rem;
+    
+    background-color: rgba(200, 200, 200, .9);
+    /*color: white;*/
+    
+	font-family: "Century Gothic", serif;
+    /*font-family: "Roboto", "Century Gothic Regular", helvetica, sans-serif;*/
+    font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
+    text-shadow: 0 0 1.2rem rgba(0,0,0, .4);
+
+}
+
+.home-page {
+background-image:url('../images/background_home.png');
+background-repeat:no-repeat;
+background-color:#632468;
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
+}
+
+
+
+.question-button {
+	position:relative;	
+	width: 277px;
+	height: 258px;
+}
+
 
 .page-inset {
 	margin-top:200px;
@@ -230,7 +286,7 @@ body {
     /*background-color: rgba(200, 200, 200, .9);
     color: white;*/
     
-    font-family: helvetica, sans-serif;
+    font-family: "Century Gothic", serif;
     font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
     text-shadow: 0 0 1.2rem rgba(0,0,0, .4);
     
@@ -273,47 +329,12 @@ seamless: seamless;
 */
 
 html#story {	
-	background:url("../images/background3.png") no-repeat center center fixed; /* #632468 */
+	background:url("../images/background_kiaora.png") no-repeat top center fixed #632468; /* background:url("../images/background3.png") no-repeat center center fixed;*/ /* #632468 */
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;	
 	height: 100%;
-}
-
-.info-page {
-    width: 600px; 
-    height: 450px; /*500px*/
-    
-    display: -webkit-box; display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    
-    -webkit-box-orient: vertical; -moz-box-orient: vertical;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    
-    -webkit-box-align: center; -moz-box-align: center;
-    -ms-flex-align: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-        
-    padding: 1rem 3rem;
-    
-    background-color: rgba(200, 200, 200, .9);
-    color: white;
-    
-    font-family: helvetica, sans-serif;
-    font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
-    text-shadow: 0 0 1.2rem rgba(0,0,0, .4);
-    
-    -moz-box-box-shadow: 0.3rem 0.3rem 0.3rem 0.2rem #909090;
-    -webkit-box-shadow:  0.3rem 0.3rem 0.3rem 0.2rem #909090;
-    box-shadow:          0.3rem 0.3rem 0.3rem 0.2rem #909090;
-    
-    border-radius: .5rem;
 }
 
 
@@ -324,9 +345,15 @@ html#story {
     flex: 1;
 }
 
-#enter-name, #enter-email {
-    width: 100%;
-    font-size: 3rem;
+#enter-name, #enter-email {   
+	position:absolute;
+	left:10%; /*left:11.7%;*/
+	top:48%;/*top:46.7%;*/
+	width: 79.5%;/*width: 77.5%;*/
+	color:white;
+	background:none;
+	font-size: 5rem;	
+	border:none;
 }
 
 
@@ -361,35 +388,32 @@ html#story {
     flex: 1;    
 }
 
-button.start, button.discover {
-	height: 6rem; /*height: 100px; */
+
+button.start {     
+	background-image:url('../images/enter_enabled.png');
+	background-repeat:no-repeat;
+	background-color:transparent;
+	background-size:100% 100%;
+	
+	border:none; /*border:2px solid white;*/
+	position:absolute;
+	
+	top:71%; 
+	left:36.5%;
+	width:27%;
+	height:14%;	
 }
 
-button.start {
-    width: 200px; /*width:  220px;  */    
+button.start:disabled {
+    /*width: 200px; width:  220px;  */    
+	background-image:url('../images/enter_disabled.png');
+	
 }
 
 button.discover {
     width:  260px;    
 }
 
-
-button.round {
-	font-size:4rem;
-    /*set the border-radius at half the size of the width and height*/
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;	
-	
-    background-color:#CC0000;
-    border:1px solid #CC0000; /*same colour as the background*/
-    color:#fff;
-	
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0, .75);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0, .75);
-    box-shadow: 2px 2px 15px rgba(0,0,0, .75);
-
-}
 
 button.round, button.square, button.square:enabled:active {
 	font-size:4rem;
