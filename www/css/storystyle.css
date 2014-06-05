@@ -35,6 +35,15 @@ div.story-title {
 	text-align:center;
 }
 
+.swipe-text {
+	position:absolute;			
+	background-image:url("../images/textforswipe.png");	
+	width: 466px;
+	height: 300px;	
+	right:7%;
+	bottom:9%;
+}
+
 /* The Go Back button */
 .back-button {
 	position:absolute;	

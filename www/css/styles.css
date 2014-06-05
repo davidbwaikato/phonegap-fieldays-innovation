@@ -196,47 +196,47 @@ body {
 }
 
 .kiaora {
-background-image:url('../images/background_kiaora.png');
-background-repeat:no-repeat;
-background-color:#632468;
+	background-image:url('../images/background_kiaora.png');
+	background-repeat:no-repeat;
+	background-color:#632468;
 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;	
-    
-    display: -webkit-box; display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    
-    -webkit-box-orient: vertical; -moz-box-orient: vertical;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    
-    -webkit-box-align: center; -moz-box-align: center;
-    -ms-flex-align: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-        
-    padding: 1rem 3rem;
-    
+   
+    padding: 1rem 3rem;    
     background-color: rgba(200, 200, 200, .9);
-    /*color: white;*/
-    
+    /*color: white;*/    
 	font-family: "Century Gothic", serif;
     /*font-family: "Roboto", "Century Gothic Regular", helvetica, sans-serif;*/
     font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
-    text-shadow: 0 0 1.2rem rgba(0,0,0, .4);
+}
+div.top-left {
+	position: absolute; 
+	top:20%; 
+	left:20%;
+}
+div.bottom-tabbed {
+	position:absolute;
+	top:70%;
+	left:25%;
+}
 
+.splash  {
+	background-image:url('../images/splashpage.png');
+	background-repeat:no-repeat;
+	background-color:#632468; /* If this line is taken out, then the white frame of the splash screen is seen */
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
 }
 
 .home-page {
-background-image:url('../images/background_home.png');
-background-repeat:no-repeat;
-background-color:#632468;
-
+	background-image:url('../images/background_home.png');
+	background-repeat:no-repeat;
+	background-color:#632468;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -388,6 +388,32 @@ html#story {
     flex: 1;    
 }
 
+/* Exploring buttons */
+button.exploring {
+	background-repeat:no-repeat;
+	background-color:transparent;
+	background-size:100% 100%;
+	
+	border:none; 
+	
+	/*position:absolute;	
+	top:88%; 
+	left:3.5%;*/
+	/*margin-left: 4%;
+	margin-bottom: 7%;*/
+	width:514px;
+	height:63px;		
+}
+button.continue-exploring {     
+	background-image:url('../images/continueexploringbutton.png');	
+}
+button.start-exploring {
+	background-image:url('../images/startexploringbutton.png');	
+}
+button.consider {
+	background-image:url('../images/nowconsiderbutton.png');	
+}
+/* End exploring buttons */
 
 button.start {     
 	background-image:url('../images/enter_enabled.png');
@@ -410,8 +436,20 @@ button.start:disabled {
 	
 }
 
-button.discover {
-    width:  260px;    
+.discover {
+	position:relative;
+    /*width:  260px;*/
+	width: 514px;
+	height: 63px;	
+}
+.start-exploring {
+	top:70%;
+	left:30%;
+	
+	background-image:url('../images/startexploringbutton.png');
+}
+.continue-exploring {
+	background-image:url('../images/continueexploringbutton.png');
 }
 
 

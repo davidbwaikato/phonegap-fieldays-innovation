@@ -8,6 +8,14 @@
 
 
   <body class="page-background" style="height: 100%; width: 100%">
+	
+	<script id="splash-tpl" type="text/x-handlebars-template">	
+	<div class="page-body splash">
+	<a href="#home" style="position:absolute;left:0;top:0;width:100%;height:100%;"></a>
+	
+	</div>
+	</script>
+  
 	<script id="home-tpl" type="text/x-handlebars-template">
 		<div class="page-body home-page">			
 			<div ><input id="enter-name" type="text"/></div>
@@ -23,50 +31,59 @@
       <div class="page-body kiaora purpletext">	  
 	    
 	    <div id="after-bubbles" > <!-- id="kiaora" -->
-	      <h2 style="color:white">Kia ora, {{this.enteredName}}!</h2>	     
-	      <p>
-		There are 3 hidden Innovation Stories.
-	      </p>
 
-	      <div>
-	        {{#if numExploredStories}}
-	           You have already discovered {{numExploredStories}} of these stories
-		{{else}}
-	           Start exploring and find all 3!
-		{{/if}}
-              </div>
-	      
-              <p>
-		<div style="padding-top: 0.0rem; float: right; width: 100%">		  
-		  <span style="width: 5rem;"></span>
-		  <a href="#discover" class="scanner-btn">
-		    <button class="discover square purple" id="scanmode" style="white-space: nowrap; width: 55rem;">
-				{{#if numExploredStories}}
-					Find more
+	      <div class="top-left" >
+	        {{#if numExploredStories}}				
+				{{#if foundAllStories}}
 				{{else}}
-					Go!
+					{{#if downToOneStory}}
+						You have {{downToOneStory}} more story to discover.
+					{{else}}
+						You have {{remainingStories}} more stories to discover.
+					{{/if}}
 				{{/if}}
-		  </button></a>		  
-		</div>	
-		<div>&nbsp;</div>
-		<div style="padding-top: 0rem; float: right;">
-	            {{#if nowConsider}}
-		    <a href="#consider" class="scanner-btn">
-		      <button class="discover square purple" id="scanqr" style="white-space: nowrap; width: 40rem; background-color: orange;">
-			Now Consider
-		    </button></a>
-		    {{/if}}
-		</div>
+			{{else}}
+			      <h2 style="color:white">Kia ora, {{this.enteredName}}!</h2>	     
+				  <p>
+				  There are {{totalNumStories}} hidden Innovation Stories.
+				  </p>
+				  Try to find all {{totalNumStories}}!
+			{{/if}}
+          
+	      
+            <p>
+			  {{#if numExploredStories}}
+				  {{#if foundAllStories}}
+						Congratulations, you've found the {{totalNumStories}} stories.					
+				  {{/if}}				
+			  {{/if}}
+			</p>
+		</div>		
+		
+		<div class="bottom-tabbed">
+			{{#if numExploredStories}}
+				{{#if foundAllStories}}						
+				{{else}}						
+					<a href="#discover"><button class="exploring continue-exploring" id="scanmode" ></button></a> <!--Go!-->
+				{{/if}}	
+			{{else}}
+				<a href="#discover"><button class="exploring start-exploring" id="scanmode" ></button></a> <!--Find more-->
+			{{/if}}			
+	   
+
+			<!--<div>&nbsp;</div>-->
 	
-              </p>
+			{{#if nowConsider}}
+				<a href="#consider"><button class="exploring consider" id="scanqr" ></button></a>
+			{{/if}}
+        </div>      
 	    </div>
 	  
       </div>
     </script>
 
-
 	
-    <script id="start-tpl" type="text/x-handlebars-template">
+    <script id="start-tplXX" type="text/x-handlebars-template">
     <div class="page-body kiaora">
 	<div class="info-page">
 
@@ -234,6 +251,7 @@
 <script src="js/FileIO.js"></script>
 <script src="js/VideoLauncher.js"></script>
 
+<script src="js/SplashView.js"></script>
 <script src="js/HomeView.js"></script>
 <script src="js/StartView.js"></script>
 <script src="js/KiaoraView.js"></script>

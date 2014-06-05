@@ -3,6 +3,9 @@
 var KiaoraView = function(homeView) {
 
     this.homeView = homeView;
+	if(this.homeView) {
+		this.homeView.totalNumStories = KiaoraView.totalNumStories;
+	}	
 
 	this.viewControlFilename = "tipple-store/fdi-control.json"; // stored in /sdcard	
 		
@@ -82,8 +85,19 @@ var KiaoraView = function(homeView) {
 
 	    this.homeView.numExploredStories = nes;
 	    this.homeView.remainingStories = KiaoraView.totalNumStories - nes;
-
-	    if (nes >= 1) { // #### should really be 4
+		
+		// Some fiddling for the interface
+		if (this.homeView.foundAllStories) {
+			delete this.homeView.foundAllStories;
+		}
+		if(this.homeView.remainingStories === 1) { // special case if there's only one story left to discover
+			this.homeView.downToOneStory = 1;
+		} else if (this.homeView.remainingStories === 0) {
+			this.homeView.foundAllStories = 1;
+			delete this.homeView.downToOneStory; // http://stackoverflow.com/questions/1596782/how-to-unset-a-javascript-variable
+		}		
+		
+	    if (nes >= 3) { // #### should really be 4
 		this.homeView.nowConsider= 1;
 	    }
 	}
@@ -129,7 +143,7 @@ var KiaoraView = function(homeView) {
 
 KiaoraView.template = Handlebars.compile($("#kiaora-tpl").html());
 
-KiaoraView.totalNumStories = 5
+KiaoraView.totalNumStories = 3;
 KiaoraView.explored_stories = {};
 
 Object.size = function(obj) {

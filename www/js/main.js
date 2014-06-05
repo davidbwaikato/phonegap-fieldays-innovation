@@ -29,7 +29,18 @@ var app = {
         var self = this;
         var hash = window.location.hash;
         if (!hash) {
-            if (this.homePage) {
+            if (this.splashPage) {
+                this.slidePage(this.splashPage);				
+            } else {
+                this.splashPage = new SplashView();
+				self.splashPage.render();
+				self.slidePage(this.splashPage);				
+            }
+            return;
+        }
+	// have a non-trivial hash
+	if (hash == "#home") {
+		 if (this.homePage) {
                 this.slidePage(this.homePage);
 				this.homePage.reinitialize();
             } else {
@@ -37,15 +48,14 @@ var app = {
 					//self.homePage.render();
 					//self.slidePage(this.homePage);
 					
-				this.homePage.playVideo(function() {
+				//this.homePage.playVideo(function() {
 					self.homePage.render();
 					self.slidePage(self.homePage);
-				});
+				//});
             }
             return;
-        }
-	// have a non-trivial hash
-
+	}
+	
 	if (hash == "#start") {
 
         if (this.startPage) {
@@ -118,10 +128,10 @@ var app = {
 			//self.slidePage(this.considerPage);	
 			this.considerPage = new ConsiderView();
 			
-			this.kiaoraPage.playVideo(function() {
+			//this.kiaoraPage.playVideo(function() {
 					self.considerPage.render();
 					self.slidePage(self.considerPage);
-			});
+			//});
 				
 			
 	    }
@@ -159,7 +169,7 @@ var app = {
         // Cleaning up: remove old pages that were moved out of the viewport
         $('.stage-right, .stage-left').not('.homePage').remove();
 
-        if (page === app.homePage) {
+        if (page === app.homePage && !this.currentPage == app.splashPage) {
             // Always apply a Back transition (slide from left) when we go back to the home page
             $(page.el).attr('class', 'page stage-left');
             currentPageDest = "stage-right";
@@ -171,6 +181,14 @@ var app = {
 				}
 			}
         } 
+		else if ((page == app.splashPage) && (this.currentPage == app.homePage)) {
+				$(page.el).attr('class', 'page stage-left');
+				currentPageDest = "stage-right";
+		}
+		else if ((page == app.homePage) && (this.currentPage == app.kiaoraPage)) {
+				$(page.el).attr('class', 'page stage-left');
+				currentPageDest = "stage-right";
+		}
 		else if ((page == app.startPage) && (this.currentPage == app.kiaoraPage)) {
 				$(page.el).attr('class', 'page stage-left');
 				currentPageDest = "stage-right";
