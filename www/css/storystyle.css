@@ -35,54 +35,55 @@ div.story-title {
 	text-align:center;
 }
 
+/* The Go Back button */
 .back-button {
-	position:absolute;
+	position:absolute;	
+	display: inline;
+	/*float:left;*/	
+	background-image:url("../images/backbutton.png");	
+	width: 120px;
+	height: 160px;	
+}
+
+.back-left {
 	/*top:20px;
 	left:60px;*/
 	top:2%;
 	left:2%;
-	
-	display: inline;
-	float:left;
-	
-	background-image:url("../images/backbutton.png");	
-	width: 120px;
-	height: 160px;
-	/*width: 59px;
-	height: 64px;
-	width: 85px;
-	height: 94px;*/
 }
 
-.back-button-right {
+.back-right {
 	right:5%;
-	bottom:5%;
-	
-	position:absolute;
-	
-	display: inline;
-	float:left;
-	
-	background-image:url("../images/backbutton.png");	
-	width: 120px;
-	height: 160px;
+	bottom:5%;	
 }
 
-.left-button {
-	background-image:url("../images/arrow_left.png");
+/* Forward and Back buttons on the left and right */
+.left-button {	
 	position:absolute;	
 	top:50%;	
-	width: 37px;
-	height: 38px;
+	width: 28px;
+	height: 31px;
 }
 
-.right-button {
-	background-image:url("../images/arrow_right.png");
+.right-button {	
 	position:absolute;	
 	top:50%;	
-	width: 36px;
-	height: 36px;
+	width: 28px;
+	height: 31px;
 }
+
+.idea-fwd {background-image:url("../images/idea-forward.png");}
+.idea-back {	background-image:url("../images/idea-back.png");}
+.res-fwd {background-image:url("../images/research-forward.png");}
+.res-back {background-image:url("../images/research-back.png");}
+.dev-fwd {background-image:url("../images/development-forward.png");}
+.dev-back {background-image:url("../images/development-back.png");}
+.test-fwd {background-image:url("../images/testing-forward.png");}
+.test-back {background-image:url("../images/testing-back.png");}
+.sol-fwd {background-image:url("../images/solution-forward.png");}
+.sol-back {background-image:url("../images/solution-back.png");}
+.gen-fwd {background-image:url("../images/general-forward.png");}
+.gen-back {background-image:url("../images/general-back.png");}
 
 
 /* demo-page is defined in the jquery sliding part of this phonegap app*/
