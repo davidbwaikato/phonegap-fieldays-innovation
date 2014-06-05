@@ -243,7 +243,34 @@ div.bottom-tabbed {
 	background-size: cover;	
 }
 
+.answer-none {
+	background-image:url('../images/none-at-all-button.png');
+	background-repeat:no-repeat;
+	background-color:transparent;
+	background-size:100% 100%;
+	
+	border:none; 
 
+	
+	/*position:absolute;	
+	top:88%; 
+	left:3.5%;*/
+	/*margin-left: 4%;
+	margin-bottom: 7%;*/
+	width:205px;
+	height:205px;
+}
+.answer-all {
+	background-image:url('../images/all-of-them-button.png');
+	background-repeat:no-repeat;
+	background-color:transparent;
+	background-size:100% 100%;
+	
+	border:none; 
+	width:205px;
+	height:205px;	
+
+}
 
 .question-button {
 	position:relative;	
