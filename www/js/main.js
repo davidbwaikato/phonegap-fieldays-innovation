@@ -126,7 +126,7 @@ var app = {
 			//this.considerPage = new ConsiderView().render();
 			//bubblesStopped = false; 
 			//self.slidePage(this.considerPage);	
-			this.considerPage = new ConsiderView();
+			this.considerPage = new ConsiderView(this.homePage);
 			
 			//this.kiaoraPage.playVideo(function() {
 					self.considerPage.render();
@@ -149,7 +149,16 @@ var app = {
 	    return;
 	}
 
-
+	  if (hash == "#finish") {        
+		if (this.finishPage) {
+			this.slidePage(this.finishPage);				
+		} else {
+			this.finishPage = new FinishView(this.homePage);
+			self.finishPage.render();
+			self.slidePage(this.finishPage);				
+		}
+		return;
+	  }
 
     },
 
@@ -202,6 +211,14 @@ var app = {
 				currentPageDest = "stage-right";
 		}
 		else if ((page == app.considerPage) && (this.currentPage == app.winner2013Page)) {
+				$(page.el).attr('class', 'page stage-left');
+				currentPageDest = "stage-right";
+		}
+		else if ((page == app.winner2013Page) && (this.currentPage == app.finishPage)) {
+				$(page.el).attr('class', 'page stage-left');
+				currentPageDest = "stage-right";
+		}
+		else if ((page == app.finishPage) && (this.currentPage == app.splashPage)) {
 				$(page.el).attr('class', 'page stage-left');
 				currentPageDest = "stage-right";
 		}

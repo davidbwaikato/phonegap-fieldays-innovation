@@ -3,6 +3,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="css/source-sans-pro.js"></script>
     <link href="css/styles.css" rel="stylesheet">
+	<link href="css/storystyle.css" rel="stylesheet"><!-- only for .constrainHeight -->
     <link href="css/turnstyle-block.css" rel="stylesheet">
   </head>
 
@@ -11,7 +12,7 @@
 	
 	<script id="splash-tpl" type="text/x-handlebars-template">	
 	<div class="page-body splash">
-	<a href="#home" style="position:absolute;left:0;top:0;width:100%;height:100%;"></a>
+	<a href="#home" class="splash-link"></a><!--<a href="#home"><button class="splash-button"></button></a>--><!--a style="position:absolute;left:0;top:0;width:100%;height:100%;"-->
 	</div>
 	</script>
   
@@ -25,6 +26,18 @@
     </script>
 
 	
+	<script id="finish-tpl" type="text/x-handlebars-template">
+		<div class="consider purpletext">			
+			<div class="finish">
+				You've come to the end. 
+				Return your tablet to the stall. 
+				There you can enter your name to win your own HP Slate 7 Extreme.
+				<p><a href="index.html">FINISH!</a></p>
+			</div>
+		</div>
+    </script>
+	
+	
     <script id="kiaora-tpl" type="text/x-handlebars-template">
       
       <div class="page-body kiaora purpletext">	  
@@ -35,11 +48,13 @@
 	        {{#if numExploredStories}}				
 				{{#if foundAllStories}}
 				{{else}}
-					{{#if downToOneStory}}
+					<div class="top-center">
+					{{#if downToOneStory}}						
 						You have {{downToOneStory}} more story to discover.
 					{{else}}
 						You have {{remainingStories}} more stories to discover.
 					{{/if}}
+					</div>
 				{{/if}}
 			{{else}}
 			      <h2 style="color:white">Kia ora, {{this.enteredName}}!</h2>	     
@@ -50,13 +65,13 @@
 			{{/if}}
           
 	      
-            <p>
+            <div class="top-center">
 			  {{#if numExploredStories}}
 				  {{#if foundAllStories}}
 						Congratulations, you've found the {{totalNumStories}} stories.					
 				  {{/if}}				
 			  {{/if}}
-			</p>
+			</div>
 		</div>		
 		
 		<div class="bottom-tabbed">
@@ -144,23 +159,22 @@
 	  
 	  
 	<!-- Innovation Stories -->  
-	  
+			   <!--  style="width: 100%; height: 350px;" -->
     <script id="Innovation-Story-01-tpl" type="text/x-handlebars-template">
 	   <iframe id="i-innovation-story-01" src="innovation-story-01.html" />
-	</script>
-	
+	</script>	
    
     <script id="Innovation-Story-02-tpl" type="text/x-handlebars-template">
-       <iframe id="i-innovation-story-02" src="innovation-story-02.html" />   <!--  style="width: 100%; height: 350px;" -->
+       <iframe id="i-innovation-story-02" src="innovation-story-02.html" />
     </script>
 
 	<script id="Innovation-Story-03-tpl" type="text/x-handlebars-template">
 	   <iframe id="i-innovation-story-03" src="innovation-story-03.html" />
 	</script>
 	
-   
-    <script id="Innovation-Story-04-tpl" type="text/x-handlebars-template">
-       <iframe id="i-innovation-story-04" src="innovation-story-04.html" />   <!-- Ayla -->
+   <!-- Ayla -->
+    <!--<script id="Innovation-Story-04-tpl" type="text/x-handlebars-template">
+       <iframe id="i-innovation-story-04" src="innovation-story-04.html" />   
     </script>
 	
 	<script id="Innovation-Story-05-tpl" type="text/x-handlebars-template">
@@ -171,105 +185,73 @@
     <script id="Innovation-Story-06-tpl" type="text/x-handlebars-template">
        <iframe id="i-innovation-story-06" src="innovation-story-06.html" style="width: 100%; height: 350px;" />   
     </script>
+	-->
 	
 	<!-- End Innovation Stories -->
 
 	
-    <script id="consider-tplxx" type="text/x-handlebars-template">
-
-      <div class="page-body kiaora purpletext">
-
-		<div id="after-bubbles">
-			<div>
-				<h2 class="question">Question 1</h2>
-				<p class="question">How many of our innovators were told by someone that they were wasting their time?</p>
-				<a href="#answer-01"><button class="answer-all"></button></a>
-				<a href="#answer-01"><button class="answer-none"></button></a>
-			</div>
-	
-		  <!-- make this just an image in a tag -->
-		<!--<p><a href="index.html#consider" class="question-button" style="background-image:url('images/button-all.png');left:20%;top:50%;"></a>
-		<a href="index.html#consider" class="question-button" style="background-image:url('images/button-none.png');right:20%;top:50%;"></a>
-		</p>
-		 --> 
-	      <div style="padding-top: 2rem; float: right;">
-		<a href="#winner-2013" class="scanner-btn">
-		  <button class="discover square purple" id="next" style="white-space: nowrap; background-color: orange;">
-		    Next
-		  </button>
-		</a>
-	      </div>
-			
-
-	    </div>
-	    
-	  </div> <!-- end of absolute overlap area -->
-  
-    </script>
-
 	<!-- http://stackoverflow.com/questions/5515527/javascript-onclick-hide-div 
 	this.parentNode.style.display = 'none';
 	-->
 	<script id="consider-tpl" type="text/x-handlebars-template">
-		<div class="page-body kiaora purpletext">
+		<div class="consider purpletext">
 		  <div id="after-bubbles">
-	
-		   <div id="question-01">
-			<h1>question 1</h1>
-			<p>How many of our innovators were told by someone that they were wasting their time?</p>
+			
+			<div class="question-section"><!--style="width:60%; margin: 20% auto; text-align: center;"-->
+		   <div id="question-01">			
+			<p>Once our innovators came up with an idea, the rest was easy…</p>
+			<p>
 			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show();"><button class="answer-none"></button></a>
 			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show(); $('#answer-01-extra').show();"><button class="answer-all"></button></a>		
+			</p>
 		   </div>
 		   
 		   <div id="answer-01" style="display:none;">
-			<div id="answer-01-extra" style="display:none;">That's right.</div>
-			<p>All of our innovators had to keep going even if it didn't seem they would get the situation they were looking for.</p>
-			<p class="tabbed">"I was told by so many people that I was mad and 
-			I couldn't make a living playing with plasticine. 
-			But that's what I had to do."
-			<span class="tabbed">- Richard Taylor. 4x oscar Award Winner</span></p>
+			<img class="right constrainHeight" src="images/QandA/RichardTaylor_Oscar.jpg"/>
+			<p><span id="answer-01-extra" style="display:none;">That's right.</span> 
+			Having the idea is the easy part! All innovators talk of how the real work begins after that initial idea -</p>
+			<p class="tabbed"><i>“... Creating something innovative doesn't just happen - you have to work hard, think about what you are trying to achieve, and, no matter what, hold onto your dreams. Then sometimes amazing and surprising things can happen”
+			- Sir Richard Taylor</i></p>
+			<!--<br /><span class="tabbed">- Sir Richard Taylor</span></i></p>-->
 			
-			<a href="#consider" onclick="$('#answer-01').hide(); $('#question-02').show();"><button class="exploring consider"></button></a>		
+			<!--<a href="#consider" onclick="$('#answer-01').hide(); $('#question-02').show();"><button class="exploring consider"></button></a>-->
+			<a href="#consider" onclick="$('#answer-01').hide(); $('#question-02').show();"><button class="forward-button"></button></a><!--class="fwd-button"-->
 		   </div>
 		   
-		   <div id="question-02" style="display:none;">
-			<h1>question 2</h1>
-			<p>How many of our innovators got ideas from others on their way to their solution?</p>
+		   <div id="question-02" style="display:none;">		
+			<p>Innovators do their best work alone.</p>
 			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show();"><button class="answer-none"></button></a>
 			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show(); $('#answer-02-extra').show();"><button class="answer-all"></button></a>		
 		   </div>
 		   
 		   <div id="answer-02" style="display:none;">
-			<div id="answer-02-extra" style="display:none;">That's right.</div>
-			<p>To help you think of things in an innovative way, 
-			it helps to listen to others and look at what 
-			other people have done.</p>
-			<p class="tabbed">"It's not just my ideas&mdash;my producer, my sound engineer,
-			all sorts of people have challenged me to come up with something innovative&mdash;a new sound."
-			<span class="tabbed">- Lorde. Musician.</span></p>
+			<img class="right constrainHeight" src="images/QandA/lorde-joel-little.jpg"/>
+			<p><span id="answer-02-extra" style="display:none;">That's right.</span> 
+			Innovation is about using other people’s expertise to make your idea work.</p>
+			<p class="tabbed"><i>“You get the best results when you get the right people in the room, and everyone’s contribution is valued”
+			<span class="tabbed">- Joel Little</span></i></p>
 			
-			<a href="#consider" onclick="$('#answer-02').hide(); $('#question-03').show();"><button class="exploring consider"></button></a>	
-			
-		   </div>
+			<a href="#consider" onclick="$('#answer-02').hide(); $('#question-03').show();"><button class="forward-button"></button></a>
+		   </div>		   
 		   
-		   
-		   <div id="question-03" style="display:none;">
-			<h1>question 3</h1>
-			<p>Who can be an innovator?</p>
+		   <div id="question-03" style="display:none;">			
+			<p>Can anyone be an Innovator?</p>
 			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show();"><button class="answer-none"></button></a>
 			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show(); $('#answer-03-extra').show();"><button class="answer-all"></button></a>		
 		   </div>
 		   
-		   <div id="answer-03" style="display:none;">
-			<div id="answer-03-extra" style="display:none;">That's right.</div>
-			<p>Anyone can be an innovator.</p>
-			<p>Last year's winner at the Mystery Creek Innovation Awards was 14
-			year old school girl, Ayla Hutchinson.
+		   <div id="answer-03" style="display:none;">			
+			<p><span id="answer-03-extra" style="display:none;">That's right.</span>
+			Anyone can be an innovator.</p>
+			<p>Last year's winner at the 
+			<br />Mystery Creek Innovation Awards 
+			<br />was 13-year-old school girl, Ayla Hutchinson.
 			</p>
 			
-			<a href="#winner-2013"><button class="exploring consider"></button></a>		
+			<a href="#winner-2013"><button class="forward-button"></button></a>		
 		   </div>
 	   
+			</div>
 		  </div>
 		</div>	
 	</script>
@@ -325,6 +307,7 @@
 <script src="js/DiscoverView.js"></script>
 <script src="js/ConsiderView.js"></script>
 <script src="js/Winner2013View.js"></script>
+<script src="js/FinishView.js"></script>
 
 <script src="js/file.js"></script>
 <script src="js/main.js"></script>

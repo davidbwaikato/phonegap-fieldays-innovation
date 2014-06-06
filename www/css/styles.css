@@ -205,13 +205,83 @@ body {
 	-o-background-size: cover;
 	background-size: cover;	
    
-    padding: 1rem 3rem;    
-    background-color: rgba(200, 200, 200, .9);
+    padding: 1rem 3rem; 
+    
     /*color: white;*/    
 	font-family: "Century Gothic", serif;
     /*font-family: "Roboto", "Century Gothic Regular", helvetica, sans-serif;*/
     font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
+	
 }
+
+div.consider {	
+	background-image:url('../images/background_kiaora.png');
+	background-repeat:no-repeat;
+	background-color:#632468;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	
+	font-family: "Century Gothic", serif;
+    font-size: 3rem; /* font shorthand doesn't work with rem in IE10 */
+	
+	
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0; 
+	left: 0;
+	bottom: 0;
+	position: absolute;
+	
+}
+
+.question-section, .finish {	
+	width:70%; 
+	margin: 10% auto; 
+	text-align: center;
+}
+
+/* Forward button */
+button.forward-button {
+	background-image:url("../images/forwardbutton.png");
+	background-repeat:no-repeat;
+	background-color:transparent;
+	/*background-size:100% 100%;*/
+	
+	border:none;	
+
+	width: 69px;	
+	height: 72px;
+	position:absolute;	
+	right:5%;
+	bottom:5%;
+}
+
+/* splash-button unused */
+button.splash-button, button.splash-button:enabled:active {
+	position:absolute;
+	left:0;
+	top:0;
+	background-color:transparent;
+	width:100%;
+	height:100%;
+	border:none;
+	
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
+}
+
+a.splash-link {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	z-index:100;
+}
+
 div.top-left {
 	position: absolute; 
 	top:20%; 
@@ -221,6 +291,11 @@ div.bottom-tabbed {
 	position:absolute;
 	top:70%;
 	left:25%;
+}
+div.top-center {
+	position:relative; 
+	margin-top:20%;
+	/*border: 2px solid white;*/
 }
 
 .splash  {
@@ -244,7 +319,7 @@ div.bottom-tabbed {
 }
 
 .answer-none {
-	background-image:url('../images/none-at-all-button.png');
+	background-image:url('../images/none-at-all-button2.png');
 	background-repeat:no-repeat;
 	background-color:transparent;
 	background-size:100% 100%;
@@ -268,8 +343,7 @@ div.bottom-tabbed {
 	
 	border:none; 
 	width:205px;
-	height:205px;	
-
+	height:205px;
 }
 
 .question-button {
@@ -375,7 +449,7 @@ html#story {
 #enter-name, #enter-email {   
 	position:absolute;
 	left:10%; /*left:11.7%;*/
-	top:48%;/*top:46.7%;*/
+	top:48.5%;/*top:46.7%;*/
 	width: 79.5%;/*width: 77.5%;*/
 	color:white;
 	background:none;
@@ -479,15 +553,20 @@ button.start:disabled {
 	background-image:url('../images/continueexploringbutton.png');
 }
 
+/* http://phonegap-tips.com/articles/essential-phonegap-css-webkit-tap-highlight-color.html */
+button, button:enabled:active {
+	/*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
+	/*-webkit-tap-highlight-color: transparent;*/ /* For some Androids */
+}
 
-button.round, button.square, button.square:enabled:active {
+/*button.round, button.square, button.square:enabled:active {
 	font-size:4rem;
 
     text-align: center;
     text-decoration: none;
 
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+}*/
 
 button.purple {
 	color:white;/*#AF90B2;*/
@@ -495,6 +574,7 @@ button.purple {
 	border: none;
 }
 
+/*
 button.square:disabled {
     border:3px solid #8F3E98;
 }
@@ -508,7 +588,7 @@ button.purple.square:disabled {
 button.purple.square:enabled:active {
 	color:white;
 	background-color:#8F3E98;   
-}
+}*/
 
 
 button.round:disabled{
