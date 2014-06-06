@@ -25,7 +25,8 @@ var FileIO = function(fileSystem) {
 	};
 	
 	
-	this.writeFile = function(filename, text, successCallback, optFailureCallback) {	
+	this.writeFile = function(filename, text, successCallback, optFailureCallback) {
+
 		var self = this;		
 		var failureCallback = optFailureCallback || $.proxy(this.failIOFail, this);
 		
@@ -44,11 +45,14 @@ var FileIO = function(fileSystem) {
     };
 	
 	this.writeFileInternal = function(writer, text, successCallback, failureCallback) {
-		var self = this;		
+		var self = this;
 		
 		writer.onwrite = function(evt) {
 			console.log("FileIO.writeFileInternal(): successfully saved " + writer.fileName);
 			console.log("FileIO.writeFileInternal(): Have written out " + text);
+			
+			//console.log("In FileIO.write. writing: " + text);		
+			
 			successCallback();
 		};
 		
@@ -57,6 +61,7 @@ var FileIO = function(fileSystem) {
 			failureCallback(fileTransferError);
 		};
 		
+		writer.seek(writer.length); // to append text
 		writer.write(text);		
 	};	
 	

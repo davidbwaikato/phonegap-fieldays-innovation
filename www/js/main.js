@@ -89,7 +89,7 @@ var app = {
 	    else {
 			//this.kiaoraPage = new KiaoraView(this.homePage).render();
 			
-			this.kiaoraPage = new KiaoraView(this.homePage);		
+			this.kiaoraPage = new KiaoraView(this.homePage);
 				 
 			this.kiaoraPage.playVideo(function() {
 					self.kiaoraPage.render();
@@ -153,9 +153,14 @@ var app = {
 		if (this.finishPage) {
 			this.slidePage(this.finishPage);				
 		} else {
-			this.finishPage = new FinishView(this.homePage);
+			if(!this.kiaoraPage) { // need kiaoraPage's fileIO and fileSystem objects
+				this.kiaoraPage = new KiaoraView(this.homePage);
+			}
+			this.finishPage = new FinishView(this.homePage, this.kiaoraPage);
 			self.finishPage.render();
-			self.slidePage(this.finishPage);				
+			self.slidePage(this.finishPage);
+			// if they've reached the finish page, can already write the log. No need to wait until they click on the final link back to splashPage
+			self.finishPage.writeToLog(); 
 		}
 		return;
 	  }
