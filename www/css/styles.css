@@ -214,8 +214,7 @@ body {
 	
 }
 
-div.consider {	
-	background-image:url('../images/background_kiaora.png');
+div.box {		
 	background-repeat:no-repeat;
 	background-color:#632468;
 	-webkit-background-size: cover;
@@ -237,27 +236,30 @@ div.consider {
 	
 }
 
-.question-section, .finish {	
+.consider  {
+	background-image:url('../images/consider_background.png');
+}
+
+.final  {
+	background-image:url('../images/credits-background.png');
+}
+
+.question-section {	
 	width:70%; 
 	margin: 10% auto; 
 	text-align: center;
 }
 
-/* Forward button */
-button.forward-button {
-	background-image:url("../images/forwardbutton.png");
-	background-repeat:no-repeat;
-	background-color:transparent;
-	/*background-size:100% 100%;*/
-	
-	border:none;	
-
-	width: 69px;	
-	height: 72px;
-	position:absolute;	
-	right:5%;
-	bottom:5%;
+.finish {	
+	width:70%; 
+	margin: 15% auto; 
+	text-align: center;
 }
+
+.question {
+	margin-top: 20%;
+}
+
 
 /* splash-button unused */
 button.splash-button, button.splash-button:enabled:active {
@@ -318,38 +320,105 @@ div.top-center {
 	background-size: cover;	
 }
 
-.answer-none {
-	background-image:url('../images/none-at-all-button2.png');
+.answer {	
 	background-repeat:no-repeat;
 	background-color:transparent;
 	background-size:100% 100%;
 	
 	border:none; 
-
+	width:205px;
+	height:205px;
 	
 	/*position:absolute;	
 	top:88%; 
 	left:3.5%;*/
 	/*margin-left: 4%;
 	margin-bottom: 7%;*/
-	width:205px;
-	height:205px;
 }
-.answer-all {
-	background-image:url('../images/all-of-them-button.png');
-	background-repeat:no-repeat;
+
+
+/* Forward button */
+button.forward-button {
+	background-image:url("../images/forwardbutton.png");
+	/*background-repeat:no-repeat;*/
 	background-color:transparent;
 	background-size:100% 100%;
 	
-	border:none; 
-	width:205px;
-	height:205px;
+	border:none;
+	width: 116px;	
+	height: 162px;
+	
+	position:absolute;	
+	right:5%;
+	bottom:5%;
+}
+
+button.forward-button, button.forward-button:enabled:active {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+
+button.forward-button:active {
+	background-image:url('../images/clicked-forward-swirly.png');
+}
+
+
+/* http://phonegap-tips.com/articles/essential-phonegap-css-webkit-tap-highlight-color.html */
+button.answer, button.answer:enabled:active {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+
+button.answer-true {
+	background-image:url('../images/white-true.png');
+}
+
+button.answer-true:active {
+	background-image:url('../images/clicked-white-true.png');
+}
+
+button.answer-false {
+	background-image:url('../images/purple-false.png');
+}
+
+button.answer-false:active {
+	background-image:url('../images/clicked-purple-false.png');
+}
+
+button.answer-any {
+	background-image:url('../images/white-anyone.png');
+}
+
+button.answer-any:active {
+	background-image:url('../images/clicked-white-anyone.png');
+}
+
+button.answer-none {
+	background-image:url('../images/purple-not-me.png');
+}
+
+button.answer-none:active {
+	background-image:url('../images/clicked-purple-not-me.png');
 }
 
 .question-button {
 	position:relative;	
 	width: 277px;
 	height: 258px;
+}
+
+#question-title {
+	background-image:url('../images/what-do-you-make-of-this.png');
+	background-repeat:no-repeat;
+	background-color:transparent;
+	background-size:100% 100%;
+	
+	border:none; 
+	width:275px;
+	height:166px;
+	position: absolute;
+	top: 4%;
+	left: 4%;
 }
 
 
@@ -436,6 +505,17 @@ html#story {
 	-o-background-size: cover;
 	background-size: cover;	
 	height: 100%;
+	color: white; 
+}
+
+html#story-final {	
+	background:url("../images/consider_background.png") no-repeat top center fixed #632468; /* background:url("../images/background3.png") no-repeat center center fixed;*/ /* #632468 */
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
+	height: 100%;
+	color:#632468;
 }
 
 

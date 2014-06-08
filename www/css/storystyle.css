@@ -16,8 +16,7 @@ img.status    {
 	width:25%;	
 }
  
-body {
-	color: white; 
+body {	
 	margin:0;
 	padding:0;
 	border: none;
@@ -51,8 +50,8 @@ div.story-title {
 	display: inline;
 	/*float:left;*/	
 	background-image:url("../images/backbutton.png");	
-	width: 120px;
-	height: 160px;	
+	width: 116px;
+	height: 162px;	
 }
 
 .back-left {
@@ -75,11 +74,13 @@ a.fwd-button {
 	display: inline;
 	/*float:left;*/	
 	background-image:url("../images/forwardbutton.png");	
-	width: 69px;	
-	height: 72px;	
+	width: 116px;	
+	height: 162px;	
 	
 	right:5%;
-	bottom:5%;	
+	bottom:5%;
+	/*width: 69px;	
+	height: 72px;*/
 }
 
 
