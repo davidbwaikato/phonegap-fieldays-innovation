@@ -27,7 +27,8 @@ import org.apache.cordova.PluginResult;
  * @sa https://github.com/apache/cordova-android/blob/master/framework/src/org/apache/cordova/CordovaPlugin.java
  */
 public class DiscoverScanAR extends CordovaPlugin {
-    public static final int REQUEST_CODE = 0x0ba7c0de;
+    public static final int REQUEST_SCAN_CODE = 0x0ba7c0de;
+    public static final int REQUEST_ARSCAN_CODE = 0x0ba7c0df;
 
     private static final String SCAN = "scan";
     private static final String ARSCAN = "arscan";
@@ -128,7 +129,7 @@ public class DiscoverScanAR extends CordovaPlugin {
         Intent intentScan = new Intent(SCAN_INTENT);
         intentScan.addCategory(Intent.CATEGORY_DEFAULT);
 
-        this.cordova.startActivityForResult((CordovaPlugin) this, intentScan, REQUEST_CODE);
+        this.cordova.startActivityForResult((CordovaPlugin) this, intentScan, REQUEST_SCAN_CODE);
     }
 
 
@@ -143,7 +144,7 @@ public class DiscoverScanAR extends CordovaPlugin {
 		
 	// Used to be hardwired to: "http://www.cs.waikato.ac.nz/~davidb/tipple/uni-mixare-locdata.json"
 	intentARScan.setDataAndType(Uri.parse("file:///sdcard/tipple-store/geodata/" + json_file), "application/mixare-json"); 
-        this.cordova.startActivityForResult((CordovaPlugin) this, intentARScan, REQUEST_CODE);
+        this.cordova.startActivityForResult((CordovaPlugin) this, intentARScan, REQUEST_ARSCAN_CODE);
     }
 
 
@@ -157,7 +158,7 @@ public class DiscoverScanAR extends CordovaPlugin {
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == REQUEST_SCAN_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 JSONObject obj = new JSONObject();
                 try {
@@ -182,9 +183,37 @@ public class DiscoverScanAR extends CordovaPlugin {
                 this.callbackContext.success(obj);
             } else {
                 //this.error(new PluginResult(PluginResult.Status.ERROR), this.callback);
-                this.callbackContext.error("Unexpected error");
+                this.callbackContext.error("Scan intent. Unexpected error");
             }
         }
+
+        else if (requestCode == REQUEST_ARSCAN_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                JSONObject obj = new JSONObject();
+                try {
+                    obj.put(TEXT, intent.getStringExtra("ARSCAN_RESULT"));
+                    obj.put(CANCELLED, false);
+                } catch (JSONException e) {
+                    Log.d(LOG_TAG, "ARScan intent (RESULT_OK) threw an exception: This should never happen");
+                }
+                this.callbackContext.success(obj);
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                JSONObject obj = new JSONObject();
+                try {
+                    obj.put(TEXT, "");
+                    obj.put(CANCELLED, true);
+                } catch (JSONException e) {
+                    Log.d(LOG_TAG, "ARScan intent (RESULT_CANCELED) threw an exception. This should never happen");
+                }
+                this.callbackContext.success(obj);
+            } else {
+                //this.error(new PluginResult(PluginResult.Status.ERROR), this.callback);
+                this.callbackContext.error("ARScan intent. Unexpected error");
+            }
+        }
+
+
+
     }
 
     /**
