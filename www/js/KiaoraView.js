@@ -119,7 +119,8 @@ var KiaoraView = function(homeView) {
 
 	this.playVideo = function(callback) {
 		if (typeof VideoPlayer != 'undefined') {
-			VideoPlayer.play('file:///android_asset/www/video/startupVideo2Android.mp4',callback);
+			//VideoPlayer.play('file:///android_asset/www/video/startupVideo2Android.mp4',callback);
+			VideoPlayer.play('file:///android_asset/www/video/animation.mp4',callback);
 		}
 		else {
 			console.log("KiaoraPage: No VideoPlayer plugin.  Going straight to callback()");

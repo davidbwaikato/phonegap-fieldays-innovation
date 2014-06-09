@@ -27,12 +27,20 @@
 
 	
 	<script id="finish-tpl" type="text/x-handlebars-template">
-		<div class="consider purpletext">			
+		<div class="final box purpletext">			
 			<div class="finish">
-				You've come to the end. 
-				Return your tablet to the stall. 
-				There you can enter your name to win your own HP Slate 7 Extreme.
-				<p><a href="index.html">FINISH!</a></p> <!--  onclick="app.finishPage.writeLog();" -->
+				<!--You've come to the end. Return your tablet to the stall. There you can enter your name to win your own HP Slate 7 Extreme. <p><a href="index.html">FINISH!</a></p>--> <!--  onclick="app.finishPage.writeLog();" -->
+				
+				<h1>Credits</h1>
+				
+				<!--David Bainbridge, Jenna Bowers, Cory Buchanan, David Copeland, Annika Hinze, Anupama Krishnan, Roanne Turnbull,	Jill Wilson-->
+				<p>Roanne Turnbull, Jenna Bowers, Cory Buchanan (design)
+				<br />David Copeland, Jill Wilson (iEngage)
+				<br />David Bainbridge, Annika Hinze, Anupama Krishnan (programming)				
+				</p>
+				
+				<p><i>Thanks to all contributors of the stories</i></p>
+				
 			</div>
 		</div>
     </script>
@@ -194,15 +202,18 @@
 	this.parentNode.style.display = 'none';
 	-->
 	<script id="consider-tpl" type="text/x-handlebars-template">
-		<div class="consider purpletext">
+		<div class="consider box purpledark">
 		  <div id="after-bubbles">
 			
 			<div class="question-section"><!--style="width:60%; margin: 20% auto; text-align: center;"-->
-		   <div id="question-01">			
-			<p>Once our innovators came up with an idea, the rest was easy…</p>
+			
+		   <div id="question-01" class="question">			
+		   <span id="question-title"></span>
+			<p>Once our innovators came up with an idea, 
+			<br />the rest was easy…</p>
 			<p>
-			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show(); app.homePage.q1='n';"><button class="answer-none"></button></a>
-			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show(); $('#answer-01-extra').show(); app.homePage.q1='y';"><button class="answer-all"></button></a>		
+			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show(); app.homePage.q1='n';"><button class="answer answer-false" ontouchstart="return true;"></button></a>
+			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show(); $('#answer-01-extra').show(); app.homePage.q1='y';"><button class="answer answer-true" ontouchstart="return true;"></button></a>		
 			</p>
 		   </div>
 		   
@@ -215,13 +226,13 @@
 			<!--<br /><span class="tabbed">- Sir Richard Taylor</span></i></p>-->
 			
 			<!--<a href="#consider" onclick="$('#answer-01').hide(); $('#question-02').show();"><button class="exploring consider"></button></a>-->
-			<a href="#consider" onclick="$('#answer-01').hide(); $('#question-02').show();"><button class="forward-button"></button></a><!--class="fwd-button"-->
+			<a href="#consider" onclick="$('#answer-01').hide(); $('#question-02').show();"><button class="forward-button" ontouchstart="return true;"></button></a><!--class="fwd-button"-->
 		   </div>
 		   
-		   <div id="question-02" style="display:none;">		
-			<p>Innovators do their best work alone.</p>
-			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show(); app.homePage.q2='n';"><button class="answer-none"></button></a>
-			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show(); $('#answer-02-extra').show(); app.homePage.q2='y';"><button class="answer-all"></button></a>		
+		   <div id="question-02" style="display:none;" class="question">		
+			<p>Innovators do their best work alone…</p>
+			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show(); app.homePage.q2='n';"><button class="answer answer-false" ontouchstart="return true;"></button></a>
+			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show(); $('#answer-02-extra').show(); app.homePage.q2='y';"><button class="answer answer-true" ontouchstart="return true;"></button></a>		
 		   </div>
 		   
 		   <div id="answer-02" style="display:none;">
@@ -231,24 +242,25 @@
 			<p class="tabbed"><i>“You get the best results when you get the right people in the room, and everyone’s contribution is valued”
 			<span class="tabbed">- Joel Little</span></i></p>
 			
-			<a href="#consider" onclick="$('#answer-02').hide(); $('#question-03').show();"><button class="forward-button"></button></a>
+			<a href="#consider" onclick="$('#answer-02').hide(); $('#question-03').show();"><button class="forward-button" ontouchstart="return true;"></button></a>
 		   </div>		   
 		   
-		   <div id="question-03" style="display:none;">			
+		   <div id="question-03" style="display:none;" class="question">			
 			<p>Can anyone be an Innovator?</p>
-			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show(); app.homePage.q3='n';"><button class="answer-none"></button></a>
-			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show(); $('#answer-03-extra').show(); app.homePage.q3='y';"><button class="answer-all"></button></a>		
+			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show(); app.homePage.q3='n';"><button class="answer answer-none" ontouchstart="return true;"></button></a>
+			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show(); $('#answer-03-extra').show(); app.homePage.q3='y';"><button class="answer answer-any" ontouchstart="return true;"></button></a>		
 		   </div>
 		   
-		   <div id="answer-03" style="display:none;">			
+		   <div id="answer-03" style="display:none;" class="question">			
 			<p><span id="answer-03-extra" style="display:none;">That's right.</span>
 			Anyone can be an innovator.</p>
 			<p>Last year's winner at the 
 			<br />Mystery Creek Innovation Awards 
-			<br />was 13-year-old school girl, Ayla Hutchinson.
+			<br />was 13-year-old school girl,
+			<br />Ayla Hutchinson.
 			</p>
 			
-			<a href="#winner-2013"><button class="forward-button"></button></a>		
+			<a href="#winner-2013"><button class="forward-button" ontouchstart="return true;"></button></a>	
 		   </div>
 	   
 			</div>
