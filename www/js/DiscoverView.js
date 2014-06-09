@@ -37,6 +37,8 @@ var DiscoverView = function(scan_mode, homeView) {
     this.loadInnovationStory = function(result) {
         var self = this;
 
+		alert("LoadInnovationStory: " + result.text);
+		
 		if(!result.text) { // empty
 			app.showAlert("No innovation story loaded", self.scan_mode + ": No value found"); //alert("No innovation story loaded");				
 			app.reroute("#kiaora"); // back to previous page
@@ -65,6 +67,7 @@ var DiscoverView = function(scan_mode, homeView) {
 		}*/		
 		
 		console.error("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
+		alert("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
 		
 		var innovation_id = "#"+story_id+"-tpl";
 		var innovation_html = $(innovation_id).html();
@@ -75,6 +78,8 @@ var DiscoverView = function(scan_mode, homeView) {
 		// Record the fact that the user has brought up this innovation story
 		KiaoraView.explored_stories[story_id] = 1;
 
+		//$('#info-page').empty(); // http://stackoverflow.com/questions/2648618/remove-innerhtml-from-div
+		//$('#info-page').html("<body style='background-color: #632468';></body>");
 		$('#info-page').html(inner_html);
 		
 		// log the story they found
@@ -98,13 +103,17 @@ var DiscoverView = function(scan_mode, homeView) {
             return;
         }
 
-
+		alert("Before QR scanning");
+		
         cordova.plugins.discoverScanAR.scan( // qr scan
 	        $.proxy(this.loadInnovationStory,this),
                 function (error) {
-                    app.showAlert(err,"Scanning failed: ");
+                    app.showAlert(error,"Scanning failed: ");
+					alert("QR Scanning failed: " + error);
                 }
         );
+		
+		alert("After QR scanning");
     };
 
 
@@ -124,7 +133,8 @@ var DiscoverView = function(scan_mode, homeView) {
 			"fieldays.json",
 			$.proxy(this.loadInnovationStory,this),
                 function (error) {
-                    app.showAlert(err,"Scanning failed: ");
+                    app.showAlert(error,"Scanning failed: ");
+					alert("AR Scanning failed: " + error);
                 }
         );
 

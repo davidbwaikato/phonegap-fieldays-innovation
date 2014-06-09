@@ -17,15 +17,6 @@ var FinishView = function(homeView) {
         return this;
     };
 	
-	this.fileWriteSuccess = function() {
-		console.log("successfully wrote file: " + this.recordsFile);		
-	}
-	
-	this.getLogName = function () {
-		return this.recordsFile;
-	}
-	
-	
     this.initialize();
 
 }

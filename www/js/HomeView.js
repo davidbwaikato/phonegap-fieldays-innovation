@@ -217,6 +217,14 @@ var HomeView = function() {
 			console.log("Browser context. Record entry: " + text);
 		}
 	};
+		
+	this.fileWriteSuccess = function() {
+		console.log("successfully wrote file: " + this.recordsFile);		
+	}
+	
+	this.getLogName = function () {
+		return this.recordsFile;
+	}	
 	
 	/******************* END WRITING TO FILE *******************/
 	
