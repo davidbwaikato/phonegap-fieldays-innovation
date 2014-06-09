@@ -1,9 +1,10 @@
 
 
-var DiscoverView = function(scan_mode) {
+var DiscoverView = function(scan_mode, homeView) {
 
     this.scan_mode = scan_mode;
-
+	this.homeView = homeView;
+	
     this.initialize = function() {
         // 'div' wrapper to attach html and events to
         this.el = $('<div/>');
@@ -41,22 +42,43 @@ var DiscoverView = function(scan_mode) {
 			app.reroute("#kiaora"); // back to previous page
 			return;
 		}
-		if(!(/^Innovation-Story-\d\d$/).test(result.text)) { // http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
-			app.showAlert("Not an innovation story", self.scan_mode + ": Unrecognised value"); //alert(result.text + " is not an innovation story");
+		
+		
+		var story_id = result.text;
+		var myRegexp = /^(?:webpage:)?(Innovation-Story-\d\d)$/;
+		var match = myRegexp.exec(story_id);
+		
+		if(match.length != 2) { // first match match[0] is the entire regex, the second match is Innovation-Story-DD
+			app.showAlert("Not an innovation story |" + result.text + "|", self.scan_mode + ": Unrecognised value"); //alert(result.text + " is not an innovation story");						
 			app.reroute("#kiaora"); // back to previous page
 			return;
-		}
-			
-		var innovation_id = "#"+result.text+"-tpl";
+		} else { 
+			story_id = match[1];			
+			//app.showAlert("story_id is now: " + story_id);
+		}		
+		
+		/*
+		if(!(/^(webpage:)?(Innovation-Story-\d\d)$/).test(result.text)) { // http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
+			app.showAlert("Not an innovation story " + result.text, self.scan_mode + ": Unrecognised value"); //alert(result.text + " is not an innovation story");
+			app.reroute("#kiaora"); // back to previous page
+			return;
+		}*/		
+		
+		console.error("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
+		
+		var innovation_id = "#"+story_id+"-tpl";
 		var innovation_html = $(innovation_id).html();
 
 		var inner_template = Handlebars.compile(innovation_html);
 		var inner_html     = inner_template(self.homeView);
 
 		// Record the fact that the user has brought up this innovation story
-		KiaoraView.explored_stories[result.text] = 1;
+		KiaoraView.explored_stories[story_id] = 1;
 
-		$('#info-page').html(inner_html);	
+		$('#info-page').html(inner_html);
+		
+		// log the story they found
+		app.homePage.writeEntryToLog("story", story_id);
 
     };
 

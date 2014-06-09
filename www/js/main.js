@@ -103,8 +103,8 @@ var app = {
 	if (hash == "#discover") {
 		var scanMode = "qr";
 		
-		if(this.kiaoraPage && this.kiaoraPage.scanMode) {			
-			scanMode = this.kiaoraPage.scanMode;
+		if(this.homePage && this.homePage.scanMode) {			
+			scanMode = this.homePage.scanMode;
 		}
 	
 		if (this.discoverPage) {
@@ -112,7 +112,7 @@ var app = {
 			self.slidePage(this.discoverPage);
 	    }
 	    else {
-			this.discoverPage = new DiscoverView(scanMode).render();
+			this.discoverPage = new DiscoverView(scanMode, this.homePage).render();
 			self.slidePage(this.discoverPage);	    
 	    }
 	    return;
@@ -152,15 +152,14 @@ var app = {
 	  if (hash == "#finish") {        
 		if (this.finishPage) {
 			this.slidePage(this.finishPage);				
-		} else {
-			if(!this.kiaoraPage) { // need kiaoraPage's fileIO and fileSystem objects
-				this.kiaoraPage = new KiaoraView(this.homePage);
-			}
-			this.finishPage = new FinishView(this.homePage, this.kiaoraPage);
+		} else {			
+			this.finishPage = new FinishView(this.homePage);
 			self.finishPage.render();
 			self.slidePage(this.finishPage);
 			// if they've reached the finish page, can already write the log. No need to wait until they click on the final link back to splashPage
-			self.finishPage.writeToLog(); 
+			//self.finishPage.writeToLog(); 
+			self.homePage.writeEntryToLog("the-end", "done");
+			
 		}
 		return;
 	  }

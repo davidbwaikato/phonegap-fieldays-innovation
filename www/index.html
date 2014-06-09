@@ -10,16 +10,16 @@
 
   <body class="page-background" style="height: 100%; width: 100%">
 	
-	<script id="splash-tpl" type="text/x-handlebars-template">	
+	<script id="splash-tpl" type="text/x-handlebars-template">
 	<div class="page-body splash">
 	<a href="#home" class="splash-link"></a><!--<a href="#home"><button class="splash-button"></button></a>--><!--a style="position:absolute;left:0;top:0;width:100%;height:100%;"-->
 	</div>
 	</script>
   
 	<script id="home-tpl" type="text/x-handlebars-template">
-		<div class="page-body home-page">			
+		<div class="page-body home-page">
 			<div ><input id="enter-name" type="text"/></div>
-			<a href="#kiaora">
+			<a href="#kiaora" onclick="app.homePage.writeEntryToLog('enteredName', app.homePage.enteredName);">
 			<button class="start" id="start" disabled="disabled"></button>
 			</a>
 		</div>
@@ -27,19 +27,22 @@
 
 	
 	<script id="finish-tpl" type="text/x-handlebars-template">
-		<div class="final box purpletext">			
+		<div class="final box purpletext">
 			<div class="finish">
 				<!--You've come to the end. Return your tablet to the stall. There you can enter your name to win your own HP Slate 7 Extreme. <p><a href="index.html">FINISH!</a></p>--> <!--  onclick="app.finishPage.writeLog();" -->
 				
-				<h1>Credits</h1>
+				<h1 style="margin-top:-25px; margin-bottom:-10px;">Credits</h1>
 				
 				<!--David Bainbridge, Jenna Bowers, Cory Buchanan, David Copeland, Annika Hinze, Anupama Krishnan, Roanne Turnbull,	Jill Wilson-->
-				<p>Roanne Turnbull, Jenna Bowers, Cory Buchanan (design)
-				<br />David Copeland, Jill Wilson (iEngage)
-				<br />David Bainbridge, Annika Hinze, Anupama Krishnan (programming)				
+				<p>Roanne Turnbull, Jenna Bowers,
+				<br />Cory Buchanan (design)				
+				<br />Annika Hinze, Anupama Krishnan,
+				<br />David Bainbridge (software)
 				</p>
+				<p><img src="images/logos/Waikato-crest-in.jpg" height="48px"/><img src="images/logos/cms.gif"/></p>
 				
-				<p><i>Thanks to all contributors of the stories</i></p>
+				
+				<p><i>A huge thank you to all of our innovators.</i></p>
 				
 			</div>
 		</div>
@@ -211,9 +214,9 @@
 		   <span id="question-title"></span>
 			<p>Once our innovators came up with an idea, 
 			<br />the rest was easy…</p>
-			<p>
-			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show(); app.homePage.q1='n';"><button class="answer answer-false" ontouchstart="return true;"></button></a>
-			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show(); $('#answer-01-extra').show(); app.homePage.q1='y';"><button class="answer answer-true" ontouchstart="return true;"></button></a>		
+			<p>			
+			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show(); $('#answer-01-extra').show(); app.homePage.q1='n'; app.homePage.writeEntryToLog('q1','n');"><button class="answer answer-false" ontouchstart="return true;"></button></a>
+			<a href="#consider" onclick="$('#question-01').hide(); $('#answer-01').show(); app.homePage.q1='y'; app.homePage.writeEntryToLog('q1','y');"><button class="answer answer-true" ontouchstart="return true;"></button></a>		
 			</p>
 		   </div>
 		   
@@ -231,8 +234,8 @@
 		   
 		   <div id="question-02" style="display:none;" class="question">		
 			<p>Innovators do their best work alone…</p>
-			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show(); app.homePage.q2='n';"><button class="answer answer-false" ontouchstart="return true;"></button></a>
-			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show(); $('#answer-02-extra').show(); app.homePage.q2='y';"><button class="answer answer-true" ontouchstart="return true;"></button></a>		
+			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show(); $('#answer-02-extra').show(); app.homePage.q2='n'; app.homePage.writeEntryToLog('q2','n');"><button class="answer answer-false" ontouchstart="return true;"></button></a>
+			<a href="#consider" onclick="$('#question-02').hide(); $('#answer-02').show(); app.homePage.q2='y'; app.homePage.writeEntryToLog('q2','y');"><button class="answer answer-true" ontouchstart="return true;"></button></a>		
 		   </div>
 		   
 		   <div id="answer-02" style="display:none;">
@@ -247,14 +250,14 @@
 		   
 		   <div id="question-03" style="display:none;" class="question">			
 			<p>Can anyone be an Innovator?</p>
-			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show(); app.homePage.q3='n';"><button class="answer answer-none" ontouchstart="return true;"></button></a>
-			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show(); $('#answer-03-extra').show(); app.homePage.q3='y';"><button class="answer answer-any" ontouchstart="return true;"></button></a>		
+			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show(); app.homePage.q3='n'; app.homePage.writeEntryToLog('q3','n');"><button class="answer answer-none" ontouchstart="return true;"></button></a>
+			<a href="#consider" onclick="$('#question-03').hide(); $('#answer-03').show(); $('#answer-03-extra').show(); app.homePage.q3='y'; app.homePage.writeEntryToLog('q3','y');"><button class="answer answer-any" ontouchstart="return true;"></button></a>		
 		   </div>
 		   
 		   <div id="answer-03" style="display:none;" class="question">			
 			<p><span id="answer-03-extra" style="display:none;">That's right.</span>
-			Anyone can be an innovator.</p>
-			<p>Last year's winner at the 
+			Anyone can be an innovator!</p>
+			<p>Last year a winner at the 
 			<br />Mystery Creek Innovation Awards 
 			<br />was 13-year-old school girl,
 			<br />Ayla Hutchinson.

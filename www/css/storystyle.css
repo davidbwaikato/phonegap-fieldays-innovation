@@ -211,6 +211,15 @@ img.constrainHeight {
 height:200px; /*100px*/
 }
 
+img.constrainHeight2 {
+height:180px;
+padding-top:10px;
+}
+
+img.constrainHeight3 {
+height:220px;
+}
+
 img.constrainWidth {
 width:320px; /*100px*/
 }
@@ -229,5 +238,3 @@ img.h75 {
 position:relative;
 height:75%
 }
-
-img.width50
