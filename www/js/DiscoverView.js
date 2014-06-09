@@ -37,7 +37,7 @@ var DiscoverView = function(scan_mode, homeView) {
     this.loadInnovationStory = function(result) {
         var self = this;
 
-		alert("LoadInnovationStory: " + result.text);
+		//alert("LoadInnovationStory: " + result.text);
 		
 		if(!result.text) { // empty
 			app.showAlert("No innovation story loaded", self.scan_mode + ": No value found"); //alert("No innovation story loaded");				
@@ -67,7 +67,7 @@ var DiscoverView = function(scan_mode, homeView) {
 		}*/		
 		
 		console.error("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
-		alert("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
+		//alert("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
 		
 		var innovation_id = "#"+story_id+"-tpl";
 		var innovation_html = $(innovation_id).html();
@@ -103,17 +103,17 @@ var DiscoverView = function(scan_mode, homeView) {
             return;
         }
 
-		alert("Before QR scanning");
+		//alert("Before QR scanning");
 		
         cordova.plugins.discoverScanAR.scan( // qr scan
 	        $.proxy(this.loadInnovationStory,this),
                 function (error) {
                     app.showAlert(error,"Scanning failed: ");
-					alert("QR Scanning failed: " + error);
+					//alert("QR Scanning failed: " + error);
                 }
         );
 		
-		alert("After QR scanning");
+		//alert("After QR scanning");
     };
 
 
@@ -134,7 +134,7 @@ var DiscoverView = function(scan_mode, homeView) {
 			$.proxy(this.loadInnovationStory,this),
                 function (error) {
                     app.showAlert(error,"Scanning failed: ");
-					alert("AR Scanning failed: " + error);
+					//alert("AR Scanning failed: " + error);
                 }
         );
 
