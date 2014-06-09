@@ -94,7 +94,7 @@ var KiaoraView = function(homeView) {
 
 KiaoraView.template = Handlebars.compile($("#kiaora-tpl").html());
 
-KiaoraView.totalNumStories = 100;
+KiaoraView.totalNumStories = 3;
 KiaoraView.explored_stories = {};
 
 Object.size = function(obj) {
