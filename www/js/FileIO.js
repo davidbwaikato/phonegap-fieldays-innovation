@@ -48,8 +48,8 @@ var FileIO = function(fileSystem) {
 		var self = this;
 		
 		writer.onwrite = function(evt) {
-			console.log("FileIO.writeFileInternal(): successfully saved " + writer.fileName);
-			console.log("FileIO.writeFileInternal(): Have written out " + text);
+			//console.log("FileIO.writeFileInternal(): successfully saved " + writer.fileName);
+			//console.log("FileIO.writeFileInternal(): Have written out " + text);
 			
 			//console.log("In FileIO.write. writing: " + text);		
 			
@@ -94,7 +94,7 @@ var FileIO = function(fileSystem) {
 			// don't test for "== null", use either the test "obj === null" or the test "!obj"
 			// http://saladwithsteve.com/2008/02/javascript-undefined-vs-null.html
 			if(!evt.target.result) {
-				console.log("FileIO.readFile() ERROR: File empty!");
+				console.error("FileIO.readFile() ERROR: File empty!");
 				
 			} else {
 				var textRead = evt.target.result;
