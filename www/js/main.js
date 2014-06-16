@@ -141,12 +141,16 @@ var app = {
 
 	if (hash == "#winner-2013") {
         if (this.winner2013Page) {
+			// Don't slide in Ayla's innovation-story, since that iframe has its own sliding behaviour
+			// and doubling it causes the first page to wobble when it is brought into view
 			//self.slidePage(this.winner2013Page);
 			$(window).scrollTop(0); // Ensure scroll-bar is back to top
 			$('body').append(this.winner2013Page.el);
 	    }
 	    else {
 			this.winner2013Page = new Winner2013View().render();
+			// Don't slide in Ayla's innovation-story, since that iframe has its own sliding behaviour
+			// and doubling it causes the first page to wobble when it is brought into view
 			//self.slidePage(this.winner2013Page);	    
 			$(window).scrollTop(0); // Ensure scroll-bar is back to top
 			$('body').append(this.winner2013Page.el);
