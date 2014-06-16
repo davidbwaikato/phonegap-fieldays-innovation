@@ -27,17 +27,19 @@ var DiscoverView = function(scan_mode, homeView) {
         return this;
     };
 	
-
 	/*
-    this.story_lookup = { 
-	'Innovation-Story-01': "Innovation Story 1, testing, testing, testing",
-	'Innovation-Story-02': "Innovation Story 2, foo-bar, foo-bar, foo-bar"
-    };*/
+	this.story_lookup = {
+		'Innovation-Story-01': "Innovation Story 1, testing, testing, testing",
+		'Innovation-Story-02': "Innovation Story 2, foo-bar, foo-bar, foo-bar"
+	};*/
+
 
     this.loadInnovationStory = function(result) {
+		//console.error("LoadInnovationStory: " + result.text);
+		
         var self = this;
 
-		//alert("LoadInnovationStory: " + result.text);
+		//alert("LoadInnovationStory: " + result.text); console.error("LoadInnovationStory: checkpt 1" );
 		
 		if(!result.text) { // empty
 			app.showAlert("No innovation story loaded", self.scan_mode + ": No value found"); //alert("No innovation story loaded");				
@@ -66,7 +68,7 @@ var DiscoverView = function(scan_mode, homeView) {
 			return;
 		}*/		
 		
-		console.error("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
+		//console.error("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
 		//alert("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
 		
 		var innovation_id = "#"+story_id+"-tpl";
@@ -90,20 +92,22 @@ var DiscoverView = function(scan_mode, homeView) {
 
     this.qrScan = function() {
         var self = this;
-
+//$('#info-page').empty();
+		
         console.log('qrScan(): init');
         // documentation said the syntax was this:
         // var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
         // but playing with options, seems like it should be this:
         //var scanner = window.cordova.require("cordova/plugin/BarcodeScanner");
 
-	if (!window.cordova) {
+		if (!window.cordova) {
             console.log("DiscoverView.qrScan(): QR-Code Scanner not supported, defaulting to Story 1");
-	    this.loadInnovationStory({text: "Innovation-Story-01"});
+			this.loadInnovationStory({text: "Innovation-Story-01"});
             return;
         }
 
 		//alert("Before QR scanning");
+		//console.error("Before QR scanning");
 		
         cordova.plugins.discoverScanAR.scan( // qr scan
 	        $.proxy(this.loadInnovationStory,this),

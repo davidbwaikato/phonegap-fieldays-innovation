@@ -26,7 +26,7 @@ var KiaoraView = function(homeView) {
 
     this.render = function() {
 	if (!this.homeView) {
-	    this.homeView = { enteredName:  "" }
+	    this.homeView = { enteredName:  "" };
 	}
 
 	var nes = Object.size(KiaoraView.explored_stories);

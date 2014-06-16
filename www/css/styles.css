@@ -476,7 +476,7 @@ button.answer-none:active {
 	margin:0;
 	border: 0px;
 	height: 100%;
-	background-color:none;
+	background-color:#642261; /* dark purple instead of dark violet */	
 	/*padding: 2%;*/
 }
 

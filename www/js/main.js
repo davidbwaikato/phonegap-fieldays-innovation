@@ -82,9 +82,10 @@ var app = {
 	if (hash == "#kiaora") {
 
         if (this.kiaoraPage) {
-			self.slidePage(this.kiaoraPage);		
+			self.slidePage(this.kiaoraPage);
+			$('#info-page').empty();
 			this.kiaoraPage.reinitialize(); // refresh values from the control file again
-			this.kiaoraPage.render(); // force it to regenerate the story count
+			this.kiaoraPage.render(); // force it to regenerate the story count			
 	    }
 	    else {
 			//this.kiaoraPage = new KiaoraView(this.homePage).render();
@@ -180,8 +181,11 @@ var app = {
         }
 
         // Cleaning up: remove old pages that were moved out of the viewport
+		
+		//alert("@@@ Before REMOVE"); //console.error("@@@ Before REMOVE");
         $('.stage-right, .stage-left').not('.homePage').remove();
-
+		//alert("@@@ After REMOVE");	//console.error("@@@ After REMOVE");		
+		
         if (page === app.homePage && !this.currentPage == app.splashPage) {
             // Always apply a Back transition (slide from left) when we go back to the home page
             $(page.el).attr('class', 'page stage-left');
@@ -244,7 +248,7 @@ var app = {
 		$('body').append(page.el);
 
 		setTimeout(function() {
-
+			console.log("In SetTimeOut");
 			// Wait until the new page has been added to the DOM...
 			// Slide out the current page: 
 			//   If new page slides from the right -> slide current page to the left, and vice versa
@@ -254,9 +258,13 @@ var app = {
 				self.currentPage = page;
 
 			if (page == self.discoverPage) {
-				self.discoverPage.scan();
+			
+				//setTimeout(function() {
+					console.error("In SetTimeOut - away to start scan");
+					self.discoverPage.scan();
+				//}, 500);	
 			}
-		},500);
+		},500); // originally 500 -> Dr Bainbridge improved this by making it 700
 
     },
 
