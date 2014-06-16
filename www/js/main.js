@@ -141,11 +141,15 @@ var app = {
 
 	if (hash == "#winner-2013") {
         if (this.winner2013Page) {
-			self.slidePage(this.winner2013Page);
+			//self.slidePage(this.winner2013Page);
+			$(window).scrollTop(0); // Ensure scroll-bar is back to top
+			$('body').append(this.winner2013Page.el);
 	    }
 	    else {
 			this.winner2013Page = new Winner2013View().render();
-			self.slidePage(this.winner2013Page);	    
+			//self.slidePage(this.winner2013Page);	    
+			$(window).scrollTop(0); // Ensure scroll-bar is back to top
+			$('body').append(this.winner2013Page.el);
 	    }
 	    return;
 	}
