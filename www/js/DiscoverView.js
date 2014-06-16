@@ -35,11 +35,8 @@ var DiscoverView = function(scan_mode, homeView) {
 
 
     this.loadInnovationStory = function(result) {
-		//console.error("LoadInnovationStory: " + result.text);
 		
         var self = this;
-
-		//alert("LoadInnovationStory: " + result.text); console.error("LoadInnovationStory: checkpt 1" );
 		
 		if(!result.text) { // empty
 			app.showAlert("No innovation story loaded", self.scan_mode + ": No value found"); //alert("No innovation story loaded");				
@@ -58,7 +55,6 @@ var DiscoverView = function(scan_mode, homeView) {
 			return;
 		} else { 
 			story_id = match[1];			
-			//app.showAlert("story_id is now: " + story_id);
 		}		
 		
 		/*
@@ -66,10 +62,7 @@ var DiscoverView = function(scan_mode, homeView) {
 			app.showAlert("Not an innovation story " + result.text, self.scan_mode + ": Unrecognised value"); //alert(result.text + " is not an innovation story");
 			app.reroute("#kiaora"); // back to previous page
 			return;
-		}*/		
-		
-		//console.error("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
-		//alert("@@@@ FOUND AR/QR: " + result.text + " " + story_id);
+		}*/
 		
 		var innovation_id = "#"+story_id+"-tpl";
 		var innovation_html = $(innovation_id).html();
@@ -80,8 +73,6 @@ var DiscoverView = function(scan_mode, homeView) {
 		// Record the fact that the user has brought up this innovation story
 		KiaoraView.explored_stories[story_id] = 1;
 
-		//$('#info-page').empty(); // http://stackoverflow.com/questions/2648618/remove-innerhtml-from-div
-		//$('#info-page').html("<body style='background-color: #632468';></body>");
 		$('#info-page').html(inner_html);
 		
 		// log the story they found
@@ -92,9 +83,7 @@ var DiscoverView = function(scan_mode, homeView) {
 
     this.qrScan = function() {
         var self = this;
-//$('#info-page').empty();
 		
-        console.log('qrScan(): init');
         // documentation said the syntax was this:
         // var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
         // but playing with options, seems like it should be this:
@@ -105,27 +94,20 @@ var DiscoverView = function(scan_mode, homeView) {
 			this.loadInnovationStory({text: "Innovation-Story-01"});
             return;
         }
-
-		//alert("Before QR scanning");
-		//console.error("Before QR scanning");
 		
         cordova.plugins.discoverScanAR.scan( // qr scan
 	        $.proxy(this.loadInnovationStory,this),
                 function (error) {
-                    app.showAlert(error,"Scanning failed: ");
-					//alert("QR Scanning failed: " + error);
+                    app.showAlert(error,"Scanning failed: ");					
                 }
         );
 		
-		//alert("After QR scanning");
     };
 
 
     this.arScan = function() {
 
         var self = this;
-
-        console.log('arScan(): init');
 
 		if (!window.cordova) {
             console.log("DiscoverView.arScan(): Discover AR Scanner not supported, defaulting to Story 2");
@@ -138,7 +120,6 @@ var DiscoverView = function(scan_mode, homeView) {
 			$.proxy(this.loadInnovationStory,this),
                 function (error) {
                     app.showAlert(error,"Scanning failed: ");
-					//alert("AR Scanning failed: " + error);
                 }
         );
 
