@@ -45,8 +45,6 @@ var app = {
 				this.homePage.reinitialize();
             } else {
                 this.homePage = new HomeView();
-					//self.homePage.render();
-					//self.slidePage(this.homePage);
 					
 				//this.homePage.playVideo(function() {
 					self.homePage.render();
@@ -54,29 +52,6 @@ var app = {
 				//});
             }
             return;
-	}
-	
-	if (hash == "#start") {
-
-        if (this.startPage) {
-			self.slidePage(this.startPage);
-			this.startPage.render(); // Regenerate name on page in case it has changed
-	    }
-	    else {
-			//this.startPage = new StartView(this.homePage).render();
-			//self.slidePage(this.startPage);	    
-			// //this.startPage.crossfade();
-			
-			this.startPage = new StartView(this.homePage);
-			
-			this.startPage.playVideo(function() {
-					self.startPage.render();
-					self.slidePage(self.startPage);
-					setTimeout(function() { self.startPage.playAudio(); }, 6500);
-				});
-				
-	    }
-	    return;
 	}
 
 	if (hash == "#kiaora") {
@@ -208,10 +183,6 @@ var app = {
 				currentPageDest = "stage-right";
 		}
 		else if ((page == app.homePage) && (this.currentPage == app.kiaoraPage)) {
-				$(page.el).attr('class', 'page stage-left');
-				currentPageDest = "stage-right";
-		}
-		else if ((page == app.startPage) && (this.currentPage == app.kiaoraPage)) {
 				$(page.el).attr('class', 'page stage-left');
 				currentPageDest = "stage-right";
 		}
