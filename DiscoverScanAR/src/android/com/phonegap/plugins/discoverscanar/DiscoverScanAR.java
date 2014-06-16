@@ -100,19 +100,34 @@ public class DiscoverScanAR extends CordovaPlugin {
                 return true;
             }
         } else if (action.equals(SCAN)) {
-            scan();
+			
+			// Section threading of http://docs.phonegap.com/en/2.3.0/guide_plugin-development_android_index.md.html
+			// But it still displayed the error "Plugin should use CordovaInterface.getThreadPool"
+			cordova.getThreadPool().execute(new Runnable() {
+			//CordovaInterface.getThreadPool().execute(new Runnable() {
+				public void run() {
+					scan();
+				}
+			});	
         } else if (action.equals(ARSCAN)) {
 			JSONObject obj = args.optJSONObject(0);
-			String json_file = null;
-            if (obj != null) {
+			// If the type is null then force the type to text
+			final String json_file = (obj != null) ? obj.optString(JSONFILE) : null;
+            /*
+			final String json_file = null;
+			if (obj != null) {
                 json_file = obj.optString(JSONFILE);
 
                 // If the type is null then force the type to text
-			}
+			}*/
 			if (json_file != null) {
-			 
-					arscan(json_file);
-                }
+				cordova.getThreadPool().execute(new Runnable() {
+				//CordovaInterface.getThreadPool().execute(new Runnable() {
+					public void run() {
+						arscan(json_file);
+					}
+				});
+			}
 			else {
 				callbackContext.error("User did not specify a json file to load");
 			}
@@ -158,29 +173,42 @@ public class DiscoverScanAR extends CordovaPlugin {
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+	
+		// logging goes to logcat. LOG.d for debug(), LOG.e for error()
+		// http://www.vogella.com/tutorials/AndroidLogging/article.html
+		//Log.d(LOG_TAG, "#### onActivityResult");
+	
         if (requestCode == REQUEST_SCAN_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 JSONObject obj = new JSONObject();
                 try {
-                    obj.put(TEXT, intent.getStringExtra("SCAN_RESULT"));
+                    obj.put(TEXT, intent.getStringExtra("SCAN_RESULT"));						
                     obj.put(FORMAT, intent.getStringExtra("SCAN_RESULT_FORMAT"));
                     obj.put(CANCELLED, false);
+					this.callbackContext.success(obj);
+					Log.e(LOG_TAG, "#### Found text: " + intent.getStringExtra("SCAN_RESULT") + " AND Called callback on success" );
                 } catch (JSONException e) {
                     Log.d(LOG_TAG, "This should never happen");
+					this.callbackContext.error("Scan intent. Unexpected error: " + e.getMessage());
                 }
                 //this.success(new PluginResult(PluginResult.Status.OK, obj), this.callback);
-                this.callbackContext.success(obj);
+                //this.callbackContext.success(obj);
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 JSONObject obj = new JSONObject();
                 try {
                     obj.put(TEXT, "");
                     obj.put(FORMAT, "");
                     obj.put(CANCELLED, true);
+					
+					//Log.e(LOG_TAG, "#### Found no text");
+					
+					this.callbackContext.success(obj);
                 } catch (JSONException e) {
                     Log.d(LOG_TAG, "This should never happen");
+					this.callbackContext.error("Scan intent. Unexpected error: " + e.getMessage());
                 }
                 //this.success(new PluginResult(PluginResult.Status.OK, obj), this.callback);
-                this.callbackContext.success(obj);
+                //this.callbackContext.success(obj);
             } else {
                 //this.error(new PluginResult(PluginResult.Status.ERROR), this.callback);
                 this.callbackContext.error("Scan intent. Unexpected error");
@@ -193,19 +221,23 @@ public class DiscoverScanAR extends CordovaPlugin {
                 try {
                     obj.put(TEXT, intent.getStringExtra("ARSCAN_RESULT"));
                     obj.put(CANCELLED, false);
+					this.callbackContext.success(obj);
                 } catch (JSONException e) {
                     Log.d(LOG_TAG, "ARScan intent (RESULT_OK) threw an exception: This should never happen");
+					this.callbackContext.error("ARScan intent. Unexpected error: " + e.getMessage());
                 }
-                this.callbackContext.success(obj);
+                //this.callbackContext.success(obj);
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 JSONObject obj = new JSONObject();
                 try {
                     obj.put(TEXT, "");
                     obj.put(CANCELLED, true);
+					this.callbackContext.success(obj);
                 } catch (JSONException e) {
                     Log.d(LOG_TAG, "ARScan intent (RESULT_CANCELED) threw an exception. This should never happen");
+					this.callbackContext.error("ARScan intent. Unexpected error: " + e.getMessage());
                 }
-                this.callbackContext.success(obj);
+                //this.callbackContext.success(obj);
             } else {
                 //this.error(new PluginResult(PluginResult.Status.ERROR), this.callback);
                 this.callbackContext.error("ARScan intent. Unexpected error");
