@@ -22,19 +22,26 @@ var KiaoraView = function(homeView) {
 			this.homeView.readControlFile();
 		}
 	};
-	
 
     this.render = function() {
 	if (!this.homeView) {
-	    this.homeView = { enteredName:  "" };
+	    this.homeView = { enteredName:  "" }; /* set enteredName to "foobar" for when testing in the browser */
 	}
 
 	var nes = Object.size(KiaoraView.explored_stories);
 
+	// used to set the hash tag for the discover page we go to if we're in browser vs tablet mode
+	if(window.cordova) {
+		this.homeView.discoverMode = "discover";
+	} else {
+		this.homeView.discoverMode = "static-discover";
+	}
+	
 	if (nes > 0) {
 
 	    this.homeView.numExploredStories = nes;
 	    this.homeView.remainingStories = KiaoraView.totalNumStories - nes;
+		
 		
 		// Some fiddling for the interface
 		if (this.homeView.foundAllStories) {

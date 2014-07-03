@@ -13,6 +13,9 @@ var DiscoverView = function(scan_mode, homeView) {
     this.setScanMode = function(scan_mode) {
 		this.scan_mode = scan_mode;
     };
+	this.getScanMode = function() {
+		return this.scan_mode;
+    };
 
     this.render = function() {
 		if (!this.homeView) {
@@ -72,6 +75,7 @@ var DiscoverView = function(scan_mode, homeView) {
 
 		// Record the fact that the user has brought up this innovation story
 		KiaoraView.explored_stories[story_id] = 1;
+		console.log("DiscoverView, found " + story_id + " " + KiaoraView.explored_stories[story_id]);
 
 		$('#info-page').html(inner_html);
 		

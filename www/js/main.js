@@ -55,7 +55,7 @@ var app = {
 	}
 
 	if (hash == "#kiaora") {
-
+	
         if (this.kiaoraPage) {
 			self.slidePage(this.kiaoraPage);
 			$('#info-page').empty(); // http://stackoverflow.com/questions/2648618/remove-innerhtml-from-div
@@ -75,22 +75,54 @@ var app = {
 	    return;
 	}
 
-
-	if (hash == "#discover") {
-		var scanMode = "qr";
-		
-		if(this.homePage && this.homePage.scanMode) {			
-			scanMode = this.homePage.scanMode;
+	if (hash == "#static-discover") {
+		if (this.staticDiscoverPage) {			
+			this.slidePage(this.staticDiscoverPage);			
+		} else {				
+			this.staticDiscoverPage = new StaticDiscoverView(this.homePage);
+			this.staticDiscoverPage.render();				
+			this.slidePage(this.staticDiscoverPage);
 		}
+		return;
+	}
+
 	
+	if ((/^#discover/).test(hash)) {//if (hash == "#discover") {
+	
+		var myRegexp = /^#discover-(.*)$/;
+		var match = myRegexp.exec(hash);
+		var scanMode = "";
+		var directStory = "";
+		
+		if(match.length == 2) { // first match match[0] is the entire regex, the second match is Innovation-Story-DD
+			// load the innovation story directly
+			
+			scanMode = "noscan";			
+			directStory = match[1];			
+		} 
+		else { // catch all case, we go to the default discover page that does the scanning
+			scanMode = "qr";
+		
+			// When the app starts, the scan mode value is retrieved from the control file and stored in homePage
+			if(this.homePage && this.homePage.scanMode) {			
+				scanMode = this.homePage.scanMode;
+			}
+		}
+		
+		
 		if (this.discoverPage) {
-			this.discoverPage.setScanMode(scanMode);
-			self.slidePage(this.discoverPage);
-	    }
-	    else {
-			this.discoverPage = new DiscoverView(scanMode, this.homePage).render();
-			self.slidePage(this.discoverPage);	    
-	    }
+			this.discoverPage.setScanMode(scanMode);			
+		}
+		else {
+			this.discoverPage = new DiscoverView(scanMode, this.homePage).render();			
+		}
+		
+		self.slidePage(this.discoverPage);
+		if(scanMode == "noscan") {
+			this.discoverPage.loadInnovationStory({text: directStory});
+		}	
+		
+		
 	    return;
 	}
 
@@ -186,11 +218,11 @@ var app = {
 				$(page.el).attr('class', 'page stage-left');
 				currentPageDest = "stage-right";
 		}
-		else if ((page == app.kiaoraPage) && (this.currentPage == app.discoverPage)) {
+		else if ((page == app.kiaoraPage) && ((this.currentPage == app.discoverPage) || (this.currentPage == app.staticDiscoverPage))) {				
 				$(page.el).attr('class', 'page stage-left');
 				currentPageDest = "stage-right";
 		}
-		else if ((page == app.discoverPage) && (this.currentPage == app.considerPage)) {
+		else if ((page == app.kiaoraPage) && (this.currentPage == app.considerPage)) {
 				$(page.el).attr('class', 'page stage-left');
 				currentPageDest = "stage-right";
 		}
@@ -233,7 +265,9 @@ var app = {
 				self.currentPage = page;
 
 			if (page == self.discoverPage) {
-				self.discoverPage.scan();
+				if(self.discoverPage.getScanMode() != "noscan") {
+					self.discoverPage.scan();
+				}	
 			}
 		},500);
 

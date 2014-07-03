@@ -244,7 +244,7 @@ div.box {
 	background-image:url('../images/credits-background.png');
 }
 
-.question-section {	
+.question-section, .static-discover-box {	
 	width:70%; 
 	margin: 10% auto; 
 	text-align: center;
@@ -311,7 +311,7 @@ div.top-center {
 }
 
 .home-page {
-	background-image:url('../images/background_home.png');
+	background-image:url('../images/background_home_browser.png');
 	background-repeat:no-repeat;
 	background-color:#632468;
 	-webkit-background-size: cover;
@@ -526,19 +526,47 @@ html#story-final {
     flex: 1;
 }
 
+
+#static-info-page a {text-decoration: none;}
+#static-info-page a:link    {color:#cfa1cd;}
+#static-info-page a:visited {color:#95348b;}
+#static-info-page a:hover   {color:white;}/*#dbbcda*/
+#static-info-page a:active  {color:white;} 
+
 #enter-name, #enter-email {   
 	position:absolute;
 	left:10%; /*left:11.7%;*/
-	top:48.5%;/*top:46.7%;*/
-	width: 79.5%;/*width: 77.5%;*/
+	top:50%;/*top:46.7%;*/
+	width: 79.2%;/*width: 79.5; 77.5%;*/
+	height: 12%; /*no height for app*/
 	color:white;
-	background:none;
+	background-color: #95348b; /*background:none; for app*/
 	font-size: 5rem;	
 	border:none;
 }
 
+/* http://www.smashingmagazine.com/2010/07/19/how-to-use-css3-media-queries-to-create-a-mobile-version-of-your-website/ 
+http://www.javascriptkit.com/dhtmltutors/cssmediaqueries2.shtml :  width vs device-width 
+http://protofluid.com/ and http://protofluid.com/?c=mediaQueries 
+http://www.w3avenue.com/2010/05/12/protofluid-website-layout-testing-for-various-devices/ 
+Need to run fieldays app on a local server, such as public_html then visit the protofluid.com site
+Press the link labelled "URL" at the top right, paste in http://www.cs.waikato.ac.nz/~anupama/fieldays 
+and then keep clicking > button on top left until on the top-right it says 480 (px) for width. */
+@media only screen and (max-device-width: 480px) {
+	.home-page {
+		background-image:url('../images/background_home.png');
+	}
 
-
+	#enter-name, #enter-email {   
+		position:absolute;
+		top:48.5%;/*top:46.7%;*/
+		/*left:10%;*/		
+		width: 79.5%;
+		height: 10%; /*no height for app*/		
+		background:none;
+		
+	}
+}
 
 .vstretchy-centered {		
     margin: 0;
