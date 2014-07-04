@@ -319,6 +319,12 @@ div.top-center {
 	-o-background-size: cover;
 	background-size: cover;	
 }
+#whats-your-name {
+	position:relative;
+	left: -31%;
+	top:-8%;
+	height: 15%;
+}	
 
 .answer {	
 	background-repeat:no-repeat;
@@ -552,9 +558,12 @@ http://www.w3avenue.com/2010/05/12/protofluid-website-layout-testing-for-various
 Need to run fieldays app on a local server, such as public_html then visit the protofluid.com site
 Press the link labelled "URL" at the top right, paste in http://www.cs.waikato.ac.nz/~anupama/fieldays 
 and then keep clicking > button on top left until on the top-right it says 480 (px) for width. */
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 1280px) { /*480px*/
 	.home-page {
 		background-image:url('../images/background_home.png');
+	}
+	#whats-your-name {
+		display:none;
 	}
 
 	#enter-name, #enter-email {   
