@@ -3,8 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>	
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>Innovation Story 2</title>
-	
+	<title>Innovation Story 2</title>	
   </head>
   <body>
       <div data-role="page" id="innovation-story-02-test" class="demo-page" data-dom-cache="true" data-prev="innovation-story-02-res" data-next="innovation-story-02-dev" >
@@ -24,7 +23,11 @@
 	  <!-- put custom content here -->  
 		<span class="left story-icon testing" ></span>
 		<!-- VIDEO TO COME -->
-		<img class="right bodyimg constrainHeight" src="images/the_bot/promovid.png" onclick="playDirect('Bot_Promo.mp4')"/><!-- alt="video clip of aerial imagery" -->		
+		<video controls class="right bodyimg constrainHeight">
+			<source src="video/Bot_Promo.mp4" type="video/mp4" />
+			<img class="right bodyimg constrainHeight" src="images/the_bot/promovid.png" onclick="playDirect('Bot_Promo.mp4')"/><!-- alt="video clip of aerial imagery" -->
+		</video> 
+		
 		
 		<h2>TESTING</h2>
 		<p>“We started making prototypes with carbon fibre cloth and different resins.</p> 
