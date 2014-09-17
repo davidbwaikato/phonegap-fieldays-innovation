@@ -165,11 +165,11 @@ div.story-page p {
 	/*text-align: justify;*/
 }
 
-img.left {
+img.left, video.left {
 	float:left; 
 	margin-right:20px;
 }
-img.right {
+img.right, video.right {
 	float:right; 
 	margin-left:20px;
 }
@@ -203,38 +203,39 @@ http://stackoverflow.com/questions/1496203/css-displaying-one-particular-icon-fr
 }
 /* End Section Icons */
 
+/* Image and video */
 img.bodyimg {
 	
 }
 
-img.constrainHeight {
+.constrainHeight {
 height:200px; /*100px*/
 }
 
-img.constrainHeight2 {
+.constrainHeight2 {
 height:180px;
 padding-top:10px;
 }
 
-img.constrainHeight3 {
+.constrainHeight3 {
 height:220px;
 }
 
-img.constrainWidth {
+.constrainWidth {
 width:320px; /*100px*/
 }
 
-img.full-length {
+.full-length {
 position:relative;
 height:100%
 }
 
-img.full-width {
+.full-width {
 position:relative;
 width:100%
 }
 
-img.h75 {
+.h75 {
 position:relative;
 height:75%
 }

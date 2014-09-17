@@ -320,9 +320,12 @@ div.top-center {
 	background-size: cover;	
 }
 #whats-your-name {
-	position:relative;
+	/*position:relative;
 	left: -31%;
-	top:-8%;
+	top:-8%;*/
+	position:absolute;
+	left: 5%;
+	top:35%;
 	height: 15%;
 }	
 

@@ -59,11 +59,23 @@ var app = {
         if (this.kiaoraPage) {
 			self.slidePage(this.kiaoraPage);
 			$('#info-page').empty(); // http://stackoverflow.com/questions/2648618/remove-innerhtml-from-div
+			
+			if(!window.cordova) {
+				// KiaoraPage exists, meaning we've already played the video once
+				delete this.homePage.webModeFirstTimeKiaora;
+			}
+			
 			this.kiaoraPage.reinitialize(); // refresh values from the control file again
 			this.kiaoraPage.render(); // force it to regenerate the story count			
 	    }
 	    else {
 			//this.kiaoraPage = new KiaoraView(this.homePage).render();
+			
+			// If we're running on the web instead of as an app, 
+			// we need to set a variable so that the balloon video can be displayed with an html5 video player
+			if(!window.cordova) {
+				this.homePage.webModeFirstTimeKiaora = 1;
+			}
 			
 			this.kiaoraPage = new KiaoraView(this.homePage);
 				 
@@ -94,11 +106,11 @@ var app = {
 		var scanMode = "";
 		var directStory = "";
 		
-		if(match.length == 2) { // first match match[0] is the entire regex, the second match is Innovation-Story-DD
+		if(match != null && match.length == 2) { // first match match[0] is the entire regex, the second match is Innovation-Story-DD
 			// load the innovation story directly
 			
 			scanMode = "noscan";			
-			directStory = match[1];			
+			directStory = match[1];
 		} 
 		else { // catch all case, we go to the default discover page that does the scanning
 			scanMode = "qr";

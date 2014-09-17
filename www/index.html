@@ -4,7 +4,8 @@
     <script src="css/source-sans-pro.js"></script>
     <link href="css/styles.css" rel="stylesheet">
 	<link href="css/storystyle.css" rel="stylesheet"><!-- only for .constrainHeight -->
-    <link href="css/turnstyle-block.css" rel="stylesheet">
+    <link href="css/turnstyle-block.css" rel="stylesheet">	
+	
   </head>
 
 
@@ -52,8 +53,30 @@
 	
     <script id="kiaora-tpl" type="text/x-handlebars-template">
       
-      <div class="page-body kiaora purpletext">	  
-	    
+	  <div class="page-body kiaora purpletext">
+	  
+		<!-- Bubbles video is displayed from the javascript classes in the app version. The following html
+			code is only displayed in the web version, and only the first time landing on the Kiaora page.
+			In the web version, when we start the video, we hide the usual kiaora page. 
+			When we finish the video, we hide the video and display the kiaroa page.
+			Event handlers:
+			onended: http://stackoverflow.com/questions/2741493/how-do-you-detect-html5-video-events
+			http://stackoverflow.com/questions/2741493/how-do-you-detect-html5-video-events 
+			oncanplay and other video events: http://msdn.microsoft.com/en-us/library/ie/hh924822%28v=vs.85%29.aspx 
+			
+			Doesn't work in chrome: width="100%" height="100%"
+		-->      
+	    {{#if webModeFirstTimeKiaora}}
+			<video controls autoplay id="animationVideo" 
+				src="video/animation.mp4" type="video/mp4" 
+				width="1600rem" height="900rem"
+				oncanplay="$('#after-bubbles').hide();" 
+				onended="$('#animationVideo').hide(); $('#after-bubbles').show();">
+					Your browser does not support HTML5 videos.
+			</video>		
+		{{/if}}
+		
+		
 	    <div id="after-bubbles" > <!-- id="kiaora" -->
 
 	      <div class="top-left" >
